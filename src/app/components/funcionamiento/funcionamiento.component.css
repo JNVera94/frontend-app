@@ -1,0 +1,219 @@
+/* Reset de estilos para asegurar una base uniforme en diferentes navegadores */
+*{
+    list-style: none;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  body {
+      padding: 0;
+      margin: 0;
+    }
+ 
+
+body .func {
+    width: 100%;
+    padding-top: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 1280px;
+    margin: auto;
+  }
+  
+  
+  body .func .descrip {
+    width: 50%;
+    margin-left: 0;
+    padding-left: 40px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding-right: 40px;
+  }
+  
+  body .func .descrip h2 {
+    font-size: 40px;
+    font-family: 'Open sans';
+    margin-top: 10px;
+    color: #D91717;
+  }
+  
+  
+  body .func .descrip p {
+    font-size: 20px;
+    font-family: 'Open sans';
+    width: 100%;
+    text-align: justify;
+  }
+
+
+  body .func .imagen img {
+    width: 90%;
+    height: 80%;   /*ajusto largo de la imagen*/
+  }
+
+  body .func .imagen {
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+
+
+
+
+
+  body .clientes {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  body .clientes .descripcion {
+    width: 60%;
+    background-color: #ebf3ff;
+    padding-bottom: 45px;
+  }
+  
+  body .clientes .descripcion h2 {
+    font-size: 45px;
+    font-family: 'Open sans';
+    color: rgb(0, 0, 0);
+    margin-left: 0px;
+    margin-top: 85px;   /*bajo el titulo principal*/
+    line-height: 0.8;
+  }
+  
+  body .clientes .imagenes {
+    width: 60%;
+    background-color: #ebf3ff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;/*
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;*/
+            height: fit-content;
+  }
+  
+  body .clientes .imagenes .conteiner {
+    max-width: 420px;
+    margin: auto;
+  }
+  
+  body .clientes .imagenes .conteiner img {
+    height: 100;
+    margin-right: 200px;
+  }
+
+
+  body .clientes .descripcion p {
+    font-size: 21px;
+    font-family: 'Open sans';
+    width: 47%;
+    text-align: justify;
+    line-height: 0.8;
+    margin-top: 16px;
+  }
+
+  body .clientes .descripcion .contacto {
+    background-color: #D91717;
+    color: white;
+    font-size: 18px;
+    text-decoration: inherit;
+    border: 0px;
+    padding: 12px 30px;  /*tamaño del boton*/
+    font-family: 'Open sans';
+    margin-top: 16px; /*lo separo de la descripcion*/
+    border-radius: 8px; /*redondeo el boton*/
+    font-weight: 60;   /*ensancho la letra*/
+    margin-bottom: 30px;
+  }
+
+
+  /*empresas*/
+
+  body .empresas {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 50px;
+  }
+  
+  body .empresas .descripcion {
+    width: 60%;
+    background-color: #ffffff;
+    padding-bottom: 45px;
+    margin-left: 440px;  /*muevo al centro mi lado izquierda de empresas*/
+  }
+  
+  body .empresas .descripcion h2 {
+    font-size: 45px;
+    font-family: 'Open sans';
+    color: rgb(0, 0, 0);
+    margin-left: 0px;
+    margin-top: 85px;   /*bajo el titulo principal*/
+    line-height: 0.6;
+  }
+  
+  body .empresas .imagenes {
+    width: 60%;
+    background-color: #ffffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;/*
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;*/
+            height: fit-content;
+            margin-right: 420px;
+  }
+  
+  body .empresas .imagenes .conteiner {
+    max-width: 420px;
+    margin: auto;
+  }
+  
+  body .empresas .imagenes .conteiner img {
+    height: 100;/*
+    margin-right: 200px;*/
+    margin-left: 15px;
+  }
+
+
+  body .empresas .descripcion p {
+    font-size: 21px;
+    font-family: 'Open sans';
+    width: 65%;
+    text-align: justify;
+    line-height: 0.9;
+    margin-top: 16px;
+    margin-right: 50px;
+  }
+
+  body .empresas .descripcion .contacto {
+    background-color: #D91717;
+    color: white;
+    font-size: 18px;
+    text-decoration: inherit;
+    border: 0px;
+    padding: 12px 30px;  /*tamaño del boton*/
+    font-family: 'Open sans';
+    margin-top: 16px; /*lo separo de la descripcion*/
+    border-radius: 8px; /*redondeo el boton*/
+    font-weight: 60;   /*ensancho la letra*/
+    margin-bottom: 30px;
+  }
