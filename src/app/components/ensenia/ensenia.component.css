@@ -7,187 +7,43 @@
   body {
       padding: 0;
       margin: 0;
+
     }
   
-  
-    body .home {
-      padding: 150px 200px;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
-      margin-left: 30px;
+
+    body .textos-inicio{
+        width: 100%;
+        height: 650px;
+        background: #bc49ec;
+        background: -webkit-linear-gradient(to right, #f8075756, #bc4e9d63), url(images/portada.jpg);
+        background: linear-gradient(to right, #f8075756, #bc4e9d63), url(images/portada.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 30px;
     }
 
+    body .textos-inicio h1{
+    font-size: 50px;
+    color: #fff;
+    }
 
-/* Centrar la sección en la página */
-.seccion-principal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px; /* Añade espaciado si es necesario */
-  }
-  
- .col-texto{
-    text-align: left;
-  }
-  .col-imagen{
-    max-width: 100%; /* Asegura que la imagen se ajuste al contenedor */
-    height: auto;
-  }
-  /* Estilo para el contenido */
-  .col-md-6 {
-    text-align: left; /* Alinea el texto a la izquierda */
-  }
-  
-  /* Estilo para la imagen */
-  .img-responsive {
-    max-width: 100%; /* Asegura que la imagen se ajuste al contenedor */
-    height: auto;
-  }
-  
-  /*seccion-principal
-  container
-      row
-          col-texto	(intro/tituloPrincipal/explicaicon)
-          col-imagen	(img-funcionamiento)*/
+    body .textos-inicio h2{
+        font-size: 45px;
+        font-weight: 100;
+        color: #fff;
+        }
 
-
-
-
-/*INTRODUCCION*//*
-*{box-sizing:border-box;margin:0;padding:0;}
-img{max-width:100%;height:auto;vertical-align:middle;}
-p,h1{font-size:inherit;font-weight:400;max-width:60rem;}
-button{background-image:none;}
-*:focus,button:focus{outline:none;}
-.ud-heading-md{font-family:var(--font-stack-heading);font-weight:700;line-height:1.2;letter-spacing:-.02rem;font-size:1.6rem;}
-.ud-heading-serif-xxl{font-family:var(--font-stack-heading-serif);font-weight:700;font-size:3.2rem;line-height:1.25;letter-spacing:-.05rem;max-width:36em;}
-.ud-text-lg{font-family:var(--font-stack-text);font-weight:400;line-height:1.4;font-size:1.9rem;}
-.ud-container{width:100%;max-width:134rem;margin-right:auto;margin-left:auto;padding-right:2.4rem;padding-left:2.4rem;}
-.ud-btn{position:relative;align-items:center;border:none;cursor:pointer;display:inline-flex;min-width:8rem;padding:0 1.2rem;justify-content:center;user-select:none;-webkit-user-select:none;vertical-align:bottom;white-space:nowrap;}
-.ud-btn:focus{color:var(--color-gray-500);}
-.ud-btn-large{height:4.8rem;}
-.ud-btn-primary{color:var(--color-white);}
-.ud-btn-primary:hover,.ud-btn-primary:focus{color:var(--color-white);}
-.ud-btn-primary:active,.ud-btn-primary:hover{background-color:var(--color-gray-400);}
-.ud-btn-primary{background-color:var(--color-gray-500);}
-
-@media (min-width:43.81em){
-.teach-page__main-heading{font-family:var(--font-stack-heading-serif);font-weight:700;font-size:4.8rem;line-height:1.15;letter-spacing:-.05rem;max-width:36em;}
-}
-
-
-.hero-header--billboard--33iW1{background:#f7f9fa;display:block;margin:0 auto;}
-.hero-header--text-container--ISi_T{padding:3.2rem 2.4rem 4.8rem;}
-.hero-header--subtitle--athYy{margin-top:.8rem;}
-.hero-header--cta--3lLy8{margin-top:1.6rem;width:100%;}
-@media (min-width:43.81em){
-.hero-header--billboard-container--sYvLn{position:relative;}
-.hero-header--billboard--33iW1{margin:0 auto;object-fit:cover;height:40rem;}
-.hero-header--text-container--ISi_T{padding:0 0 0 3.2rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
-.hero-header--title---4jCL,.hero-header--subtitle--athYy,.hero-header--cta--3lLy8{width:32rem;}
-}
-@media (min-width:61.31em){
-.hero-header--billboard--33iW1{height:60rem;}
-.hero-header--text-container--ISi_T{padding:0 0 0 6.4rem;}
-}*/
-/*INTRODUCCION*/
-
-
-/*PORQUE ENSEÑAR CON NOSOTROS*/
-*{box-sizing:border-box;margin:0;padding:0;}
-img{max-width:100%;height:auto;vertical-align:middle;}
-h2{font-size:inherit;font-weight:400;max-width:60rem;}
-*:focus{outline:none;}
-
-.head2{
-    font-family:var(--font-stack-heading);
-    font-weight:700;
-    line-height:1.2;
-    letter-spacing:-.02rem;
-    font-size:1.9rem;
-    max-width:36em;
-}
-.head{
-    font-family:var(--font-stack-heading-serif);
-    font-weight:700;
-    font-size:2.4rem;
-    line-height:1.35;
-    letter-spacing:-.02rem;
-    max-width:36em;
-}
-.container{
-    width:100%;max-width:134rem;
-    margin-right:auto;
-    margin-left:auto;
-    padding-right:2.4rem;
-    padding-left:2.4rem;
-}
-
-.margin{
-    margin-left:auto;
-    margin-right:auto;
-}
-.teach{
-    padding:4.8rem 2.4rem;
-    text-align:center;
-}
-@media (min-width:43.81em){
-.heading{
-    font-family:var(--font-stack-heading-serif);
-    font-weight:700;
-    font-size:4rem;
-    line-height:1.15;
-    letter-spacing:-.05rem;
-    max-width:36em;
-}
-.teach{padding:8.8rem 2.4rem;}
-}
-
-.cabeza{margin:2.4rem auto 0;}
-
-@media (min-width:43.81em){
-.cabeza{margin:4.8rem auto 0;max-width:none;}
-}
-
-.cabeza2{
-    display:flex;
-    justify-content:space-between;}
-
-@media (max-width:43.75em){
-.cabeza2{flex-direction:column;}
-}
-
-.item{display:flex;}
-.mod>*+*{margin:0 0 0 6.4rem;}
-.mod .item{
-    flex-direction:column;
-    align-items:center;
-}
-.mod .item-img{
-    margin-bottom:1.6rem;
-}
-.mod .cabeza3{
-    max-width:34rem;
-    text-align:center;
-}
-
-
-@media (max-width:43.75em){
-.mod>*+*{margin:3.2rem 0 0;}
-}
-
-.item3{
-    margin-top:.4rem;
-}
-/*PORQUE ENSEÑAR CON NOSOTROS*/
-
+    body .wave{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
 
 
 /*BARRA DE NUMEROS*//*
@@ -215,7 +71,7 @@ p{font-size:inherit;font-weight:400;max-width:60rem;}
 .barra{
     background:#3e5ada;
     color:#fff;
-    padding:4.8rem 0;
+    padding:1.8rem 0;
 }
 .cont{
     display:flex;
@@ -229,7 +85,192 @@ p{font-size:inherit;font-weight:400;max-width:60rem;}
     padding:1.6rem 2.4rem;
     text-align:center;
 }
-@media (min-width:61.31em){
-.barra{padding:4.8rem 0;}
+
+.numeros p{
+  font-size: 20px;
 }
-/*BARRA DE NUMEROS*/
+/*FIN BARRA DE NUMEROS*/
+
+
+body .home {
+    padding: 75px 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-left: 30px;
+  }
+
+  body .destacados {
+    max-width: 1280px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: auto;
+    margin-top: 16px;
+  }
+  
+  body .destacados .titulo {
+    width: 100%;
+  }
+  
+  body .destacados .titulo h1 {
+    font-family: 'Open sans';
+    font-size: 65px;
+    font-weight: 900;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  
+  body .destacados .titulo h2 {
+    font-family: 'Open sans';
+    font-size: 40px;
+    font-weight: 900;
+    color: #000000;
+  }
+  
+  body .destacados .titulo img {
+    float: center;
+  }
+  
+  body .destacados .contenedor {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 50px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin-right: 250px;
+  }
+  
+  body .destacados .contenedor .logo1 {
+    width: 33%;
+    padding-top: 15px;
+    text-align: center;/*
+    border-radius: 10px;
+    -webkit-transition: .5s;*
+    transition: .5s;**/
+    margin-bottom: 40px;
+  }
+  
+  
+  body .destacados .contenedor .logo1 h2 {
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 15px;
+  }
+  
+  body .destacados .contenedor .logo1 p {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  body .destacados .contenedor .logo1 img:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: .5s;
+    transition: .5s;
+  }
+
+
+  /*FORMULARIO*/
+
+/* Estilos para el formulario */
+/* Estilos para el formulario */
+.formulario {
+  text-align: center;/*
+  background-color: #86636318;*/
+  padding: 20px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario h1 {
+  color: #c93535;
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.contform1 {
+  display: flex;
+  justify-content: space-between;
+  width: 180%;
+  margin-bottom: 5px;
+}
+.contform2{
+  display: flex;
+  justify-content: space-between;
+  width: 125%;
+  margin-bottom: 15px;
+}
+
+.form-elemento {
+  flex: 1;
+  padding: 0 15px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 18px;
+  margin-left:18px;
+  margin-bottom:10px;
+}
+
+.form-elemento h3 {
+  color: #000000;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  align-content: center;
+  background-color:#d2d2d293; /*COLOR DENTRO DEL RECUADRO DE ESCRIBIR*/
+}
+
+/* Estilos para el botón */
+.form-button {
+  background-color: #c93535;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Estilos para el textarea */
+.form-elemento textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  resize: vertical;
+  background-color:#d2d2d293;
+}
+
+/*FIN FORMULARIO*/
