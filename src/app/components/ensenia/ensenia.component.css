@@ -92,20 +92,8 @@ p{font-size:inherit;font-weight:400;max-width:60rem;}
 /*FIN BARRA DE NUMEROS*/
 
 
-body .home {
-    padding: 75px 100px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin-left: 30px;
-  }
 
+/*
   body .destacados {
     max-width: 1280px;
     display: -webkit-box;
@@ -148,11 +136,10 @@ body .home {
   
   body .destacados .contenedor {
     width: 100%;
-    display: -webkit-box;
+        display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
+    
+  
             justify-content: space-between;
     margin-top: 50px;
     -webkit-box-sizing: border-box;
@@ -161,12 +148,13 @@ body .home {
   }
   
   body .destacados .contenedor .logo1 {
-    width: 33%;
+    width: 30%;
     padding-top: 15px;
+    background-color: #bc49ec;
     text-align: center;/*
     border-radius: 10px;
     -webkit-transition: .5s;*
-    transition: .5s;**/
+    transition: .5s;*
     margin-bottom: 40px;
   }
   
@@ -187,7 +175,7 @@ body .home {
     transform: scale(1.2);
     -webkit-transition: .5s;
     transition: .5s;
-  }
+  }*/
 
 
   /*FORMULARIO*/
@@ -274,3 +262,79 @@ body .home {
 }
 
 /*FIN FORMULARIO*/
+
+body.cursos {
+ /* max-width: 1280px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    background-color: #c93535;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: auto;
+    margin-top: 16px;*/
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+
+
+body .cursos .titulo {
+  display:list-item;
+  width: 100%;
+}
+
+body .cursos .titulo h1 {
+  font-family: 'Open sans';
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 0px; /*espacio entre titulo principal y contenedores*/
+  text-align: center;
+  margin-top: 15px; /*espacio entre header y titulo principal*/
+}
+
+
+
+
+.contenedor{
+  /*width: 100%;
+  margin: auto;
+  overflow: hidden;
+  margin-bottom: 30px;*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px; /*espacio entre h2 y la fila (cursos)*/
+}
+
+
+  .logo1{
+    width: 30%; /*cambio tamaño del cuadrado*/
+  padding-top: 15px; /*espacio entre foto y remarco*/
+  text-align: center; /*justifico imagen y titulo del curso*/
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.11);
+  border-radius: 15px; /*redondeo esquinas*/
+  transition: .5s;
+  margin-right: 15px;  /*espacio lateral entre items de la fila*/
+  margin-bottom: 30px; /*espacio entre filas*/
+  }
+
+  .contenedor .logo1 p{
+    text-align:center;  /*justificar las descripciones*/
+  }
+
+  
+  .body .cursos.contenedor .logo1 img:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: .5s;
+    transition: .5s;
+  }

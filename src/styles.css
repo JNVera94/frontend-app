@@ -46,7 +46,6 @@
     /*PRIMER BLOQUE*/
     body .home .eje-central {
       font-family: "Gilroy";
-      /*padding: 15px 10px;*/
       border-left: 1px solid  #F2E9E9;
     }
   
@@ -150,3 +149,4 @@
       margin-bottom: 20px;
     }
   /*FIN 3ER BLOQUE*/
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

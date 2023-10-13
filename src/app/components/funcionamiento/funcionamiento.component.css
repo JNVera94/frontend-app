@@ -72,12 +72,14 @@ body .func {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-  }
+      }
   
   body .clientes .descripcion {
     width: 60%;
     background-color: #ebf3ff;
-    padding-bottom: 45px;
+    
+    padding-left: 40px;
+    
   }
   
   body .clientes .descripcion h2 {
@@ -112,7 +114,7 @@ body .func {
   body .clientes .descripcion p {
     font-size: 21px;
     font-family: 'Open sans';
-    width: 47%;
+    width: 100%;
     text-align: justify;
     line-height: 0.8;
     margin-top: 16px;
@@ -126,10 +128,11 @@ body .func {
     border: 0px;
     padding: 12px 30px;  /*tamaño del boton*/
     font-family: 'Open sans';
-    margin-top: 16px; /*lo separo de la descripcion*/
+    margin-top: 45px; /*lo separo de la descripcion*/
     border-radius: 8px; /*redondeo el boton*/
     font-weight: 60;   /*ensancho la letra*/
-    margin-bottom: 30px;
+    margin-left: 200px;
+    
   }
   /*FIN CLIENTES*/
 
@@ -141,25 +144,27 @@ body .func {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-top: 10px;
+        
   }
-  
+
   body .empresas .descripcion {
     width: 60%;
+    margin-top: 55px;
     background-color: #ffffff;
     padding-bottom: 45px;
-    margin-left: 440px;  /*muevo al centro mi lado izquierda de empresas*/
+    margin-left: 200px;  /*muevo al centro mi lado izquierda de empresas*/
   }
-  
+
   body .empresas .descripcion h2 {
     font-size: 45px;
     font-family: 'Open sans';
     color: rgb(0, 0, 0);
+    
     margin-left: 0px;
-    margin-top: 85px;   /*bajo el titulo principal*/
-    line-height: 0.6;
+    margin-top: 25px;   /*bajo el titulo principal*/
+    line-height: 0.8;
   }
-  
+
   body .empresas .imagenes {
     width: 60%;
     background-color: #ffffff;
@@ -167,13 +172,14 @@ body .func {
     display: -ms-flexbox;
     display: flex;
     height: fit-content;
-    margin-right: 350px;
+    margin-right: 80px;
+    margin-bottom: 50px;
   }
-  
+
   body .empresas .imagenes .conteiner {
     margin: auto;
   }
-  
+
   body .empresas .imagenes .conteiner img {
     height: 100;
     margin-left: 15px;

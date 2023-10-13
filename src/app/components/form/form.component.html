@@ -1,0 +1,37 @@
+<form class="example-form">
+   
+  <h2>Nombre:</h2>
+  <h2>Apellido:</h2>
+    <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+          <mat-label>Nombre</mat-label>
+        <input matInput>
+      </mat-form-field></td>
+
+      
+      <td><mat-form-field class="example-full-width">
+          <mat-label>Apellido</mat-label>
+        <input matInput>
+      </mat-form-field></td>
+    </tr></table>
+  
+    <h2>Ingrese su email:</h2>
+    <p>
+            <mat-form-field class="mail">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+         </p>
+  
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Message</mat-label>
+        <input matInput #message maxlength="" placeholder="">
+        <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 1024</mat-hint>
+      </mat-form-field></td>
+    </tr></table>
+  </form>
+
+  

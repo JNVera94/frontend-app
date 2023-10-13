@@ -19,7 +19,7 @@
     }
 
     body header .contenedor {
-      /*max-width: 1280px;*/
+     /* max-width: 1280px;*/
       max-width: 1980px;
       display: -webkit-box;
       display: -ms-flexbox;
