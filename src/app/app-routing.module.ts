@@ -6,6 +6,9 @@ import { EnseniaComponent } from './components/ensenia/ensenia.component';
 import { FuncionamientoComponent } from './components/funcionamiento/funcionamiento.component';
 import { Form } from '@angular/forms';
 import { FormComponent } from './components/form/form.component';
+import { GridListComponent } from './components/grid-list/grid-list.component';
+import { PruebaComponent } from './components/prueba/prueba.component';
+
 
 const routes: Routes = [
 
@@ -13,7 +16,10 @@ const routes: Routes = [
   { path: 'cursos', component: CursosComponent },
   { path: 'ensenia', component: EnseniaComponent },
   {path: 'funcionamiento', component: FuncionamientoComponent},
-  {path: 'form', component: FormComponent}
+  {path: 'form', component: FormComponent},
+  {path: 'grid',component: GridListComponent},
+  {path: 'prueba', component:PruebaComponent}
+
   // Otras rutas
 
 ];

@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import { FormComponent } from './components/form/form.component';
 import { RegistroComponent } from './registro/registro.component';
+import { GridListComponent } from './components/grid-list/grid-list.component';
+import { PruebaComponent } from './components/prueba/prueba.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -25,6 +28,9 @@ import { RegistroComponent } from './registro/registro.component';
     EnseniaComponent,
     InicioComponent,
     RegistroComponent,
+    PruebaComponent,
+  
+    
   
   ],
   imports: [
@@ -32,8 +38,10 @@ import { RegistroComponent } from './registro/registro.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
-    FormComponent
-  ],
+    FormComponent,
+    GridListComponent,
+    MatButtonModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

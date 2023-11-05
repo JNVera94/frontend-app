@@ -30,13 +30,19 @@
       margin: auto;
       background-color: #1e59b1;
     }
-  
+    nav{
+      align-items: center;
+      display: flex;
+    }
+
     nav ul{
       list-style-type: none; /* Quita los marcadores de lista */
       display: flex;
       align-items: center;
       justify-content: center; /* Centra horizontalmente los elementos */
       cursor: pointer; /* Muestra un cursor de puntero al pasar sobre el botón */
+      padding: 0;
+      margin: 0;
     }
 
     nav ul li{
