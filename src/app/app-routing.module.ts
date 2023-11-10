@@ -8,6 +8,8 @@ import { Form } from '@angular/forms';
 import { FormComponent } from './components/form/form.component';
 import { GridListComponent } from './components/grid-list/grid-list.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,9 @@ const routes: Routes = [
   {path: 'funcionamiento', component: FuncionamientoComponent},
   {path: 'form', component: FormComponent},
   {path: 'grid',component: GridListComponent},
-  {path: 'prueba', component:PruebaComponent}
+  {path: 'prueba', component:PruebaComponent},
+  {path: 'registro', component:RegistroComponent},
+  {path: 'cursos/:id', component:CursoDetalleComponent }
 
   // Otras rutas
 

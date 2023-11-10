@@ -79,9 +79,15 @@
     }
   
     
-    .body .cursos.contenedor .logo1 img:hover {
+    .cursos .contenedor .logo1 img:hover {
       -webkit-transform: scale(1.2);
       transform: scale(1.2);
       -webkit-transition: .5s;
       transition: .5s;
+    }
+
+    .cursos .contenedor .logo1 a img {
+      width: 100%; /* Ajusta el ancho de la imagen para ocupar completamente el contenedor */
+      height: 100%; /* Ajusta la altura de la imagen para ocupar completamente el contenedor */
+      object-fit: cover; /* Ayuda a ajustar la imagen al contenedor manteniendo la proporción */
     }
