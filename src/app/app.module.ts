@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { NotifierModule } from 'angular-notifier';
 
 
+
 import { HttpClientModule} from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 
@@ -27,6 +28,9 @@ import { FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 import { NotifierComponent } from './components/notifier/notifier.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
+import { SingoutComponent } from './components/auth/singout/singout.component';
+
 
 
 
@@ -44,6 +48,9 @@ import { NotifierComponent } from './components/notifier/notifier.component';
     PruebaComponent,
     CursoDetalleComponent,
     NotifierComponent,
+    SigninComponent,
+    SingoutComponent,
+  
   
  
   

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlumnosdataService } from 'src/app/services/alumnosdata.service';
 import { NotifierService } from 'angular-notifier';
 
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -21,8 +22,8 @@ export class RegistroComponent {
     console.log('funciona')
     this.alumnosService.addAlumno(this.alumno).subscribe(
       (response) => {
-        this.notifier.notify('success', 'You are awesome! I mean it!');
-        console.log('adsada')
+        this.notifier.notify('success', 'Alumno creado exitosamente.');
+
         // Aquí puedes redirigir a otra página o realizar acciones adicionales después de la creación del alumno
       },
       (error) => {

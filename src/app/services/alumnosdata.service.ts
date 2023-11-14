@@ -7,10 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class AlumnosdataService {
   private apiUrl = 'http://localhost:3000/api/alumnos'; 
+  private authUrl = 'http://localhost:3000/api/alumnos/login';
 
   constructor(private http: HttpClient) { }
 
   addAlumno(alumnoData: any): Observable<any> {
     return this.http.post(this.apiUrl, alumnoData);
+  }
+
+  login(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post(this.authUrl, credentials);
   }
 }

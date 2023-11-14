@@ -10,6 +10,7 @@ import { GridListComponent } from './components/grid-list/grid-list.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,9 @@ const routes: Routes = [
   {path: 'grid',component: GridListComponent},
   {path: 'prueba', component:PruebaComponent},
   {path: 'registro', component:RegistroComponent},
-  {path: 'cursos/:id', component:CursoDetalleComponent }
+  {path: 'cursos/:id', component:CursoDetalleComponent },
+  {path: 'signin', component:SigninComponent},
+
 
   // Otras rutas
 
