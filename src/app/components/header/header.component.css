@@ -1,4 +1,4 @@
-*{
+/**{
     list-style: none;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -19,7 +19,7 @@
     }
 
     body header .contenedor {
-     /* max-width: 1280px;*/
+     /* max-width: 1280px;*
       max-width: 1980px;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -36,11 +36,11 @@
     }
 
     nav ul{
-      list-style-type: none; /* Quita los marcadores de lista */
+      list-style-type: none; /* Quita los marcadores de lista *
       display: flex;
       align-items: center;
-      justify-content: center; /* Centra horizontalmente los elementos */
-      cursor: pointer; /* Muestra un cursor de puntero al pasar sobre el botón */
+      justify-content: center; /* Centra horizontalmente los elementos *
+      cursor: pointer; /* Muestra un cursor de puntero al pasar sobre el botón *
       padding: 0;
       margin: 0;
     }
@@ -53,17 +53,17 @@
       background-color: #257cff;
       color: #ffffff;
       font-weight: bold;
-      margin-right: 40px; /* Espacio entre elementos de navegación */
+      margin-right: 40px; /* Espacio entre elementos de navegación *
       padding: 10px 25px;
       border-radius: 10px;  
     }
 
     .login {
-        background-color: #c93535; /* Cambia el color de fondo del botón */
-        color: #ffffff; /* Cambia el color de texto del botón */
-        padding:  10px 20px; /* Ajusta el espacio interior del botón */
-        border: none;  /* Quita el borde del botón */
-        cursor: pointer; /* Muestra un cursor de puntero al pasar sobre el botón */
+        background-color: #c93535; /* Cambia el color de fondo del botón *
+        color: #ffffff; /* Cambia el color de texto del botón *
+        padding:  10px 20px; /* Ajusta el espacio interior del botón *
+        border: none;  /* Quita el borde del botón *
+        cursor: pointer; /* Muestra un cursor de puntero al pasar sobre el botón *
         border-radius: 5px;
         font-size: 18px;
         text-decoration: inherit;
@@ -76,4 +76,27 @@
         background-color: #333; 
         color: #fff; 
       }
+
+      p-3{padding:1rem!important}
+
+      .text-bg-dark{color:#fff!important;background-color:RGBA(var(--bs-dark-rgb),var(--bs-bg-opacity,1))!important}
  
+      .d-flex{display:flex!important}
+      .flex-wrap{flex-wrap:wrap!important}
+
+*/
+
+      body{
+       /* background: url('./assets/bg.jpg')rgba(0,0,0,0.3);*/
+       background:rgba(0,0,0,0.3);
+        background-blend-mode: multiply;
+        background-position:center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      /*@media(max-width:991px){
+        .sidebar{
+          background-color: rgba(255,255,255,0.15);
+          backdrop-filter: blur(10px);
+        }*
+      }*/
