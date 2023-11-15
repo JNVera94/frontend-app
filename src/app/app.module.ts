@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HeaderokComponent } from './components/headerok/headerok.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NotifierModule } from 'angular-notifier';
@@ -50,6 +51,7 @@ import { SingoutComponent } from './components/auth/singout/singout.component';
     NotifierComponent,
     SigninComponent,
     SingoutComponent,
+    HeaderokComponent,
   
   
  

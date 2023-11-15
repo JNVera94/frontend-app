@@ -1,114 +1,23 @@
-/**{
-    list-style: none;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+  body{
+    /* background: url('./assets/bg.jpg')rgba(0,0,0,0.3);*/
+    background: linear-gradient(90deg, rgb(236, 245, 245) 0%, rgba(151, 231, 247, 0.782) 100%);
+    background-blend-mode: multiply;
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+
+  .navbar-dark .navbar-nav .nav-link {/*COLOR DE LOS BOTONES PRINCIPALES*/
+      color: rgb(0, 0, 0);
+    }
+
+  .navbar-dark .navbar-brand {      /*COLOR NOMBRE IZQUIERDA*/
+     color: #000000; 
   }
-  
-  body {
-      padding: 0;
-      margin: 0;
-    }
-  
-    body header {
-      border-bottom: 1px solid #ffffff;
-    }
-    
-    
-    body header .mobile {
-      display: none;
-    }
 
-    body header .contenedor {
-     /* max-width: 1280px;*
-      max-width: 1980px;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
-      margin: auto;
-      background-color: #1e59b1;
-    }
-    nav{
-      align-items: center;
-      display: flex;
-    }
-
-    nav ul{
-      list-style-type: none; /* Quita los marcadores de lista *
-      display: flex;
-      align-items: center;
-      justify-content: center; /* Centra horizontalmente los elementos *
-      cursor: pointer; /* Muestra un cursor de puntero al pasar sobre el botón *
-      padding: 0;
-      margin: 0;
-    }
-
-    nav ul li{
-      padding-right: 70px; 
-    }
-    nav ul a {
-      text-decoration: none;
-      background-color: #257cff;
-      color: #ffffff;
-      font-weight: bold;
-      margin-right: 40px; /* Espacio entre elementos de navegación *
-      padding: 10px 25px;
-      border-radius: 10px;  
-    }
-
-    .login {
-        background-color: #c93535; /* Cambia el color de fondo del botón *
-        color: #ffffff; /* Cambia el color de texto del botón *
-        padding:  10px 20px; /* Ajusta el espacio interior del botón *
-        border: none;  /* Quita el borde del botón *
-        cursor: pointer; /* Muestra un cursor de puntero al pasar sobre el botón *
-        border-radius: 5px;
-        font-size: 18px;
-        text-decoration: inherit;
-        border-color: white solid;
-        font-family: "Gilroy";
-        text-align: center;
-      }
-      
-      .login:hover {
-        background-color: #333; 
-        color: #fff; 
-      }
-
-      p-3{padding:1rem!important}
-
-      .text-bg-dark{color:#fff!important;background-color:RGBA(var(--bs-dark-rgb),var(--bs-bg-opacity,1))!important}
- 
-      .d-flex{display:flex!important}
-      .flex-wrap{flex-wrap:wrap!important}
-
-*/
-
-      body{
-       /* background: url('./assets/bg.jpg')rgba(0,0,0,0.3);*/
-       background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(164,240,255,0.7819502801120448) 100%);
-        background-blend-mode: multiply;
-        background-position:center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        
-      }
-
-      .navbar-dark, .navbar[data-bs-theme=dark] {
-        --bs-navbar-color: #030303;
-        --bs-navbar-hover-color: rgba(12, 12, 12, 0.75);
-        --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
-        --bs-navbar-active-color: #030303;
-        --bs-navbar-brand-color: #030303;
-        --bs-navbar-brand-hover-color: #fff;
-        --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
-        --bs-navbar-toggler-icon-bg: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e);
-    }
-      /*@media(max-width:991px){
+  /*@media(max-width:991px){  
         .sidebar{
           background-color: rgba(255,255,255,0.15);
           backdrop-filter: blur(10px);
         }*
-      }*/
+    }*/     /*QUEDO DEL VIDEO*/
