@@ -26,6 +26,7 @@ import { GridListComponent } from './components/grid-list/grid-list.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 import { NotifierComponent } from './components/notifier/notifier.component';
@@ -71,7 +72,8 @@ import { SingoutComponent } from './components/auth/singout/singout.component';
     FormsModule,
     MatDialogModule,
     RouterModule,
-    NotifierModule
+    NotifierModule,
+    ReactiveFormsModule
     
     ],
   providers: [importProvidersFrom(HttpClientModule),],

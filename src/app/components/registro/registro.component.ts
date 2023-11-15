@@ -9,7 +9,7 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent {
-  alumno: any = {}; // Objeto que almacena los datos del alumno
+  alumno: any = {}; 
   private readonly notifier: NotifierService
 
   constructor(private alumnosService: AlumnosdataService, notifier: NotifierService) {
@@ -19,16 +19,16 @@ export class RegistroComponent {
   }
 
   crearAlumno() {
-    console.log('funciona')
+    
     this.alumnosService.addAlumno(this.alumno).subscribe(
       (response) => {
         this.notifier.notify('success', 'Alumno creado exitosamente.');
 
-        // Aquí puedes redirigir a otra página o realizar acciones adicionales después de la creación del alumno
+        
       },
       (error) => {
         console.error('Error al crear el alumno', error);
-        // Manejo de errores
+        
       }
     );
   }
