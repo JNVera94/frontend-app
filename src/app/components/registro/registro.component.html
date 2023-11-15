@@ -20,38 +20,62 @@
 
 
   <div class="formulario">
-    <form (ngSubmit)="crearAlumno()">
+    <form (ngSubmit)="crearAlumno()" #alumnoForm="ngForm">
       <h1 class="titulo">¡Regístrate gratis ahora!</h1>
   
+      <!-- Name and Lastname -->
       <div class="contform1">
         <div class="form-elemento">
           <h3>Nombre</h3>
-          <input type="text" class="form-control" name="name" id="name"  required="required" [(ngModel)]="alumno.name">
-        
+          <input type="text" class="form-control" name="name" id="name" required [(ngModel)]="alumno.name" #name="ngModel">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+            <div *ngIf="name.errors?.['required']">El nombre es requerido.</div>
+          </div>
         </div>
   
         <div class="form-elemento">
           <h3>Apellido</h3>
-          <input type="text" class="form-control" name="lastname" id="lastname"   required="required" [(ngModel)]="alumno.lastname">
+          <input type="text" class="form-control" name="lastname" id="lastname" required [(ngModel)]="alumno.lastname" #lastname="ngModel">
+          <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="text-danger">
+            <div *ngIf="lastname.errors?.['required']">El apellido es requerido.</div>
+          </div>
         </div>
       </div>
   
+      <!-- Age -->
+      <div class="form-elemento">
+        <h3>Edad</h3>
+        <input type="number" class="form-control" name="age" id="age" required [(ngModel)]="alumno.age" #age="ngModel">
+        <div *ngIf="age.invalid && (age.dirty || age.touched)" class="text-danger">
+          <div *ngIf="age.errors?.['required']">La edad es requerida.</div>
+        </div>
+      </div>
+  
+      <!-- Email -->
       <div class="contform1">
         <div class="form-elemento">
           <h3>Email</h3>
-          <input type="text" class="form-control" name="email" id="email"  required="required" [(ngModel)]="alumno.email">
+          <input type="email" class="form-control" name="email" id="email" required [(ngModel)]="alumno.email" #email="ngModel">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+            <div *ngIf="email.errors?.['required']">El email es requerido.</div>
+            <div *ngIf="email.errors?.['email']">El email no es válido.</div>
+          </div>
         </div>
-        
+  
+        <!-- Password -->
         <div class="form-elemento">
-          <h3>Edad</h3>
-          <input type="text" class="form-control" name="age" id="age"  required="required" [(ngModel)]="alumno.age">
+          <h3>Ingrese su contraseña</h3>
+          <input type="password" class="form-control" name="password" id="password" required [(ngModel)]="alumno.password" #password="ngModel">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+            <div *ngIf="password.errors?.['required']">La contraseña es requerida.</div>
+          </div>
         </div>
       </div>
-      
-      <button type="submit" class="form-button" id="submit">ENVIAR</button>
-      <div class="separator"></div>  
+  
+      <button type="submit" class="form-button" id="submit" [disabled]="alumnoForm.invalid">ENVIAR</button>
+      <div class="separator"></div>
       <div class="ud-text-sm">
-          <span>¿Ya tienes una cuenta? <a class="ud-text-bold ud-link-underline" href="/join/login-popup/?locale=es_ES&amp;next=https%3A%2F%2Fwww.udemy.com%2Fes%2F&amp;response_type=html">Inicia sesión</a></span>
+        <span>¿Ya tienes una cuenta? <a class="ud-text-bold ud-link-underline" href="/join/login-popup/?locale=es_ES&amp;next=https%3A%2F%2Fwww.udemy.com%2Fes%2F&amp;response_type=html">Inicia sesión</a></span>
       </div>
     </form>
   </div>
