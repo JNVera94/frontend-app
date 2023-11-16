@@ -31,6 +31,7 @@ import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.
 import { NotifierComponent } from './components/notifier/notifier.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { SingoutComponent } from './components/auth/singout/singout.component';
+import { HeaderLoginComponent } from './header-login/header-login.component';
 
 
 
@@ -51,6 +52,7 @@ import { SingoutComponent } from './components/auth/singout/singout.component';
     NotifierComponent,
     SigninComponent,
     SingoutComponent,
+    HeaderLoginComponent,
   
   
  

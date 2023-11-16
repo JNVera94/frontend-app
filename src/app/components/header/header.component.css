@@ -7,14 +7,15 @@
     background-repeat: no-repeat;
     }
 
-  .navbar-dark .navbar-nav .nav-link {/*COLOR DE LOS BOTONES PRINCIPALES*/
+  .navbar-nav .nav-link {/*COLOR DE LOS BOTONES PRINCIPALES*/
       color: rgb(0, 0, 0);
     }
 
-  .navbar-dark .navbar-brand {      /*COLOR NOMBRE IZQUIERDA*/
+  .navbar-brand {      /*COLOR NOMBRE IZQUIERDA*/
      color: #000000; 
   }
 
+  
   /*@media(max-width:991px){  
         .sidebar{
           background-color: rgba(255,255,255,0.15);
