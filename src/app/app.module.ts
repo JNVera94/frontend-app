@@ -36,9 +36,6 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
 
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,11 +49,9 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
     CursoDetalleComponent,
     NotifierComponent,
     LoginComponent,
+    SuccessDialogComponent,
+    
     HeaderLoginComponent,
-    SuccessDialogComponent
-
-
-  
   
   
  

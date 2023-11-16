@@ -22,10 +22,10 @@ const routes: Routes = [
   {path: 'funcionamiento', component: FuncionamientoComponent},
   {path: 'form', component: FormComponent},
   {path: 'grid',component: GridListComponent},
- {path:'login',component: LoginComponent},
+  {path: 'login',component: LoginComponent},
   {path: 'registro', component:RegistroComponent},
   {path: 'cursos/:id', component:CursoDetalleComponent },
- 
+
 
 
   // Otras rutas
