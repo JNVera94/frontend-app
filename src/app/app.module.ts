@@ -30,6 +30,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 import { NotifierComponent } from './components/notifier/notifier.component';
 import { LoginComponent } from './components/login/login.component';
+import { HeaderLoginComponent } from './components/header-login/header-login.component';
+import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
+
 
 
 
@@ -49,7 +52,11 @@ import { LoginComponent } from './components/login/login.component';
     CursoDetalleComponent,
     NotifierComponent,
     LoginComponent,
+    HeaderLoginComponent,
+    SuccessDialogComponent
 
+
+  
   
   
  
