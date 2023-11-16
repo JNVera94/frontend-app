@@ -22,16 +22,12 @@ import {MatInputModule} from '@angular/material/input';
 import { FormComponent } from './components/form/form.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { GridListComponent } from './components/grid-list/grid-list.component';
-import { PruebaComponent } from './components/prueba/prueba.component';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 import { NotifierComponent } from './components/notifier/notifier.component';
-import { SigninComponent } from './components/auth/signin/signin.component';
-import { SingoutComponent } from './components/auth/singout/singout.component';
-import { HeaderLoginComponent } from './header-login/header-login.component';
 
 
 
@@ -47,15 +43,9 @@ import { HeaderLoginComponent } from './header-login/header-login.component';
     EnseniaComponent,
     InicioComponent,
     RegistroComponent,
-    PruebaComponent,
     CursoDetalleComponent,
     NotifierComponent,
-    SigninComponent,
-    SingoutComponent,
-    HeaderLoginComponent,
   
-  
- 
   
     
   
