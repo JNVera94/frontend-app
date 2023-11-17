@@ -13,7 +13,7 @@
 /*COMO FUNCIONA*/
 body .func {
     width: 100%;
-    padding-top: 60px;
+    padding-top: 2%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -24,18 +24,18 @@ body .func {
   
   body .func .descrip {
     width: 50%;
-    margin-left: 0;
-    padding-left: 40px;
+    /*margin-left: 0;*/
+    padding-left: 4%;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    padding-right: 40px;
-    margin-top: 20px;
+    /*padding-right: 40px;*/
+    /*margin-top: 20px;*/
   }
   
   body .func .descrip h2 {
     font-size: 40px;
     font-family: 'Open sans';
-    margin-top: 10px;
+   /* margin-top: 10px;*/
     color: #D91717;
   }
   
@@ -47,12 +47,6 @@ body .func {
     text-align: justify;
   }
 
-
-  body .func .imagen img {
-    width: 90%;
-    height: 85%;   /*ajusto largo de la imagen*/
-  }
-
   body .func .imagen {
     width: 50%;
     display: -webkit-box;
@@ -62,6 +56,37 @@ body .func {
         -ms-flex-pack: end;
             justify-content: flex-end;
   }
+
+  body .func .imagen img{
+    
+    width: 90%;
+    height: 50vh;   /*ajusto largo de la imagen*/
+  }
+
+  @media only screen and (min-width: 768px) {
+    body .func .imagen img {
+      width: 90%;
+      height: 40vh;
+      margin-top: 50%; 
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    body .func .imagen img {
+      margin-top: 13%; /*ESPACIO ARRIBA*/
+      width: 90%; /*ANCHO*/
+      height: 45vh;  /*LARGO*/
+    }
+  }
+
+  @media only screen and (min-width: 1440px) {
+    body .func .imagen img {
+      margin-top: 0;
+      width: 90%;
+      height: 40vh;
+    }
+  }
+
 /*FIN COMO FUNCIONA*/
 
 
@@ -72,44 +97,66 @@ body .func {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    margin-top: 5%;
       }
   
   body .clientes .descripcion {
-    width: 60%;
+    width: 55%;
     background-color: #ebf3ff;
-    
-    padding-left: 40px;
-    
+    padding-left: 5%;
+
   }
   
   body .clientes .descripcion h2 {
-    font-size: 45px;
+    font-size: 40px;
     font-family: 'Open sans';
     color: rgb(0, 0, 0);
-    margin-left: 0px;
-    margin-top: 85px;   /*bajo el titulo principal*/
+    margin-top: 10%;   /*bajo el titulo principal*/
     line-height: 0.8;
   }
   
   body .clientes .imagenes {
-    width: 60%;
+    width: 45%;
     background-color: #ebf3ff;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     height: fit-content;
+
   }
   
-  body .clientes .imagenes .conteiner {
-    max-width: 420px;
-    margin: auto;
-  }
   
-  body .clientes .imagenes .conteiner img {
-    height: 100;
-    margin-right: 200px;
+  /*body .clientes .imagenes img {
+    /*height: 100;
+    margin-right: 200px;*
+    width: 90%;
+    height: 50vh;
+  }*/
+
+  @media only screen and (min-width: 768px) {
+    body .clientes .imagenes .imagen {
+      height: 40vh;
+      margin-top: 20%;
+      margin-bottom: 20%;
+    }
   }
 
+  @media only screen and (min-width: 1024px) {
+    body .clientes .imagenes .imagen {
+      margin-top: 5%; /*ESPACIO ARRIBA*/
+      width: 110%; /*ANCHO*/
+      height: 50vh;  /*LARGO*/
+      margin-bottom: 5%;
+    }
+  }
+
+  @media only screen and (min-width: 1440px) {
+    body .clientes .imagenes .imagen {
+      width: 90%;
+      height: 40vh;
+      margin-left: 20%;
+    }
+  }
 
   body .clientes .descripcion p {
     font-size: 21px;
@@ -121,92 +168,18 @@ body .func {
   }
 
   body .clientes .descripcion .contacto {
-    background-color: #D91717;
+    background-color: #2a61c5; 
+    text-decoration: none;
     color: white;
-    font-size: 18px;
-    text-decoration: inherit;
-    border: 0px;
-    padding: 12px 30px;  /*tamaño del boton*/
-    font-family: 'Open sans';
-    margin-top: 45px; /*lo separo de la descripcion*/
-    border-radius: 8px; /*redondeo el boton*/
-    font-weight: 60;   /*ensancho la letra*/
-    margin-left: 200px;
-    
-  }
-  /*FIN CLIENTES*/
-
-
-  /*EMPRESAS*/
-
-  body .empresas {
-    width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-        
+    padding: 2% 7%;
+    margin-top: 5%;
+    border-radius: 8px;
+    margin-left: 35%;
   }
 
-  body .empresas .descripcion {
-    width: 60%;
-    margin-top: 55px;
-    background-color: #ffffff;
-    padding-bottom: 45px;
-    margin-left: 200px;  /*muevo al centro mi lado izquierda de empresas*/
-  }
-
-  body .empresas .descripcion h2 {
-    font-size: 45px;
-    font-family: 'Open sans';
-    color: rgb(0, 0, 0);
-    
-    margin-left: 0px;
-    margin-top: 25px;   /*bajo el titulo principal*/
-    line-height: 0.8;
-  }
-
-  body .empresas .imagenes {
-    width: 60%;
-    background-color: #ffffff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    height: fit-content;
-    margin-right: 80px;
-    margin-bottom: 50px;
-  }
-
-  body .empresas .imagenes .conteiner {
-    margin: auto;
-  }
-
-  body .empresas .imagenes .conteiner img {
-    height: 100;
-    margin-left: 15px;
-    margin-top: 70px;
-  }
-
-  body .empresas .descripcion p {
-    font-size: 21px;
-    font-family: 'Open sans';
-    width: 75%;
-    text-align: justify;
-    line-height: 0.9;
-    margin-top: 16px;
-    margin-right: 50px;
-  }
-
-  body .empresas .descripcion .contacto {
-    background-color: #D91717;
+  body .clientes .descripcion .contacto a{
+    text-decoration: none;
     color: white;
-    font-size: 18px;
-    text-decoration: inherit;
-    border: 0px;
-    padding: 12px 30px;  /*tamaño del boton*/
-    font-family: 'Open sans';
-    margin-top: 16px; /*lo separo de la descripcion*/
-    border-radius: 8px; /*redondeo el boton*/
-    font-weight: 60;   /*ensancho la letra*/
-    margin-bottom: 30px;
   }
-  /*FIN EMPRESAS*/
+  /*FIN CLIENTES*/    
+ 
