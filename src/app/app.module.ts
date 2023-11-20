@@ -32,6 +32,7 @@ import { NotifierComponent } from './components/notifier/notifier.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderLoginComponent } from './components/header-login/header-login.component';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
+import { MisdatosComponent } from './components/misdatos/misdatos.component';
 
 
 
@@ -52,6 +53,7 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
     SuccessDialogComponent,
     
     HeaderLoginComponent,
+          MisdatosComponent,
   
   
  

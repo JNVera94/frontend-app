@@ -11,6 +11,7 @@ import { GridListComponent } from './components/grid-list/grid-list.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 import { LoginComponent } from './components/login/login.component';
+import { MisdatosComponent } from './components/misdatos/misdatos.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path: 'registro', component:RegistroComponent},
   {path: 'cursos/:id', component:CursoDetalleComponent },
+  {path: 'misdatos',component:MisdatosComponent}
 
 
 
