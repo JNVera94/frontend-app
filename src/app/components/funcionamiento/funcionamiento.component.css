@@ -68,6 +68,7 @@ body .func {
       width: 90%;
       height: 40vh;
       margin-top: 50%; 
+      margin-right: 2%; /*ESPACIO margen*/
     }
   }
 
@@ -76,6 +77,7 @@ body .func {
       margin-top: 13%; /*ESPACIO ARRIBA*/
       width: 90%; /*ANCHO*/
       height: 45vh;  /*LARGO*/
+      margin-right: 2%; /*ESPACIO margen*/
     }
   }
 
