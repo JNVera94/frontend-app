@@ -1,7 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError } from 'rxjs';
-
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './auth.service';
+import { AlumnosdataService } from './alumnosdata.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +12,36 @@ import { Observable, catchError } from 'rxjs';
 export class UserdataService {
   private apiUrl = 'http://localhost:3000/api/user'; 
 
-  constructor(private http: HttpClient) {}
+  constructor(private alumnosDataService: AlumnosdataService,
+              private http: HttpClient, 
+              private cookies: CookieService, 
+              private authService: AuthService) {}
 
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials)
       .pipe(
         catchError((error) => {
-          
           console.error('Error during login:', error);
           throw error;
         })
       );
   }
-}
+
+  setToken(token: string, credentials: { email: string; password: string }): void {
+    this.cookies.set("token", token);
+    this.authService.login(token);
+  
+  }
+
+  getToken(): string {
+    return this.cookies.get("token");
+  }
+
+  getAlumnoData(email: string): Observable<any> {
+    const token = this.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+ 
+    const url = `http://localhost:3000/api/alumnos/email/${email}`;
+  
+    return this.http.get(url, { headers });
+  }}

@@ -23,6 +23,9 @@ import { FormComponent } from './components/form/form.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { GridListComponent } from './components/grid-list/grid-list.component';
 
+
+import { CookieService } from 'ngx-cookie-service';
+
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -75,7 +78,7 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
     ReactiveFormsModule
     
     ],
-  providers: [importProvidersFrom(HttpClientModule),],
+  providers: [importProvidersFrom(HttpClientModule),CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
