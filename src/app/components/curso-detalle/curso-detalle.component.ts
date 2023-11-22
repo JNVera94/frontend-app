@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MateriadataService,MateriaData } from 'src/app/services/materiadata.service';
+import { MateriadataService, MateriaData } from 'src/app/services/materiadata.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { AlumnosdataService, } from 'src/app/services/alumnosdata.service';
+import { InscripcionDataService } from 'src/app/services/inscripciondata.service';
 
 @Component({
   selector: 'app-curso-detalle',
@@ -9,27 +12,44 @@ import { MateriadataService,MateriaData } from 'src/app/services/materiadata.ser
 })
 export class CursoDetalleComponent implements OnInit {
 
-   cursoId!: string;
-  
-   curso!: MateriaData; 
+  cursoId!: string;
+  AlumnoId!: string;
+  curso!: MateriaData;
+  alumnoData!: any;
 
-  constructor(private route: ActivatedRoute, private materiaService: MateriadataService) { }
+  constructor(private authService: AuthService,
+     private route: ActivatedRoute,
+      private materiaService: MateriadataService,
+      private alumnosDataService: AlumnosdataService,
+      private inscripciondataService: InscripcionDataService ) { }
 
-  ngOnInit() :void{
+  ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.cursoId = params['id']; 
-      this.obtenerDetalleCurso(); 
-    
+      this.cursoId = params['id'];
+      const storedAlumnoData = localStorage.getItem('alumnoData');
+      this.alumnoData = storedAlumnoData ? JSON.parse(storedAlumnoData) : null;
+      this.obtenerDetalleCurso();
+
     });
   }
 
   obtenerDetalleCurso(): void {
     this.materiaService.getMateriaPorId(this.cursoId).subscribe(curso => {
       this.curso = curso.data;
-      
+
       console.log(this.curso)
       console.log(this.curso.desc)
-     
+
     });
   }
-}
+ inscribirse():void{
+  
+    this.AlumnoId=this.alumnoData.data.id
+    const fechaHoraInscripcion = new Date().toISOString();
+
+    
+    this.inscripciondataService.addInscripcion(this.AlumnoId, this.cursoId, fechaHoraInscripcion)
+   
+    }
+
+ }

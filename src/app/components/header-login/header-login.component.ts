@@ -21,19 +21,23 @@ export class HeaderLoginComponent implements OnInit,OnDestroy {
      private userdata: UserdataService,
      private alumnosDataService: AlumnosdataService) {}
 
-  ngOnInit() {
-    this.authService.isLoggedIn.subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
-
-    })
-    if(this.isLoggedIn){
-      this.alumnosDataService.alumnoData.subscribe((alumnoData) => {
-        if(alumnoData && alumnoData.data) this.alumnoData = alumnoData.data;
-     
-        
+     ngOnInit() {
+      this.authService.isLoggedIn.subscribe((loggedIn) => {
+        this.isLoggedIn = loggedIn;
+  
+        if (this.isLoggedIn) {
+         
+          const storedAlumnoData = localStorage.getItem('alumnoData');
+          console.log(storedAlumnoData)
+          if (storedAlumnoData) {
+            this.alumnoData = JSON.parse(storedAlumnoData);
+         
+           
+          }
+        }
       });
-    };
-  }
+    }
+  
 
   ngOnDestroy() {
     

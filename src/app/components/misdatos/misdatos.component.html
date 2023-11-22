@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One"
+      rel="stylesheet"
+      type="text/css"/>
+    <link rel="stylesheet" href="misdatos.component.css">
+
+    <title>Mis Datos</title>
+  </head>
+
+
+<body>
+
+    <div class="datos">
+        <h2>Mis datos personales</h2>
+        <div class="personales">
+            <div class="fila">
+                <h4 *ngIf="alumnoData">{{ 'Nombre:'  +  alumnoData.data.name }} </h4>
+                <h4 *ngIf="alumnoData">{{ 'Edad:'  +  alumnoData.data.age }} </h4>
+            </div>
+
+            <div class="fila">
+                <h4 *ngIf="alumnoData">{{ 'Apellido:'  +  alumnoData.data.lastname }} </h4>
+                <h4 *ngIf="alumnoData">{{ 'Email:'  +  alumnoData.data.email }} </h4>
+            </div>
+            </div>
+            <button class="eliminar" (click)="eliminardialog($event)">Eliminar cuenta</button>
+    </div>
+
+    <div class="datos">
+        <h2>Mis Inscripciones</h2>
+        <div class="inscripciones">
+
+            <h4> ID </h4>
+            <h4> Curso </h4>
+            <h4> Horas </h4>
+        </div>
+    </div>
+
+</body>

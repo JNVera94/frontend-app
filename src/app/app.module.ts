@@ -9,7 +9,7 @@ import { NotifierModule } from 'angular-notifier';
 
 
 
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 
 
@@ -18,23 +18,25 @@ import { FuncionamientoComponent } from './components/funcionamiento/funcionamie
 import { EnseniaComponent } from './components/ensenia/ensenia.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { FormComponent } from './components/form/form.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { GridListComponent } from './components/grid-list/grid-list.component';
-
+import { Dialog } from '@angular/cdk/dialog/index';
 
 import { CookieService } from 'ngx-cookie-service';
 
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 import { NotifierComponent } from './components/notifier/notifier.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderLoginComponent } from './components/header-login/header-login.component';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
+import { MisdatosComponent } from './components/misdatos/misdatos.component';
+import { EliminarDialogComponent } from './components/eliminar-dialog/eliminar-dialog.component';
 
 
 
@@ -53,14 +55,16 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
     NotifierComponent,
     LoginComponent,
     SuccessDialogComponent,
-    
     HeaderLoginComponent,
-  
-  
- 
-  
+    MisdatosComponent,
+    EliminarDialogComponent,
     
-  
+
+
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -76,9 +80,9 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
     RouterModule,
     NotifierModule,
     ReactiveFormsModule
-    
-    ],
-  providers: [importProvidersFrom(HttpClientModule),CookieService],
+
+  ],
+  providers: [importProvidersFrom(HttpClientModule), CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

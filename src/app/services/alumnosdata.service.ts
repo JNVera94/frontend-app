@@ -25,4 +25,12 @@ export class AlumnosdataService {
     console.log('actualizando data:',data);
     this.alumnoData.next(data);
   }
+
+  deleteAlumno(alumnoId: string): Observable<any> {
+    const url = `${this.apiUrl}/${alumnoId}`; 
+    return this.http.delete(url);
+  }
+
 }
+
+
