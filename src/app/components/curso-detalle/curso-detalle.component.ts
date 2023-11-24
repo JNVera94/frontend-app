@@ -18,10 +18,10 @@ export class CursoDetalleComponent implements OnInit {
   alumnoData!: any;
 
   constructor(private authService: AuthService,
-     private route: ActivatedRoute,
-      private materiaService: MateriadataService,
-      private alumnosDataService: AlumnosdataService,
-      private inscripciondataService: InscripcionDataService ) { }
+    private route: ActivatedRoute,
+    private materiaService: MateriadataService,
+    private alumnosDataService: AlumnosdataService,
+    private inscripciondataService: InscripcionDataService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -42,14 +42,22 @@ export class CursoDetalleComponent implements OnInit {
 
     });
   }
- inscribirse():void{
-  
-    this.AlumnoId=this.alumnoData.data.id
+  inscribirse(): void {
+
+    this.AlumnoId = this.alumnoData.data.id
     const fechaHoraInscripcion = new Date().toISOString();
 
-    
-    this.inscripciondataService.addInscripcion(this.AlumnoId, this.cursoId, fechaHoraInscripcion)
-   
-    }
 
- }
+    this.inscripciondataService.addInscripcion(this.AlumnoId,this.cursoId, fechaHoraInscripcion)
+    .subscribe(
+      response => {
+        
+        console.log('Respuesta exitosa:', response);
+      },
+      error => {
+       
+        console.error('Error al realizar la inscripción:', error);
+      }
+    );
+}
+}

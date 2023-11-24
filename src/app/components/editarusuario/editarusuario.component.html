@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Angular y Bootstrap</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="registro.component.css">
+  <link rel="stylesheet" href="editarusuario.component.css">
  
   
   <style>
@@ -19,9 +19,9 @@
 <body>
 
 
-  <div class="formulario">
-    <form (ngSubmit)="crearAlumno()" #alumnoForm="ngForm">
-      <h1 class="titulo">¡Regístrate gratis ahora!</h1>
+  /<div class="formulario">
+    <form (ngSubmit)="editarAlumno()" #alumnoForm="ngForm">
+      <h1 class="titulo">Modifique su perfil</h1>
       <div class="contform1">
         <div class="form-elemento">
             <h3>Nombre</h3>
@@ -72,10 +72,10 @@
         </div>
       </div>
   
-      <button type="submit" class="form-button" id="submit" [disabled]="alumnoForm.invalid">ENVIAR</button>
+      <button type="submit" class="form-button" id="submit" [disabled]="">Guardar</button>
       <div class="separator"></div>
       <div class="ud-text-sm">
-        <span>¿Ya tienes una cuenta? <a class="ud-text-bold ud-link-underline" href="http://localhost:4200/login">Inicia sesión</a></span>
+        
       </div>
     </div>
     </form>

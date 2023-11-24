@@ -37,6 +37,8 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 import { MisdatosComponent } from './components/misdatos/misdatos.component';
 import { EliminarDialogComponent } from './components/eliminar-dialog/eliminar-dialog.component';
+import { ErrorAvisoComponent } from './components/error-aviso/error-aviso.component';
+import { EditarusuarioComponent } from './components/editarusuario/editarusuario.component';
 
 
 
@@ -58,6 +60,8 @@ import { EliminarDialogComponent } from './components/eliminar-dialog/eliminar-d
     HeaderLoginComponent,
     MisdatosComponent,
     EliminarDialogComponent,
+    ErrorAvisoComponent,
+    EditarusuarioComponent,
     
 
 

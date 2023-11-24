@@ -7,6 +7,9 @@ import { MatDialogRef } from '@angular/material/dialog/index.js';
 import { DialogService } from 'src/app/services/dialog.service';
 import { Router } from '@angular/router';
 import { AlumnosdataService } from 'src/app/services/alumnosdata.service';
+import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
+
+
 
 @Component({
   selector: 'app-login',
@@ -17,11 +20,12 @@ export class LoginComponent {
   user: any = {};
   private readonly notifier: NotifierService;
   private dialogRef: MatDialogRef<SuccessDialogComponent> | undefined;
+  private dialogRef1: MatDialogRef<ErrorAvisoComponent> | undefined;
   alumnoLogueado: any;
 
   constructor(
     private userService: UserdataService,
-    private authService: AuthService, // Add AuthService here
+    private authService: AuthService, 
     notifier: NotifierService,
     private dialogService: DialogService,
     private router: Router,
@@ -54,8 +58,10 @@ export class LoginComponent {
         });
       },
       (error) => {
-        console.error('Error durante el inicio de sesión', error);
-        this.notifier.notify('error', 'Error al iniciar sesión. Verifica tus credenciales.');
+        this.dialogRef1=this.dialogService.openFailureDialog('Verifique sus credenciales');
+        this.dialogRef1.afterClosed().subscribe(() => {
+          location.reload();
+        });
       }
     );
 

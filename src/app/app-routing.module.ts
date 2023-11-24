@@ -12,6 +12,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 import { LoginComponent } from './components/login/login.component';
 import { MisdatosComponent } from './components/misdatos/misdatos.component';
+import { EditarusuarioComponent } from './components/editarusuario/editarusuario.component';
 
 
 
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path: 'registro', component:RegistroComponent},
   {path: 'cursos/:id', component:CursoDetalleComponent },
-  {path: 'misdatos',component:MisdatosComponent}
+  {path: 'misdatos',component:MisdatosComponent},
+  {path: 'misdatos/editar', component: EditarusuarioComponent},
 
 
 

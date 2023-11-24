@@ -44,4 +44,15 @@ export class UserdataService {
     const url = `http://localhost:3000/api/alumnos/email/${email}`;
   
     return this.http.get(url, { headers });
-  }}
+
+  }
+  getAlumnoDataId(Alumnoid: string): Observable<any> {
+    const token = this.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+ 
+    const url = `http://localhost:3000/api/alumnos/${Alumnoid}`;
+  
+    return this.http.get(url, { headers });
+  }
+
+}

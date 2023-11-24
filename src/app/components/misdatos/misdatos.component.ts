@@ -5,8 +5,15 @@ import { EliminarDialogComponent } from '../eliminar-dialog/eliminar-dialog.comp
 import { DialogService } from 'src/app/services/dialog.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { InscripcionDataService, InscripcionData } from 'src/app/services/inscripciondata.service';
+import { MateriadataService, MateriaData } from 'src/app/services/materiadata.service';
 
-
+interface InscripcionDetalle {
+  materiaNombre: string;
+  horasTotales: number;
+  fechaInscripcion: string;
+  inscripcionId: string;
+}
 @Component({
   selector: 'app-misdatos',
   templateUrl: './misdatos.component.html',
@@ -16,36 +23,79 @@ export class MisdatosComponent implements OnInit {
   alumnoData: any;
   isLoggedIn: boolean = false;
   private dialogRef: MatDialogRef<EliminarDialogComponent> | undefined;
+  inscripcion!: any;
+  detalles: InscripcionDetalle[] = [];
+  cursoId!: string;
+  materiadata!: MateriaData;
 
 
-
-  constructor(private dialog: MatDialog,private router: Router,private alumnosDataService: AlumnosdataService, private authService: AuthService, private dialogService: DialogService) { }
+  constructor(private dialog: MatDialog,
+    private router: Router,
+    private alumnosDataService: AlumnosdataService,
+    private authService: AuthService,
+    private dialogService: DialogService,
+    private inscripcionDataService: InscripcionDataService,
+    private materiadataservice: MateriadataService) { }
 
   ngOnInit() {
     this.authService.isLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
 
       if (this.isLoggedIn) {
-
         const storedAlumnoData = localStorage.getItem('alumnoData');
-        console.log(storedAlumnoData)
         if (storedAlumnoData) {
           this.alumnoData = JSON.parse(storedAlumnoData);
-
-
         }
+        const alumnoId = this.alumnoData.data.id
+        console.log(alumnoId)
+
+        this.inscripcionDataService.getInscripcionesByAlumnoId(alumnoId).subscribe((inscripciones) => {
+
+          for (const inscripcion of inscripciones.data) {
+            this.cursoId = inscripcion.materia; // Ajusta el acceso al ID de la materia
+
+            console.log(inscripcion);
+            console.log(this.cursoId);
+
+            this.materiadataservice.getMateriaPorId(this.cursoId).subscribe((materiadata) => {
+              const inscripcionDetalle: InscripcionDetalle = {
+                materiaNombre: materiadata.data.name,
+                horasTotales: materiadata.data.totalhours,
+                fechaInscripcion: inscripcion.fechaInscripcion,
+                inscripcionId: inscripcion.id
+              };
+
+              // Push the new InscripcionDetalle object into the detalles array
+              this.detalles.push(inscripcionDetalle);
+            });
+          }
+        });
       }
     });
   }
-  eliminardialog(event: any) {
-    // Abre el diálogo y guarda una referencia al dialogRef
-    this.dialogRef = this.dialogService.openEliminarDialog('Desea eliminar su cuenta?');
 
-    // Maneja el resultado del diálogo cuando se cierra
+  eliminardialog(event: any) {
+
+    this.dialogRef = this.dialogService.openEliminarDialog('Desea eliminar su cuenta?');
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
-        // Realiza la acción de eliminación
+
         this.onDeleteAlumno();
+      } else {
+
+        console.log('Eliminación cancelada por el usuario');
+      }
+    });
+  }
+
+  eliminarInsdialog(inscripcionId: string) {
+
+    this.dialogRef = this.dialogService.openEliminarDialog('Desea eliminar su Inscripcion?');
+
+    this.dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'confirm') {
+
+        this.EliminarIns(inscripcionId);
       } else {
         // El usuario canceló la eliminación
         console.log('Eliminación cancelada por el usuario');
@@ -53,6 +103,21 @@ export class MisdatosComponent implements OnInit {
     });
   }
 
+  EliminarIns(inscripcionId: string) {
+    this.dialogService.openEliminarDialog
+    const inscID = inscripcionId
+    this.inscripcionDataService.deleteInscripcionById(inscID).subscribe(
+      (response) => {
+
+        console.log('inscripcion eliminada con éxito:', response);
+        location.reload();
+      },
+      (error) => {
+        console.error('Error al eliminar la inscripcion:', error);
+        // Maneja el error según tus necesidades
+      }
+    );
+  }
 
   onDeleteAlumno() {
     this.dialogService.openEliminarDialog
@@ -73,4 +138,8 @@ export class MisdatosComponent implements OnInit {
         }
       );
     }
-  }}
+  }
+  editarDatos() {
+    this.router.navigate(['/misdatos/editar']);
+  }
+}

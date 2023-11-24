@@ -2,28 +2,49 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,BehaviorSubject, catchError, tap } from 'rxjs';
 
+
+export interface InscripcionData {
+  alumnoId: string;
+  materiaId: string;
+  fechaHoraInscripcion: string;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class InscripcionDataService {
   private apiUrl = 'http://localhost:3000/api/inscripcion/'; 
 
-  materiaData:BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  alumnoData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-
   constructor(private http: HttpClient) { }
 
-  addInscripcion(alumnoId: String,materiaId: String,fechaHoraInscripcion: string): Observable<any> {
-    
-    const inscripcionData = { alumnoId, materiaId, fechaHoraInscripcion };
-    console.log('Enviando solicitud de inscripción:', inscripcionData);
-    
-    return this.http.post(this.apiUrl, {alumnoId, materiaId, fechaHoraInscripcion})
-    .pipe(
+  addInscripcion(alumnoId: string, materiaId: string, fechaHoraInscripcion: string): Observable<any> {
+    const requestBody = { alumnoId, materiaId, fechaHoraInscripcion };
+
+    return this.http.post(this.apiUrl, requestBody)
+      .pipe(
+        catchError(error => {
+          console.error('Error en la solicitud POST de inscripción:', error);
+          throw error;
+        })
+      );
+  }
+
+  getInscripcionesByAlumnoId(alumnoId: string): Observable<any> {
+    const url = `${this.apiUrl}?alumnoId=${alumnoId}`;
+
+    return this.http.get(url).pipe(
       catchError(error => {
-        console.error('Error en la solicitud POST:', error);
-        throw error; 
+        console.error('Error en la solicitud GET de inscripciones por alumno:', error);
+        throw error;
       })
     );
-
-}}
+  }
+  deleteInscripcionById(inscID:string): Observable<any>{
+    const url = `${this.apiUrl}/${inscID}`;
+    return this.http.delete(url).pipe(
+      catchError(error => {
+        console.error('Error en la solicitud delete de inscripcion:', error);
+        throw error;
+      })
+    );
+  }
+}

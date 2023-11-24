@@ -31,6 +31,13 @@ export class AlumnosdataService {
     return this.http.delete(url);
   }
 
+  updateAlumno(alumnoId: string,alumno: any):Observable<any>{
+    
+    const url=`${this.apiUrl}/${alumnoId}`; 
+    return this.http.patch(url, alumno);
+  }
+
+  
 }
 
 
