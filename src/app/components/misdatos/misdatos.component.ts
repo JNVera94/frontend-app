@@ -52,7 +52,7 @@ export class MisdatosComponent implements OnInit {
         this.inscripcionDataService.getInscripcionesByAlumnoId(alumnoId).subscribe((inscripciones) => {
 
           for (const inscripcion of inscripciones.data) {
-            this.cursoId = inscripcion.materia; // Ajusta el acceso al ID de la materia
+            this.cursoId = inscripcion.materia; 
 
             console.log(inscripcion);
             console.log(this.cursoId);
@@ -61,11 +61,9 @@ export class MisdatosComponent implements OnInit {
               const inscripcionDetalle: InscripcionDetalle = {
                 materiaNombre: materiadata.data.name,
                 horasTotales: materiadata.data.totalhours,
-                fechaInscripcion: inscripcion.fechaInscripcion,
+                fechaInscripcion:this.formatFecha(inscripcion.fechaInscripcion),
                 inscripcionId: inscripcion.id
               };
-
-              // Push the new InscripcionDetalle object into the detalles array
               this.detalles.push(inscripcionDetalle);
             });
           }
@@ -73,10 +71,19 @@ export class MisdatosComponent implements OnInit {
       }
     });
   }
-
+  private formatFecha(fecha: string): string {
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    };
+    return new Date(fecha).toLocaleDateString('es-ES', options);
+  }
   eliminardialog(event: any) {
 
-    this.dialogRef = this.dialogService.openEliminarDialog('Desea eliminar su cuenta?');
+    this.dialogRef = this.dialogService.openEliminarDialog('¿Desea eliminar su cuenta?');
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
 
@@ -90,7 +97,7 @@ export class MisdatosComponent implements OnInit {
 
   eliminarInsdialog(inscripcionId: string) {
 
-    this.dialogRef = this.dialogService.openEliminarDialog('Desea eliminar su Inscripcion?');
+    this.dialogRef = this.dialogService.openEliminarDialog('¿Desea eliminar su Inscripcion?');
 
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {

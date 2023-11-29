@@ -12,19 +12,22 @@ export class DialogService {
 
   openSuccessDialog(message: string): MatDialogRef<SuccessDialogComponent> {
     return this.dialog.open(SuccessDialogComponent, {
-      width: '300px',
+      width: '400px',
+      height: '150px',
       data: { message }
     });
   }
   openFailureDialog(message: string): MatDialogRef<ErrorAvisoComponent> {
     return this.dialog.open(ErrorAvisoComponent, {
-      width: '300px',
+      width: '500px',
+      height: '130px',
       data: { message }
     });
   }
   openEliminarDialog(message: string): MatDialogRef<EliminarDialogComponent> {
     return this.dialog.open(EliminarDialogComponent, {
-      width: '300px',
+      width: '600px',
+      height: '150px',
       data: { message }
     });
   }

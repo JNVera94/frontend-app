@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,BehaviorSubject } from 'rxjs';
 
@@ -9,12 +9,19 @@ export class AlumnosdataService {
   private apiUrl = 'http://localhost:3000/api/alumnos'; 
   private authUrl = 'http://localhost:3000/api/alumnos/login';
 
+
   alumnoData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) { }
 
   addAlumno(alumnoData: any): Observable<any> {
     return this.http.post(this.apiUrl, alumnoData);
+  }
+
+  checkEmailExists(email: string): Observable<any> {
+    const params = new HttpParams().set('email', email);
+    console.log(params)
+    return this.http.get(this.apiUrl, { params });
   }
 
   login(credentials: { email: string; password: string }): Observable<any> {

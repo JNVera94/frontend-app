@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <link
-  href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One"
-  rel="stylesheet"
-  type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet"
+    type="text/css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Angular y Bootstrap</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="registro.component.css">
- 
-  
+
+
   <style>
- 
+
   </style>
 </head>
+
 <body>
 
 
@@ -24,68 +24,76 @@
       <h1 class="titulo">¡Regístrate gratis ahora!</h1>
       <div class="contform1">
         <div class="form-elemento">
-            <h3>Nombre</h3>
-            <input type="text" class="form-control" name="name" id="name" pattern="[a-zA-Z]+" required [(ngModel)]="alumno.name" #name="ngModel">
-            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
-              <div *ngIf="name.errors?.['required']">El nombre es requerido.</div>
-              <div *ngIf="name.errors?.['pattern']">Ingresa solo caracteres alfabéticos.</div>
-            </div>
+          <h3>Nombre</h3>
+          <input type="text" class="form-control" name="name" id="name" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" required
+            [(ngModel)]="alumno.name" #name="ngModel">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+            <div *ngIf="name.errors?.['required']">El nombre es requerido.</div>
+            <div *ngIf="name.errors?.['pattern']">Ingresa solo caracteres alfabéticos.</div>
           </div>
-          
-          <!-- Apellido -->
+        </div>
+
+        <!-- Apellido -->
+        <div class="form-elemento">
+          <h3>Apellido</h3>
+          <input type="text" class="form-control" name="lastname" id="lastname" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+"
+            required [(ngModel)]="alumno.lastname" #lastname="ngModel">
+          <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="text-danger">
+            <div *ngIf="lastname.errors?.['required']">El apellido es requerido.</div>
+            <div *ngIf="lastname.errors?.['pattern']">Ingresa solo caracteres alfabéticos.</div>
+          </div>
+        </div>
+
+        <!-- Age -->
+        <div class="form-elemento">
+          <h3>Edad</h3>
+          <input type="number" class="form-control" name="age" id="age" required [(ngModel)]="alumno.age"
+            #age="ngModel">
+          <div *ngIf="age.invalid && (age.dirty || age.touched)" class="text-danger">
+            <div *ngIf="age.errors?.['required']">La edad es requerida.</div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="contform1">
           <div class="form-elemento">
-            <h3>Apellido</h3>
-            <input type="text" class="form-control" name="lastname" id="lastname" pattern="[a-zA-Z]+" required [(ngModel)]="alumno.lastname" #lastname="ngModel">
-            <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="text-danger">
-              <div *ngIf="lastname.errors?.['required']">El apellido es requerido.</div>
-              <div *ngIf="lastname.errors?.['pattern']">Ingresa solo caracteres alfabéticos.</div>
+            <h3>Email</h3>
+            <input type="email" class="form-control" name="email" id="email" required [(ngModel)]="alumno.email"
+              #email="ngModel">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+              <div *ngIf="email.errors?.['required']">El email es requerido.</div>
+              <div *ngIf="email.errors?.['email']">El email no es válido.</div>
             </div>
           </div>
-  
-      <!-- Age -->
-      <div class="form-elemento">
-        <h3>Edad</h3>
-        <input type="number" class="form-control" name="age" id="age" required [(ngModel)]="alumno.age" #age="ngModel">
-        <div *ngIf="age.invalid && (age.dirty || age.touched)" class="text-danger">
-          <div *ngIf="age.errors?.['required']">La edad es requerida.</div>
-        </div>
-      </div>
-  
-      <!-- Email -->
-      <div class="contform1">
-        <div class="form-elemento">
-          <h3>Email</h3>
-          <input type="email" class="form-control" name="email" id="email" required [(ngModel)]="alumno.email" #email="ngModel">
-          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
-            <div *ngIf="email.errors?.['required']">El email es requerido.</div>
-            <div *ngIf="email.errors?.['email']">El email no es válido.</div>
+
+          <!-- Password -->
+          <div class="form-elemento">
+            <h3>Ingrese su contraseña</h3>
+            <input type="password" class="form-control" name="password" id="password" required minlength="4" required
+              [(ngModel)]="alumno.password" #password="ngModel">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+              <div *ngIf="password.errors?.['required']">La contraseña es requerida.</div>
+              <div *ngIf="password.errors?.['minlength']">La contraseña debe tener al menos 4 caracteres.</div>
+            </div>
           </div>
         </div>
-  
-        <!-- Password -->
-        <div class="form-elemento">
-          <h3>Ingrese su contraseña</h3>
-          <input type="password" class="form-control" name="password" id="password" required [(ngModel)]="alumno.password" #password="ngModel">
-          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
-            <div *ngIf="password.errors?.['required']">La contraseña es requerida.</div>
-          </div>
+
+        <button type="submit" class="form-button" id="submit" [disabled]="alumnoForm.invalid">ENVIAR</button>
+        <div class="separator"></div>
+        <div class="ud-text-sm">
+          <span>¿Ya tienes una cuenta? <a class="ud-text-bold ud-link-underline"
+              href="http://localhost:4200/login">Inicia sesión</a></span>
         </div>
       </div>
-  
-      <button type="submit" class="form-button" id="submit" [disabled]="alumnoForm.invalid">ENVIAR</button>
-      <div class="separator"></div>
-      <div class="ud-text-sm">
-        <span>¿Ya tienes una cuenta? <a class="ud-text-bold ud-link-underline" href="http://localhost:4200/login">Inicia sesión</a></span>
-      </div>
-    </div>
     </form>
   </div>
-     
 
 
-  
+
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>

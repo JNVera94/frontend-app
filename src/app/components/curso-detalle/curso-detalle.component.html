@@ -1,18 +1,14 @@
 <div class="container-fluid">
-  <div class="contenedor-lista">
-    <div class="tarjeta">
-      <div class="logo1">
-          <img src="./assets/enseña3.jpg" alt="" width="100" height="100">
-          <h2>{{curso.name}}</h2>
-          <p class="horas"> Horas del curso: {{curso.totalhours}}</p>
-          <p class="email"> Contactenos en: {{curso.email}}</p>
-          <button type="submit" class="form-button" id="submit" (click)="inscribirse()" >Inscribirse gratis</button>
-          </div>
-    </div>
-    
+
+  <div class="logo1">
+    <img src="./assets/foto computadora curso.jpg" >
+    <h2>{{curso.name}}</h2>
+    <p class="horas"> Horas del curso: {{curso.totalhours}}</p>
+    <p class="email"> Contactenos en: {{curso.email}}</p>
+    <button type="submit" class="form-button" id="submit" (click)="inscribirse()">Inscribirse gratis</button>
   </div>
-    
-    <div class="descripcion">
-      <p class="desc">{{curso.desc}}</p>
-    </div>
+
+  <div class="descripcion">
+    <p class="desc">{{curso.desc}}</p>
   </div>
+</div>

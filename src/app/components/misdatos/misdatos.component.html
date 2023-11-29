@@ -34,20 +34,31 @@
 
   <div class="datos">
     <h2>Mis Inscripciones</h2>
-    <div class="inscripciones">
-      <h4> Fecha Inscripcion</h4>
-      <h4> Curso </h4>
-      <h4> Horas </h4>
-    </div>
-    <div class="info">
-      <div *ngFor="let detalle of detalles" class="fila">
-        <h4>{{ detalle.fechaInscripcion }}</h4>
-        <h4>{{ detalle.materiaNombre }}</h4>
-        <h4>{{ detalle.horasTotales }}</h4>
-        <button class="btnbasura" aria-label="Eliminar" (click)="eliminarInsdialog(detalle.inscripcionId)"><i
-            class="bi bi-trash"></i></button>
+    <div class="container text-center">
+      <div class="row row-cols-4">
+        <div class="col"><h4>Fecha Inscripcion</h4></div>
+        <div class="col"><h4>Curso</h4></div>
+        <div class="col"><h4>Horas</h4></div>
+        <div class="col-2"></div>
       </div>
     </div>
-
+  
+    <div class="inscripciones">
+    </div>
+      <div class="info">
+      <div *ngFor="let detalle of detalles" class="container text-center">
+        <div class="row row-cols-4 fila">
+          <div class="col"><h4>{{ detalle.fechaInscripcion }}</h4></div>
+          <div class="col"><h4>{{ detalle.materiaNombre }}</h4></div>
+          <div class="col"><h4>{{ detalle.horasTotales }}</h4></div>
+          <div class="col-2">
+            <button class="btnbasura" aria-label="Eliminar" (click)="eliminarInsdialog(detalle.inscripcionId)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
 </body>

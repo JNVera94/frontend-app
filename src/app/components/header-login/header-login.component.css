@@ -1,22 +1,32 @@
-body{
+body {
     /* background: url('./assets/bg.jpg')rgba(0,0,0,0.3);*/
     background: linear-gradient(90deg, rgb(236, 245, 245) 0%, rgba(151, 231, 247, 0.782) 100%);
     background-blend-mode: multiply;
-    background-position:center;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    }
+}
 
-    .dropdown-toggle {
-        background-color: rgb(0, 0, 0) !important;
-      }
-      
-    .dropdown-toggle:hover {
-        background-color: rgb(0, 0, 0) !important; 
-    }
-  
-    .d-flex .bi {
-        margin-right: 5px; /* Ajusta el espacio entre los iconos y los textos */
-    }
-  
+.dropdown-toggle {
+    background-color: rgb(0, 0, 0) !important;
+}
 
+.dropdown-toggle:hover {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+.d-flex .bi {
+    margin-right: 5px;
+    /* Ajusta el espacio entre los iconos y los textos */
+}
+
+.d-flex {
+    margin-right: 4%;
+}
+
+.d-flex p {
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    margin-top: 8%;
+}

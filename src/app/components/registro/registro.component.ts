@@ -6,6 +6,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component.js';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
+import { EMPTY, switchMap } from 'rxjs';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -27,21 +28,35 @@ export class RegistroComponent {
   }
 
   crearAlumno() {
-    this.alumnosService.addAlumno(this.alumno).subscribe(
+    this.alumnosService.checkEmailExists(this.alumno.email).pipe(
+      switchMap((response) => {
+        if (response && response.exists) {
+          this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
+          return EMPTY;
+        } else {
+          return this.alumnosService.addAlumno(this.alumno);
+        }
+      })
+    ).subscribe(
       (response) => {
-        this.alumno = {}; // Clear form fields
-        this.dialogRef = this.dialogService.openSuccessDialog('Registro exitoso');
-        this.dialogRef.afterClosed().subscribe(() => {
-          this.router.navigate(['/login']);
-        });
+        if (response) {
+          this.alumno = {}; // Clear form fields
+          this.dialogRef = this.dialogService.openSuccessDialog('Registro exitoso');
+          this.dialogRef.afterClosed().subscribe(() => {
+            this.router.navigate(['/login']);
+          });
+        }
       },
       (error) => {
-        this.dialogRef1= this.dialogService.openFailureDialog('Verifique sus credenciales');
+        if (error && error.error && error.error.message === 'El email ya está registrado') {
+          this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
+        } else {
+          this.dialogRef1 = this.dialogService.openFailureDialog('Verifique sus credenciales');
+        }
         this.dialogRef1.afterClosed().subscribe(() => {
           location.reload();
         });
         console.error('Error al crear el alumno', error);
       }
     );
-  }
-}
+  }}
