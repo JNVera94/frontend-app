@@ -6,19 +6,13 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet"
     type="text/css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Angular y Bootstrap</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="ensenia.component.css">
 
-
-  <style>
-
-  </style>
 </head>
 
 
 <body>
-
   <section class="textos-inicio">
     <h1>Animate a enseñar con nosotros y ser instructor</h1>
     <h2>Los estudiantes te esperan</h2>
@@ -94,8 +88,8 @@
 
                 <div class="form-elemento">
                   <h3>Localidad (requerido)</h3>
-                  <input type="text" class="form-control" name="city" id="city" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" required
-                    [(ngModel)]="mensaje.city" #city="ngModel">
+                  <input type="text" class="form-control" name="city" id="city" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+"
+                    required [(ngModel)]="mensaje.city" #city="ngModel">
                   <div *ngIf="city.invalid && (city.dirty || city.touched)" class="text-danger">
                     <div *ngIf="city.errors?.['required']">La localidad es requerida.</div>
                     <div *ngIf="city.errors?.['pattern']">Ingrese solo caracteres alfabéticos.</div>
@@ -105,7 +99,8 @@
                 <div class="contform2">
                   <div class="form-elemento">
                     <h3>Mensaje</h3>
-                    <textarea class="textarea" name="message" id="message" cols="10" rows="10"[(ngModel)]="mensaje.desc" #desc="ngModel"></textarea>
+                    <textarea class="textarea" name="message" id="message" cols="10" rows="10"
+                      [(ngModel)]="mensaje.desc" #desc="ngModel"></textarea>
                   </div>
                 </div>
                 <button type="submit" class="form-button" id="submit" [disabled]="contactoForm.invalid">ENVIAR</button>

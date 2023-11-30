@@ -19,9 +19,7 @@ import { EnseniaComponent } from './components/ensenia/ensenia.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
-import { FormComponent } from './components/form/form.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { GridListComponent } from './components/grid-list/grid-list.component';
 import { Dialog } from '@angular/cdk/dialog/index';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -31,7 +29,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
-import { NotifierComponent } from './components/notifier/notifier.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderLoginComponent } from './components/header-login/header-login.component';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
@@ -54,7 +51,6 @@ import { EditarusuarioComponent } from './components/editarusuario/editarusuario
     InicioComponent,
     RegistroComponent,
     CursoDetalleComponent,
-    NotifierComponent,
     LoginComponent,
     SuccessDialogComponent,
     HeaderLoginComponent,
@@ -62,21 +58,12 @@ import { EditarusuarioComponent } from './components/editarusuario/editarusuario
     EliminarDialogComponent,
     ErrorAvisoComponent,
     EditarusuarioComponent,
-    
-
-
-
-
-
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,
-    FormComponent,
-    GridListComponent,
     MatButtonModule,
     HttpClientModule,
     FormsModule,

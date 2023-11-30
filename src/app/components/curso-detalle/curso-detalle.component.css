@@ -4,8 +4,7 @@
     width: 100%;
     background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 95%);
   }
-  
-  
+    
   .logo1 {
     display: flex;
     flex-wrap: wrap;
@@ -46,16 +45,11 @@
     width: 60%;
    }
 
-   @media only screen and (min-width: 768px) {
-
-  }
-
   @media only screen and (min-width: 1024px) {
 
     .descripcion{
       font-size: 22px;
     }
-
   }
 
   @media only screen and (min-width: 1440px) {

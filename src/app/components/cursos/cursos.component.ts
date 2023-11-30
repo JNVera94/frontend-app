@@ -26,7 +26,7 @@ categoriaSeleccionada = 'all';
 
   filtrarPorCategoria(categoria: string) {
     this.cursos = this.cursos_originales.filter((curso) => curso.categoria === categoria);
-    /*this.categoriaSeleccionada = categoria;*/
+    
   }
   mostrarTodos() {
     this.categoriaSeleccionada = 'all';

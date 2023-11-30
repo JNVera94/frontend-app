@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
 import { ContactoService } from 'src/app/services/contacto.service';
 import { NotifierService } from 'angular-notifier';
 import { DialogService } from 'src/app/services/dialog.service';

@@ -29,7 +29,7 @@ export class InscripcionDataService {
   }
 
   getInscripcionesByAlumnoId(alumnoId: string): Observable<any> {
-    const url = `${this.apiUrl}?alumnoId=${alumnoId}`;
+    const url = `${this.apiUrl}alumno/${alumnoId}`;
 
     return this.http.get(url).pipe(
       catchError(error => {

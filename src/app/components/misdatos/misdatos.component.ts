@@ -47,16 +47,10 @@ export class MisdatosComponent implements OnInit {
           this.alumnoData = JSON.parse(storedAlumnoData);
         }
         const alumnoId = this.alumnoData.data.id
-        console.log(alumnoId)
 
         this.inscripcionDataService.getInscripcionesByAlumnoId(alumnoId).subscribe((inscripciones) => {
-
           for (const inscripcion of inscripciones.data) {
             this.cursoId = inscripcion.materia; 
-
-            console.log(inscripcion);
-            console.log(this.cursoId);
-
             this.materiadataservice.getMateriaPorId(this.cursoId).subscribe((materiadata) => {
               const inscripcionDetalle: InscripcionDetalle = {
                 materiaNombre: materiadata.data.name,
@@ -104,7 +98,7 @@ export class MisdatosComponent implements OnInit {
 
         this.EliminarIns(inscripcionId);
       } else {
-        // El usuario canceló la eliminación
+
         console.log('Eliminación cancelada por el usuario');
       }
     });
@@ -121,7 +115,7 @@ export class MisdatosComponent implements OnInit {
       },
       (error) => {
         console.error('Error al eliminar la inscripcion:', error);
-        // Maneja el error según tus necesidades
+
       }
     );
   }
@@ -141,7 +135,6 @@ export class MisdatosComponent implements OnInit {
         },
         (error) => {
           console.error('Error al eliminar el alumno:', error);
-          // Maneja el error según tus necesidades
         }
       );
     }

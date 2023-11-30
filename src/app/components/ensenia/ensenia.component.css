@@ -96,9 +96,6 @@ width: 100%;
 
 }  
 
-.col-md-6:hover {
-  transform: scale(1.05);
-}
 
 h2 {
   color: #007bff;
@@ -107,11 +104,6 @@ h2 {
 p {
   color: #495057;
   line-height: 1.6;
-}
-
-/* Add a subtle border line between the columns */
-.col-md-6:not(:last-child) {
-  border-right: 1px solid #dee2e6;
 }
 
 .textarea{

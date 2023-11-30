@@ -1,5 +1,4 @@
   body{
-    /* background: url('./assets/bg.jpg')rgba(0,0,0,0.3);*/
     background: linear-gradient(90deg, rgb(236, 245, 245) 0%, rgba(151, 231, 247, 0.782) 100%);
     background-blend-mode: multiply;
     background-position:center;
@@ -7,18 +6,10 @@
     background-repeat: no-repeat;
     }
 
-  .navbar-nav .nav-link {/*COLOR DE LOS BOTONES PRINCIPALES*/
+  .navbar-nav .nav-link {
       color: rgb(0, 0, 0);
     }
 
-  .navbar-brand {      /*COLOR NOMBRE IZQUIERDA*/
+  .navbar-brand { 
      color: #000000; 
   }
-  
-
- /* @media(max-width:991px){  
-        .sidebar{
-          background-color: rgba(255,255,255,0.15);
-          backdrop-filter: blur(10px);
-        }
-    } */    /*QUEDO DEL VIDEO*/

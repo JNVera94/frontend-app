@@ -7,8 +7,6 @@ import { Observable,BehaviorSubject } from 'rxjs';
 })
 export class AlumnosdataService {
   private apiUrl = 'http://localhost:3000/api/alumnos'; 
-  private authUrl = 'http://localhost:3000/api/alumnos/login';
-
 
   alumnoData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
@@ -22,10 +20,6 @@ export class AlumnosdataService {
     const params = new HttpParams().set('email', email);
     console.log(params)
     return this.http.get(this.apiUrl, { params });
-  }
-
-  login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(this.authUrl, credentials);
   }
 
   updateAlumnoData(data: any): void {
