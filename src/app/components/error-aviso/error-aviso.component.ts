@@ -1,6 +1,7 @@
 import { Component, Inject, EventEmitter, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-error-aviso',
   templateUrl: './error-aviso.component.html',
@@ -15,7 +16,10 @@ export class ErrorAvisoComponent {
   ) {}
 
   closeDialog() {
+    
     this.dialogRef.close();
+    console.log(this.data.message)
     this.onClose.emit();
+
   }
 }

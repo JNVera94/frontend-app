@@ -9,6 +9,7 @@ import { AlumnosdataService } from './alumnosdata.service';
 })
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private alumnoData : any
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
@@ -20,7 +21,6 @@ export class AuthService {
 
   login(token: string) {
     this.tokenStorageService.saveToken(token);
-
     this.loggedIn.next(true);
   }
 

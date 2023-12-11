@@ -1,6 +1,6 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 export interface MateriaData {
   name: string;
@@ -31,9 +31,11 @@ export class MateriadataService {
   }
 
   getMateriaPorId(id: string): Observable<any> {
-    
-    
-    const url = `${this.apiUrl}/${id}`; 
-    return this.http.get(url);
-  }
-}
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get(url).pipe(
+      catchError((error: any) => {
+        // Manejar el error aquí, ya sea relanzándolo o transformándolo
+        return throwError(error);
+      })
+    );
+    }}

@@ -10,6 +10,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component.js';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-curso-detalle',
@@ -17,7 +18,7 @@ import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
   styleUrls: ['./curso-detalle.component.css']
 })
 export class CursoDetalleComponent implements OnInit {
-
+  isLoggedIn: boolean = false;
   cursoId!: string;
   AlumnoId!: string;
   curso!: MateriaData;
@@ -26,6 +27,7 @@ export class CursoDetalleComponent implements OnInit {
   private dialogRef: MatDialogRef<SuccessDialogComponent> | undefined;
   private dialogRef1: MatDialogRef<ErrorAvisoComponent> | undefined;
 
+
   constructor(private authService: AuthService,
     private route: ActivatedRoute,
     private materiaService: MateriadataService,
@@ -33,7 +35,8 @@ export class CursoDetalleComponent implements OnInit {
     private inscripciondataService: InscripcionDataService,
     private router: Router,
     notifier: NotifierService,
-    private dialogService: DialogService,) {
+    private dialogService: DialogService,
+    private cookiesServices: CookieService) {
     this.notifier = notifier;
   }
 
@@ -48,28 +51,43 @@ export class CursoDetalleComponent implements OnInit {
   }
 
   obtenerDetalleCurso(): void {
-    this.materiaService.getMateriaPorId(this.cursoId).subscribe(curso => {
-      this.curso = curso.data;
+    this.materiaService.getMateriaPorId(this.cursoId).subscribe(
+      curso => {
+        this.curso = curso.data;
+      },
+      error => {
+        /*console.error('Error al obtener el curso:', error);*/
+        this.dialogRef1 = this.dialogService.openFailureDialog('Error al cargar los datos, intente nuevamente');
+        this.dialogRef1.afterClosed().subscribe(() => {
+          this.router.navigate(['/cursos']);
+        });
 
-      console.log(this.curso)
-      console.log(this.curso.desc)
-
-    });
+        return;
+      }
+    );
   }
   inscribirse(): void {
+    this.authService.isLoggedIn.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+
+      if (!this.isLoggedIn) {
+        this.dialogRef1 = this.dialogService.openFailureDialog('Inicie sesion para continuar');
+        this.router.navigate(['/login'])
+        return;
+      }
+    });
+
     this.AlumnoId = this.alumnoData.data.id;
     const fechaHoraInscripcion = new Date().toISOString();
-  
+
     this.inscripciondataService.getInscripcionesByAlumnoId(this.AlumnoId).subscribe((inscripciones) => {
-  
       for (const inscripcion of inscripciones.data) {
         if (this.cursoId === inscripcion.materia) {
           this.dialogRef1 = this.dialogService.openFailureDialog('Ya se encuentra inscripto');
-          return;  
+          return;
         }
       }
-  
-     
+
       this.inscripciondataService.addInscripcion(this.AlumnoId, this.cursoId, fechaHoraInscripcion)
         .subscribe(
           response => {
@@ -83,5 +101,9 @@ export class CursoDetalleComponent implements OnInit {
             console.error('Error al realizar la inscripción:', error);
           }
         );
+    }, error => {
+      this.dialogRef1 = this.dialogService.openFailureDialog('Error al realizar la inscripcion, intente nuevamente');
+      console.error('Error al obtener las inscripciones:', error);
     });
-  }}
+  }
+}

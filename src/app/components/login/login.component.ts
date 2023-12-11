@@ -25,7 +25,7 @@ export class LoginComponent {
 
   constructor(
     private userService: UserdataService,
-    private authService: AuthService, 
+    private authService: AuthService,
     notifier: NotifierService,
     private dialogService: DialogService,
     private router: Router,
@@ -43,7 +43,7 @@ export class LoginComponent {
 
         this.userService.getAlumnoData(this.user.email).subscribe(
           (alumnoData) => {
-            this.alumnoLogueado= alumnoData
+            this.alumnoLogueado = alumnoData
             this.alumnosDataService.updateAlumnoData(alumnoData);
           },
           (error) => {
@@ -53,12 +53,13 @@ export class LoginComponent {
 
         this.dialogRef = this.dialogService.openSuccessDialog('Bienvenido');
         this.dialogRef.afterClosed().subscribe(() => {
+          this.alumnosDataService.enviarAlumno(this.alumnoLogueado);
+          localStorage.setItem('alumnoData', JSON.stringify(this.alumnoLogueado));
           this.router.navigate(['/']);
-          localStorage.setItem('alumnoData',JSON.stringify(this.alumnoLogueado)); 
         });
       },
       (error) => {
-        this.dialogRef1=this.dialogService.openFailureDialog('Verifique sus credenciales');
+        this.dialogRef1 = this.dialogService.openFailureDialog('Verifique sus credenciales');
         this.dialogRef1.afterClosed().subscribe(() => {
           location.reload();
         });

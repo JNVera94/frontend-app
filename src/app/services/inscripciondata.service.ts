@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,BehaviorSubject, catchError, tap } from 'rxjs';
 
@@ -30,7 +30,7 @@ export class InscripcionDataService {
 
   getInscripcionesByAlumnoId(alumnoId: string): Observable<any> {
     const url = `${this.apiUrl}alumno/${alumnoId}`;
-
+   
     return this.http.get(url).pipe(
       catchError(error => {
         console.error('Error en la solicitud GET de inscripciones por alumno:', error);

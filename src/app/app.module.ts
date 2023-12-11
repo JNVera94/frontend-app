@@ -6,10 +6,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NotifierModule } from 'angular-notifier';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 
 
@@ -36,45 +37,51 @@ import { MisdatosComponent } from './components/misdatos/misdatos.component';
 import { EliminarDialogComponent } from './components/eliminar-dialog/eliminar-dialog.component';
 import { ErrorAvisoComponent } from './components/error-aviso/error-aviso.component';
 import { EditarusuarioComponent } from './components/editarusuario/editarusuario.component';
+import { ProgressSpinner } from "./components/shared/spinner/spinner.component";
+import { SpinnerInterceptor } from './components/shared/spinner/spinner.interceptor';
 
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    CursosComponent,
-    FuncionamientoComponent,
-    EnseniaComponent,
-    InicioComponent,
-    RegistroComponent,
-    CursoDetalleComponent,
-    LoginComponent,
-    SuccessDialogComponent,
-    HeaderLoginComponent,
-    MisdatosComponent,
-    EliminarDialogComponent,
-    ErrorAvisoComponent,
-    EditarusuarioComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-    HttpClientModule,
-    FormsModule,
-    MatDialogModule,
-    RouterModule,
-    NotifierModule,
-    ReactiveFormsModule
-
-  ],
-  providers: [importProvidersFrom(HttpClientModule), CookieService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        CursosComponent,
+        FuncionamientoComponent,
+        EnseniaComponent,
+        InicioComponent,
+        RegistroComponent,
+        CursoDetalleComponent,
+        LoginComponent,
+        SuccessDialogComponent,
+        HeaderLoginComponent,
+        MisdatosComponent,
+        EliminarDialogComponent,
+        ErrorAvisoComponent,
+        EditarusuarioComponent,
+    ],
+    providers: [importProvidersFrom(HttpClientModule),
+        CookieService,
+        ProgressSpinner,
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatButtonModule,
+        HttpClientModule,
+        FormsModule,
+        MatDialogModule,
+        RouterModule,
+        NotifierModule,
+        ReactiveFormsModule,
+        MatProgressSpinnerModule,
+        ProgressSpinner
+    ]
 })
 export class AppModule { }
 

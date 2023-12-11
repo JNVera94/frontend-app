@@ -5,6 +5,7 @@ import { CursosComponent } from './components/cursos/cursos.component';
 import { EnseniaComponent } from './components/ensenia/ensenia.component';
 import { FuncionamientoComponent } from './components/funcionamiento/funcionamiento.component';
 import { Form } from '@angular/forms';
+import { authGuard } from './components/shared/auth.guard';
 
 
 import { RegistroComponent } from './components/registro/registro.component';
@@ -24,13 +25,9 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path: 'registro', component:RegistroComponent},
   {path: 'cursos/:id', component:CursoDetalleComponent },
-  {path: 'misdatos',component:MisdatosComponent},
-  {path: 'misdatos/editar', component: EditarusuarioComponent},
+  {path: 'misdatos',component:MisdatosComponent,canActivate:[authGuard]},
+  {path: 'misdatos/editar', component: EditarusuarioComponent,canActivate:[authGuard]},
 
-
-
-
-  // Otras rutas
 
 ];
 

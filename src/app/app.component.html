@@ -1,7 +1,10 @@
 
+<app-spinner></app-spinner>
 <div>
+  
   <app-header *ngIf="!isLoggedIn"></app-header>
   <app-header-login *ngIf="isLoggedIn"></app-header-login>
+
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>

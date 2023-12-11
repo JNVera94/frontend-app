@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { InscripcionDataService, InscripcionData } from 'src/app/services/inscripciondata.service';
 import { MateriadataService, MateriaData } from 'src/app/services/materiadata.service';
+import { CookieService } from 'ngx-cookie-service';
+import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
 
 interface InscripcionDetalle {
   materiaNombre: string;
@@ -23,6 +25,7 @@ export class MisdatosComponent implements OnInit {
   alumnoData: any;
   isLoggedIn: boolean = false;
   private dialogRef: MatDialogRef<EliminarDialogComponent> | undefined;
+  private dialogRef1: MatDialogRef<ErrorAvisoComponent> | undefined;
   inscripcion!: any;
   detalles: InscripcionDetalle[] = [];
   cursoId!: string;
@@ -35,6 +38,7 @@ export class MisdatosComponent implements OnInit {
     private authService: AuthService,
     private dialogService: DialogService,
     private inscripcionDataService: InscripcionDataService,
+    private cookiesService: CookieService,
     private materiadataservice: MateriadataService) { }
 
   ngOnInit() {
@@ -47,6 +51,7 @@ export class MisdatosComponent implements OnInit {
           this.alumnoData = JSON.parse(storedAlumnoData);
         }
         const alumnoId = this.alumnoData.data.id
+        
 
         this.inscripcionDataService.getInscripcionesByAlumnoId(alumnoId).subscribe((inscripciones) => {
           for (const inscripcion of inscripciones.data) {
@@ -61,6 +66,8 @@ export class MisdatosComponent implements OnInit {
               this.detalles.push(inscripcionDetalle);
             });
           }
+        },error=>{
+          this.dialogRef1=this.dialogService.openFailureDialog('Error al cargar sus datos, intente nuevamente');
         });
       }
     });
@@ -134,7 +141,7 @@ export class MisdatosComponent implements OnInit {
           this.router.navigate(['/']);
         },
         (error) => {
-          console.error('Error al eliminar el alumno:', error);
+          this.dialogRef1=this.dialogService.openFailureDialog('Error al eliminar, intente nuevamente');
         }
       );
     }

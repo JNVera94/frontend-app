@@ -18,12 +18,15 @@ export class DialogService {
     });
   }
   openFailureDialog(message: string): MatDialogRef<ErrorAvisoComponent> {
-    return this.dialog.open(ErrorAvisoComponent, {
-      width: '500px',
+      console.log(message)
+        return this.dialog.open(ErrorAvisoComponent, {
+      width: '350px',
       height: '130px',
       data: { message }
     });
-  }
+     }
+
+
   openEliminarDialog(message: string): MatDialogRef<EliminarDialogComponent> {
     return this.dialog.open(EliminarDialogComponent, {
       width: '600px',

@@ -41,7 +41,6 @@ export class EditarusuarioComponent implements OnInit {
       this.alumno.email = this.alumnoData.data.email;
       this.alumno.password = this.alumnoData.data.password;
       this.alumnoId = this.alumnoData.data.id;
-      console.log(this.alumno)
     }
   }
 
@@ -53,12 +52,11 @@ export class EditarusuarioComponent implements OnInit {
         this.dialogRef = this.dialogService.openSuccessDialog('Perfil Editado');
 
         this.dialogRef.afterClosed().subscribe(() => {
-          
+
           this.userdata.getAlumnoDataId(this.alumnoId).subscribe((alumnoData) => {
             this.alumno = alumnoData
-            this.alumnosService.updateAlumnoData(alumnoData);
-            console.log(this.alumno)
-            localStorage.setItem('alumnoData',JSON.stringify(this.alumno))
+            this.alumnosService.enviarAlumno(alumnoData);
+            localStorage.setItem('alumnoData', JSON.stringify(this.alumno))
             this.router.navigate(['/misdatos']);
           },
             (error) => {
@@ -72,7 +70,7 @@ export class EditarusuarioComponent implements OnInit {
       this.dialogRef1.afterClosed().subscribe(() => {
         location.reload();
       });
-      console.error('Error al crear el alumno', error);
+
     }
 
   }

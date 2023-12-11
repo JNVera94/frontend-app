@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ export class AlumnosdataService {
   private apiUrl = 'http://localhost:3000/api/alumnos'; 
 
   alumnoData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  alumnoDataSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  observableAlumnoData= this.alumnoDataSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +23,10 @@ export class AlumnosdataService {
     const params = new HttpParams().set('email', email);
     console.log(params)
     return this.http.get(this.apiUrl, { params });
+  }
+
+  enviarAlumno(alumnoData: any){
+    this.alumnoDataSubject.next(alumnoData)
   }
 
   updateAlumnoData(data: any): void {

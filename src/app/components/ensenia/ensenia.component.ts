@@ -31,15 +31,12 @@ export class EnseniaComponent {
         this.mensaje = {}; // Clear form fields
         this.dialogRef = this.dialogService.openSuccessDialog('¡Mensaje enviado, gracias!');
         this.dialogRef.afterClosed().subscribe(() => {
-        
         });
       },
       (error) => {
         this.dialogRef1= this.dialogService.openFailureDialog('Error, intente nuevamente');
         this.dialogRef1.afterClosed().subscribe(() => {
-         /* location.reload();*/
         });
-      
       }
     );
   }
