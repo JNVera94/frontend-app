@@ -10,7 +10,8 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
   isLoggedIn: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
     this.authService.isLoggedIn.subscribe((loggedIn) => {

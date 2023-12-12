@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AlumnosdataService {
-  private apiUrl = 'http://localhost:3000/api/alumnos'; 
+  private apiUrl = environment.apiUrl + '/alumnos';
 
   alumnoData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   alumnoDataSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -45,7 +45,4 @@ export class AlumnosdataService {
     return this.http.patch(url, alumno);
   }
 
-  
 }
-
-

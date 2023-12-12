@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactoService {
-  private apiUrl = 'http://localhost:3000/api/contacto'; 
+  private apiUrl = environment.apiUrl + '/contacto';
 
   mensajeData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface MateriaData {
   name: string;
@@ -14,7 +15,7 @@ export interface MateriaData {
   providedIn: 'root'
 })
 export class MateriadataService {
-  private apiUrl = 'http://localhost:3000/api/materia';
+  private apiUrl = environment.apiUrl + '/materia';
 
   constructor(private http: HttpClient) {}
 

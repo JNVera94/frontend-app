@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,BehaviorSubject, catchError, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 export interface InscripcionData {
@@ -12,7 +13,7 @@ export interface InscripcionData {
   providedIn: 'root'
 })
 export class InscripcionDataService {
-  private apiUrl = 'http://localhost:3000/api/inscripcion/'; 
+  private apiUrl = environment.apiUrl + '/inscripcion/';
 
   constructor(private http: HttpClient) { }
 

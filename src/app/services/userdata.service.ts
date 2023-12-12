@@ -5,12 +5,13 @@ import { catchError } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './auth.service';
 import { AlumnosdataService } from './alumnosdata.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserdataService {
-  private apiUrl = 'http://localhost:3000/api/user'; 
+  private apiUrl = environment.apiUrl + '/user';
 
   constructor(private alumnosDataService: AlumnosdataService,
               private http: HttpClient, 
@@ -41,7 +42,7 @@ export class UserdataService {
     const token = this.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
  
-    const url = `http://localhost:3000/api/alumnos/email/${email}`;
+    const url = environment.apiUrl +`/alumnos/email/${email}`;
   
     return this.http.get(url, { headers });
 
@@ -49,7 +50,7 @@ export class UserdataService {
   getAlumnoDataId(Alumnoid: string): Observable<any> {
     const token = this.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    const url = `http://localhost:3000/api/alumnos/${Alumnoid}`;
+    const url = environment.apiUrl +`/alumnos/${Alumnoid}`;
     return this.http.get(url, { headers });
   }
 

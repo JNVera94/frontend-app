@@ -17,7 +17,5 @@ export class TokenStorageService {
   removeToken(): void {
     localStorage.removeItem(this.TOKEN_KEY);
   }
-
   
 }
-
