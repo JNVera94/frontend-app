@@ -16,6 +16,7 @@ interface InscripcionDetalle {
   fechaInscripcion: string;
   inscripcionId: string;
 }
+
 @Component({
   selector: 'app-misdatos',
   templateUrl: './misdatos.component.html',
@@ -31,47 +32,61 @@ export class MisdatosComponent implements OnInit {
   cursoId!: string;
   materiadata!: MateriaData;
 
-
-  constructor(private dialog: MatDialog,
+  constructor(
+    private dialog: MatDialog,
     private router: Router,
     private alumnosDataService: AlumnosdataService,
     private authService: AuthService,
     private dialogService: DialogService,
     private inscripcionDataService: InscripcionDataService,
     private cookiesService: CookieService,
-    private materiadataservice: MateriadataService) { }
+    private materiadataservice: MateriadataService
+  ) {}
 
   ngOnInit() {
     this.authService.isLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
 
       if (this.isLoggedIn) {
-        const storedAlumnoData = localStorage.getItem('alumnoData');
-        if (storedAlumnoData) {
-          this.alumnoData = JSON.parse(storedAlumnoData);
-        }
-        const alumnoId = this.alumnoData.data.id
-        
-
-        this.inscripcionDataService.getInscripcionesByAlumnoId(alumnoId).subscribe((inscripciones) => {
-          for (const inscripcion of inscripciones.data) {
-            this.cursoId = inscripcion.materia; 
-            this.materiadataservice.getMateriaPorId(this.cursoId).subscribe((materiadata) => {
-              const inscripcionDetalle: InscripcionDetalle = {
-                materiaNombre: materiadata.data.name,
-                horasTotales: materiadata.data.totalhours,
-                fechaInscripcion:this.formatFecha(inscripcion.fechaInscripcion),
-                inscripcionId: inscripcion.id
-              };
-              this.detalles.push(inscripcionDetalle);
-            });
-          }
-        },error=>{
-          this.dialogRef1=this.dialogService.openFailureDialog('Error al cargar sus datos, intente nuevamente');
-        });
+        this.actualizarInformacionAlumno();
       }
     });
   }
+
+  private actualizarInformacionAlumno() {
+    const storedAlumnoData = localStorage.getItem('alumnoData');
+    if (storedAlumnoData) {
+      this.alumnoData = JSON.parse(storedAlumnoData);
+    }
+    const alumnoId = this.alumnoData.data.id;
+
+    this.inscripcionDataService.getInscripcionesByAlumnoId(alumnoId).subscribe(
+      (inscripciones) => {
+        this.detalles = []; 
+        for (const inscripcion of inscripciones.data) {
+          this.cursoId = inscripcion.materia;
+          this.materiadataservice.getMateriaPorId(this.cursoId).subscribe(
+            (materiadata) => {
+              const inscripcionDetalle: InscripcionDetalle = {
+                materiaNombre: materiadata.data.name,
+                horasTotales: materiadata.data.totalhours,
+                fechaInscripcion: this.formatFecha(inscripcion.fechaInscripcion),
+                inscripcionId: inscripcion.id
+              };
+              this.detalles.push(inscripcionDetalle);
+            },
+            (error) => {
+              console.error('Error al obtener datos de la materia:', error);
+            }
+          );
+        }
+      },
+      (error) => {
+        this.dialogRef1 = this.dialogService.openFailureDialog('Error al cargar sus datos, intente nuevamente');
+      }
+    );
+  }
+
   private formatFecha(fecha: string): string {
     const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
@@ -82,70 +97,60 @@ export class MisdatosComponent implements OnInit {
     };
     return new Date(fecha).toLocaleDateString('es-ES', options);
   }
-  eliminardialog(event: any) {
 
+  eliminardialog(event: any) {
     this.dialogRef = this.dialogService.openEliminarDialog('¿Desea eliminar su cuenta?');
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
-
         this.onDeleteAlumno();
       } else {
-
         console.log('Eliminación cancelada por el usuario');
       }
     });
   }
 
   eliminarInsdialog(inscripcionId: string) {
-
     this.dialogRef = this.dialogService.openEliminarDialog('¿Desea eliminar su Inscripcion?');
-
     this.dialogRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
-
         this.EliminarIns(inscripcionId);
       } else {
-
         console.log('Eliminación cancelada por el usuario');
       }
     });
   }
 
   EliminarIns(inscripcionId: string) {
-    this.dialogService.openEliminarDialog
-    const inscID = inscripcionId
+    const inscID = inscripcionId;
     this.inscripcionDataService.deleteInscripcionById(inscID).subscribe(
       (response) => {
-
-        console.log('inscripcion eliminada con éxito:', response);
-        location.reload();
+        console.log('Inscripción eliminada con éxito:', response);
+        this.actualizarInformacionAlumno(); 
       },
       (error) => {
-        console.error('Error al eliminar la inscripcion:', error);
-
+        console.error('Error al eliminar la inscripción:', error);
       }
     );
   }
 
   onDeleteAlumno() {
-    this.dialogService.openEliminarDialog
     const storedAlumnoData = localStorage.getItem('alumnoData');
     if (storedAlumnoData) {
       this.alumnoData = JSON.parse(storedAlumnoData);
       const alumnoId = this.alumnoData.data.id;
       this.alumnosDataService.deleteAlumno(alumnoId).subscribe(
         (response) => {
-
           console.log('Alumno eliminado con éxito:', response);
-          this.authService.logout()
+          this.authService.logout();
           this.router.navigate(['/']);
         },
         (error) => {
-          this.dialogRef1=this.dialogService.openFailureDialog('Error al eliminar, intente nuevamente');
+          this.dialogRef1 = this.dialogService.openFailureDialog('Error al eliminar, intente nuevamente');
         }
       );
     }
   }
+
   editarDatos() {
     this.router.navigate(['/misdatos/editar']);
   }

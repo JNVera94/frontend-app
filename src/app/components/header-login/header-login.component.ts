@@ -28,6 +28,7 @@ export class HeaderLoginComponent implements OnInit {
         this.alumnoService.observableAlumnoData.subscribe(alumno => {
           if (alumno && alumno.data) {
             this.alumnoData = alumno
+            console.log(this.alumnoData,"data")
           }
         })
       }

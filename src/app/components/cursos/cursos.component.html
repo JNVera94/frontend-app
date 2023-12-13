@@ -30,10 +30,10 @@
     <div class="logo1" *ngFor="let curso of cursos">
       <ng-container *ngIf="categoriaSeleccionada === 'all' || curso.categoria === categoriaSeleccionada">
         <a [routerLink]="['/cursos', curso.id]">
-          <img src="{{ curso.icono }}" alt="{{ curso.nombre }} icono">
+          <img [src]="curso.icono" alt="{{ curso.name }} icono">
         </a>
-        <h2>{{ curso.nombre }}</h2>
-        <p>{{ curso.descripcion }}</p>
+        <h2>{{ curso.name }}</h2>
+        <p>{{ curso.desc.length > 150 ? curso.desc.slice(0, 150) + '...' : curso.desc }}</p>
       </ng-container>
     </div>
   </div>

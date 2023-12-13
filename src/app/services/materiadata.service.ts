@@ -7,8 +7,9 @@ export interface MateriaData {
   name: string;
   totalhours: number;
   email: string;
-  nivel: number;
+  nivel: string;
   desc: string;
+  icono: string
 }
 
 @Injectable({
@@ -17,16 +18,17 @@ export interface MateriaData {
 export class MateriadataService {
   private apiUrl = environment.apiUrl + '/materia';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getMateria(materiaData: MateriaData): Observable<any> {
-   
+
     const params = new HttpParams()
       .set('name', materiaData.name)
       .set('totalhours', materiaData.totalhours.toString())
       .set('email', materiaData.email)
       .set('nivel', materiaData.nivel.toString())
-      .set('descripcion', materiaData.desc);
+      .set('descripcion', materiaData.desc)
+      .set('icono', materiaData.icono);
 
     return this.http.get(this.apiUrl, { params });
   }
@@ -35,8 +37,20 @@ export class MateriadataService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get(url).pipe(
       catchError((error: any) => {
-        // Manejar el error aquí, ya sea relanzándolo o transformándolo
         return throwError(error);
       })
     );
-    }}
+  }
+
+  getAllMaterias(): Observable<any> {
+    return this.http.get(this.apiUrl).pipe(
+      catchError((error: any) => {
+        return throwError(error);
+      })
+
+    )
+  }
+
+}
+
+
