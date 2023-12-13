@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { MateriadataService } from 'src/app/services/materiadata.service';
+import { DialogService } from 'src/app/services/dialog.service';
+import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component.js';
+import { MatDialogRef } from '@angular/material/dialog/index.js';
 
 @Component({
   selector: 'app-cursos',
@@ -13,11 +16,13 @@ import { MateriadataService } from 'src/app/services/materiadata.service';
 export class CursosComponent {
   cursos_originales: any;
   cursos: any;
-
+  private dialogRef1: MatDialogRef<ErrorAvisoComponent> | undefined;
 
   categoriaSeleccionada = 'all';
 
-  constructor(private materiaService: MateriadataService) {
+  constructor(private materiaService: MateriadataService,
+              private dialogService: DialogService,
+              private router: Router,) {
 
   }
 
@@ -26,6 +31,13 @@ export class CursosComponent {
       console.log(materias)
       this.cursos_originales = materias.data
       this.cursos = this.cursos_originales
+    },
+    error => {
+      this.dialogRef1 = this.dialogService.openFailureDialog('Error al cargar los datos, intente nuevamente');
+      this.dialogRef1.afterClosed().subscribe(() => {
+        this.router.navigate(['/cursos']);
+      });
+      return;
     })
 
   }

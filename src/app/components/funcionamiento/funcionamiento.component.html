@@ -53,7 +53,7 @@
                 aumento o comenzar una nueva carrera.  <br> <br>
         </p>
         <p>Nuestra educacion te brinda un futuro mejor.</p>
-        <button class="contacto"><a routerLink="/registro">Únete de forma gratuita</a></button>
+        <button *ngIf="!isUserLoggedIn" class="contacto"><a routerLink="/registro">Únete de forma gratuita</a></button>
     </div>
 </div>
 
