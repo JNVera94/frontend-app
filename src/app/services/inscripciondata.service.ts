@@ -4,46 +4,43 @@ import { Observable,BehaviorSubject, catchError, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
-export interface InscripcionData {
-  alumnoId: string;
-  materiaId: string;
-  fechaHoraInscripcion: string;
+export interface InscriptionData {
+  student_id: string;
+  course_id: string;
+  inscription_date: string;
 }
 @Injectable({
   providedIn: 'root'
 })
-export class InscripcionDataService {
+export class InscriptionDataService {
   private apiUrl = environment.apiUrl + '/inscripcion/';
 
   constructor(private http: HttpClient) { }
 
-  addInscripcion(alumnoId: string, materiaId: string, fechaHoraInscripcion: string): Observable<any> {
-    const requestBody = { alumnoId, materiaId, fechaHoraInscripcion };
+  addInscription(student_id: string, course_id: string, inscription_date: string): Observable<any> {
+    const requestBody = { student_id, course_id, inscription_date };
 
     return this.http.post(this.apiUrl, requestBody)
       .pipe(
         catchError(error => {
-          console.error('Error en la solicitud POST de inscripción:', error);
           throw error;
         })
       );
   }
 
-  getInscripcionesByAlumnoId(alumnoId: string): Observable<any> {
-    const url = `${this.apiUrl}alumno/${alumnoId}`;
+  getInscriptionByStudentId(student_id: string): Observable<any> {
+    const url = `${this.apiUrl}alumno/${student_id}`;
    
     return this.http.get(url).pipe(
       catchError(error => {
-        console.error('Error en la solicitud GET de inscripciones por alumno:', error);
         throw error;
       })
     );
   }
-  deleteInscripcionById(inscID:string): Observable<any>{
+  deleteInscriptionById(inscID:string): Observable<any>{
     const url = `${this.apiUrl}/${inscID}`;
     return this.http.delete(url).pipe(
       catchError(error => {
-        console.error('Error en la solicitud delete de inscripcion:', error);
         throw error;
       })
     );

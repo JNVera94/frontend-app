@@ -17,6 +17,5 @@ export class ProgressSpinner implements OnInit {
 
   }
   ngOnInit(): void {
-    console.log('El componente ProgressSpinner se ha inicializado.');
   }
 }

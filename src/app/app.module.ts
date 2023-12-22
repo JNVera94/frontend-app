@@ -36,9 +36,9 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
 import { MisdatosComponent } from './components/misdatos/misdatos.component';
 import { EliminarDialogComponent } from './components/eliminar-dialog/eliminar-dialog.component';
 import { ErrorAvisoComponent } from './components/error-aviso/error-aviso.component';
-import { EditarusuarioComponent } from './components/editarusuario/editarusuario.component';
+import { EditUserComponent } from './components/editarusuario/editarusuario.component';
 import { ProgressSpinner } from "./components/shared/spinner/spinner.component";
-import { SpinnerInterceptor } from './components/shared/spinner/spinner.interceptor';
+import { RequestInterceptor } from './components/shared/request.interceptor';
 
 
 
@@ -60,12 +60,13 @@ import { SpinnerInterceptor } from './components/shared/spinner/spinner.intercep
         MisdatosComponent,
         EliminarDialogComponent,
         ErrorAvisoComponent,
-        EditarusuarioComponent,
+        EditUserComponent,
+
     ],
     providers: [importProvidersFrom(HttpClientModule),
         CookieService,
         ProgressSpinner,
-    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },],
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,

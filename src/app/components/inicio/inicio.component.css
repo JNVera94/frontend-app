@@ -1,9 +1,9 @@
-body {
+main {
   padding: 0;
   margin: 0;
 }
 
-body .conteiner1 {
+ .conteiner1 {
   width: 100%;
   height: 650px;
   background: #bb49ec3f;
@@ -21,19 +21,19 @@ body .conteiner1 {
 }
 
 
-body .conteiner1 h1 {
+ .conteiner1 h1 {
   font-size: 50px;
   color: #fff;
 }
 
 
-body .conteiner1 h2 {
+ .conteiner1 h2 {
   font-size: 45px;
   font-weight: 100;
   color: #fff;
 }
 
-body .wave {
+ .wave {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -56,18 +56,18 @@ body .wave {
   display: flex;
 }
 
-body .razones .foto {
+ .razones .foto {
   margin: auto;
   width: 50%;
   box-sizing: border-box;
 }
 
-body .razones .foto .imagen {
+ .razones .foto .imagen {
   width: 100%;
   height: 100%;
 }
 
-body .razones .porque {
+ .razones .porque {
   width: 50%;
 }
 
@@ -101,7 +101,7 @@ body .razones .porque {
   margin-left: 8%;
 }
 
-body .destacados {
+ .destacados {
   width: 85%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -118,29 +118,29 @@ body .destacados {
   margin-bottom: 2%;
 }
 
-body .destacados .titulo {
+.destacados .titulo {
   width: 100%;
 }
 
-body .destacados .titulo h1 {
+.destacados .titulo h1 {
   font-family: 'Open sans';
   font-size: 40px;
   font-weight: 900;
   margin-bottom: 0%;
 }
 
-body .destacados .titulo h2 {
+.destacados .titulo h2 {
   font-family: 'Open sans';
   font-size: 25px;
   font-weight: 900;
   color: #D91717;
 }
 
-body .destacados .titulo img {
+.destacados .titulo img {
   float: right;
 }
 
-body .destacados .contenedor {
+.destacados .contenedor {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -153,7 +153,7 @@ body .destacados .contenedor {
   box-sizing: border-box;
 }
 
-body .destacados .contenedor .logo1 {
+.destacados .contenedor .logo1 {
   width: 33%;
   padding-top: 25px;
   text-align: center;
@@ -165,25 +165,24 @@ body .destacados .contenedor .logo1 {
   margin-right: 15px;
 }
 
-body .destacados .contenedor .logo1 img {
+.destacados .contenedor .logo1 img {
   height: 80;
-  /**/
   box-sizing: content-box;
   width: 60%;
 }
 
-body .destacados .contenedor .logo1 img:hover {
+.destacados .contenedor .logo1 img:hover {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
   -webkit-transition: .5s;
   transition: .5s;
 }
 
-body .destacados .contenedor .logo1 h2 {
+.destacados .contenedor .logo1 h2 {
   font-size: 24px;
   font-weight: 900;
 }
 
-body .destacados .contenedor .logo1 p {
+ .destacados .contenedor .logo1 p {
   font-size: 18px;
 }

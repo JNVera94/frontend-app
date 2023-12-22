@@ -7,12 +7,12 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, catchError, finalize, throwError } from 'rxjs';
-import { SpinnerService } from './spinner.service';
+import { SpinnerService } from './spinner/spinner.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 
 @Injectable()
-export class SpinnerInterceptor implements HttpInterceptor {
+export class RequestInterceptor implements HttpInterceptor {
 
   constructor(
     private readonly spinnerService: SpinnerService,
@@ -39,7 +39,7 @@ export class SpinnerInterceptor implements HttpInterceptor {
         if (error instanceof HttpErrorResponse) {
           console.error('Error de solicitud:', error);
         }
-        return throwError(error);
+        return throwError(() => new Error(error));
       }),
       finalize(() => this.spinnerService.hide())
     );

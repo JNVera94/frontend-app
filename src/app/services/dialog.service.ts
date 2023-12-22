@@ -27,7 +27,7 @@ export class DialogService {
      }
 
 
-  openEliminarDialog(message: string): MatDialogRef<EliminarDialogComponent> {
+  openDeleteDialog(message: string): MatDialogRef<EliminarDialogComponent> {
     return this.dialog.open(EliminarDialogComponent, {
       width: '600px',
       height: '150px',

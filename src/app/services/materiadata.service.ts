@@ -3,49 +3,56 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-export interface MateriaData {
+
+export interface CourseData {
   name: string;
   totalhours: number;
   email: string;
-  nivel: string;
+  level: string;
   desc: string;
-  icono: string
+  icon: string;
 }
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class MateriadataService {
+export class CoursedataService {
   private apiUrl = environment.apiUrl + '/materia';
+
 
   constructor(private http: HttpClient) { }
 
-  getMateria(materiaData: MateriaData): Observable<any> {
+
+  getCourse(courseData: CourseData): Observable<any> {
+
 
     const params = new HttpParams()
-      .set('name', materiaData.name)
-      .set('totalhours', materiaData.totalhours.toString())
-      .set('email', materiaData.email)
-      .set('nivel', materiaData.nivel.toString())
-      .set('descripcion', materiaData.desc)
-      .set('icono', materiaData.icono);
+      .set('name', courseData.name)
+      .set('totalhours', courseData.totalhours.toString())
+      .set('email', courseData.email)
+      .set('level', courseData.level.toString())
+      .set('description', courseData.desc)
+      .set('icon', courseData.icon);
+
 
     return this.http.get(this.apiUrl, { params });
   }
 
-  getMateriaPorId(id: string): Observable<any> {
+
+  getCourseById(id: string): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get(url).pipe(
       catchError((error: any) => {
-        return throwError(error);
+        return throwError(() => new Error(error));
       })
     );
   }
 
-  getAllMaterias(): Observable<any> {
+  getAllCourses(): Observable<any> {
     return this.http.get(this.apiUrl).pipe(
       catchError((error: any) => {
-        return throwError(error);
+        return throwError(() => new Error(error));
       })
 
     )

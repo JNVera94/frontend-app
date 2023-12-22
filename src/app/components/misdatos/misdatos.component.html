@@ -1,34 +1,23 @@
-<!doctype html>
-<html>
-
-<head>
-  <meta charset="utf-8" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet"
-    type="text/css" />
-  <link rel="stylesheet" href="misdatos.component.css">
-
-  <title>Mis Datos</title>
-</head>
 
 
-<body>
+<main>
 
   <div class="datos">
     <h2>Mis datos personales</h2>
     <div class="personales">
       <div class="personal">
-        <h4 *ngIf="alumnoData">{{ 'Nombre:' + alumnoData.data.name }} </h4>
-        <h4 *ngIf="alumnoData">{{ 'Edad:' + alumnoData.data.age }} </h4>
+        <h4 *ngIf="studentData">{{ 'Nombre:' + studentData.data.name }} </h4>
+        <h4 *ngIf="studentData">{{ 'Edad:' + studentData.data.age }} </h4>
       </div>
 
       <div class="personal">
-        <h4 *ngIf="alumnoData">{{ 'Apellido:' + alumnoData.data.lastname }} </h4>
-        <h4 *ngIf="alumnoData">{{ 'Email:' + alumnoData.data.email }} </h4>
+        <h4 *ngIf="studentData">{{ 'Apellido:' + studentData.data.lastname }} </h4>
+        <h4 *ngIf="studentData">{{ 'Email:' + studentData.data.email }} </h4>
       </div>
     </div>
     <div class="btn">
-      <button class="editar" (click)="editarDatos()">Editar datos</button>
-      <button class="eliminar" (click)="eliminardialog($event)">Eliminar cuenta</button>
+      <button class="editar" (click)="editInfo()">Editar datos</button>
+      <button class="eliminar" (click)="deletedialog($event)">Eliminar cuenta</button>
     </div>
   </div>
 
@@ -46,13 +35,13 @@
     <div class="inscripciones">
     </div>
       <div class="info">
-      <div *ngFor="let detalle of detalles" class="container text-center">
+      <div *ngFor="let detalle of details" class="container text-center">
         <div class="row row-cols-4 fila">
-          <div class="col"><h4>{{ detalle.fechaInscripcion }}</h4></div>
-          <div class="col"><h4>{{ detalle.materiaNombre }}</h4></div>
-          <div class="col"><h4>{{ detalle.horasTotales }}</h4></div>
+          <div class="col"><h4>{{ detalle.inscription_date }}</h4></div>
+          <div class="col"><h4>{{ detalle.courseName }}</h4></div>
+          <div class="col"><h4>{{ detalle.totalHours }}</h4></div>
           <div class="col-2">
-            <button class="btnbasura" aria-label="Eliminar" (click)="eliminarInsdialog(detalle.inscripcionId)">
+            <button class="btnbasura" aria-label="Eliminar" (click)="deleteInsdialog(detalle.inscription_Id)">
               <i class="bi bi-trash"></i>
             </button>
           </div>
@@ -61,4 +50,4 @@
     </div>
   </div>
 
-</body>
+</main>
