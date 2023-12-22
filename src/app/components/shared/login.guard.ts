@@ -1,19 +1,21 @@
-import { inject } from '@angular/core';
+import { ChangeDetectorRef, Injectable, inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { DialogService } from 'src/app/services/dialog.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const LoginGuard: CanActivateFn = (route, state) => {
   const auth_token = inject(TokenStorageService);
   const dialogService = inject(DialogService);
   const router = inject(Router);
 
-  if (auth_token.getToken()) {
-        return true;
+
+  if (!auth_token.getToken()) {
+    return true;
   } else {
-    dialogService.openFailureDialog('Debe iniciar sesión primero').afterClosed().subscribe(() => {
-      router.navigate(['/login']);
+    dialogService.openFailureDialog('Ya se encuentra logueado').afterClosed().subscribe(() => {
+      window.location.href = '/';
     });
+
     return false;
   }
 };

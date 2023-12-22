@@ -12,23 +12,22 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 import { LoginComponent } from './components/login/login.component';
 import { MisdatosComponent } from './components/misdatos/misdatos.component';
-import { EditarusuarioComponent } from './components/editarusuario/editarusuario.component';
+import { EditUserComponent } from './components/editarusuario/editarusuario.component';
+import { LoginGuard } from './components/shared/login.guard';
 
 
 
 const routes: Routes = [
 
-  { path: '', component: InicioComponent },
   { path: 'cursos', component: CursosComponent },
   { path: 'ensenia', component: EnseniaComponent },
   {path: 'funcionamiento', component: FuncionamientoComponent},
-  {path: 'login',component: LoginComponent},
+  {path: 'login',component: LoginComponent,canActivate:[LoginGuard]},
   {path: 'registro', component:RegistroComponent},
   {path: 'cursos/:id', component:CursoDetalleComponent },
   {path: 'misdatos',component:MisdatosComponent,canActivate:[authGuard]},
-  {path: 'misdatos/editar', component: EditarusuarioComponent,canActivate:[authGuard]},
-
-
+  {path: 'misdatos/editar', component: EditUserComponent,canActivate:[authGuard]},
+  { path: '', component: InicioComponent },
 ];
 
 @NgModule({

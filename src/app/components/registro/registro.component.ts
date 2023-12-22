@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlumnosdataService } from 'src/app/services/alumnosdata.service';
+import { StudentdataService } from 'src/app/services/alumnosdata.service';
 import { NotifierService } from 'angular-notifier';
 import { DialogService } from 'src/app/services/dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component.js';
@@ -13,13 +13,13 @@ import { EMPTY, switchMap } from 'rxjs';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent {
-  alumno: any = {};
+  student: any = {};
   private readonly notifier: NotifierService;
   private dialogRef: MatDialogRef<SuccessDialogComponent> | undefined;
   private dialogRef1: MatDialogRef<ErrorAvisoComponent> | undefined;
 
   constructor(
-    private alumnosService: AlumnosdataService,
+    private studentService: StudentdataService,
     private router: Router,
     notifier: NotifierService,
     private dialogService: DialogService,
@@ -27,27 +27,27 @@ export class RegistroComponent {
     this.notifier = notifier;
   }
 
-  crearAlumno() {
-    this.alumnosService.checkEmailExists(this.alumno.email).pipe(
+  createStudent() {
+    this.studentService.checkEmailExists(this.student.email).pipe(
       switchMap((response) => {
         if (response && response.exists) {
           this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
           return EMPTY;
         } else {
-          return this.alumnosService.addAlumno(this.alumno);
+          return this.studentService.addStudent(this.student);
         }
       })
-    ).subscribe(
-      (response) => {
+    ).subscribe({
+      next: (response) => {
         if (response) {
-          this.alumno = {}; // Clear form fields
+          this.student = {}; 
           this.dialogRef = this.dialogService.openSuccessDialog('Registro exitoso');
           this.dialogRef.afterClosed().subscribe(() => {
             this.router.navigate(['/login']);
           });
         }
       },
-      (error) => {
+      error: (error) => {
         if (error && error.error && error.error.message === 'El email ya está registrado') {
           this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
         } else {
@@ -58,5 +58,5 @@ export class RegistroComponent {
         });
         console.error('Error al crear el alumno', error);
       }
-    );
+  });
   }}

@@ -13,5 +13,4 @@ export class SpinnerService {
     this.isLoading$.next(false);
   }
 
-  constructor() { }
 }

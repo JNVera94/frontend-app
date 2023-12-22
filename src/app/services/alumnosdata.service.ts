@@ -6,43 +6,41 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AlumnosdataService {
+export class StudentdataService {
   private apiUrl = environment.apiUrl + '/alumnos';
 
-  alumnoData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  alumnoDataSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  observableAlumnoData= this.alumnoDataSubject.asObservable();
+  studentData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  studentDataSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  observableStudentData= this.studentDataSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  addAlumno(alumnoData: any): Observable<any> {
-    return this.http.post(this.apiUrl, alumnoData);
+  addStudent(studentData: any): Observable<any> {
+    return this.http.post(this.apiUrl, studentData);
   }
 
   checkEmailExists(email: string): Observable<any> {
     const params = new HttpParams().set('email', email);
-    console.log(params)
     return this.http.get(this.apiUrl, { params });
   }
 
-  enviarAlumno(alumnoData: any){
-    this.alumnoDataSubject.next(alumnoData)
+  sendStudent(studentData: any){
+    this.studentDataSubject.next(studentData)
   }
 
-  updateAlumnoData(data: any): void {
-    console.log('actualizando data:',data);
-    this.alumnoData.next(data);
+  updateStudentData(data: any): void {
+    this.studentData.next(data);
   }
 
-  deleteAlumno(alumnoId: string): Observable<any> {
-    const url = `${this.apiUrl}/${alumnoId}`; 
+  deleteStudent(student_id: string): Observable<any> {
+    const url = `${this.apiUrl}/${student_id}`; 
     return this.http.delete(url);
   }
 
-  updateAlumno(alumnoId: string,alumno: any):Observable<any>{
+  updateStudent(student_id: string,student: any):Observable<any>{
     
-    const url=`${this.apiUrl}/${alumnoId}`; 
-    return this.http.patch(url, alumno);
+    const url=`${this.apiUrl}/${student_id}`; 
+    return this.http.patch(url, student);
   }
 
 }

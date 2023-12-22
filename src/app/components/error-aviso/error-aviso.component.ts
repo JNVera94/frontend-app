@@ -18,7 +18,6 @@ export class ErrorAvisoComponent {
   closeDialog() {
     
     this.dialogRef.close();
-    console.log(this.data.message)
     this.onClose.emit();
 
   }

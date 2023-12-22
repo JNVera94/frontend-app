@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 import { UserdataService } from './userdata.service';
-import { AlumnosdataService } from './alumnosdata.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
-  constructor(private tokenStorageService: TokenStorageService, private alumnosDataService: AlumnosdataService) {
+  constructor(private tokenStorageService: TokenStorageService) {
     this.checkToken();
   }
 

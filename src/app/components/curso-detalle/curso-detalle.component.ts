@@ -1,16 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MateriadataService, MateriaData } from 'src/app/services/materiadata.service';
+import { CoursedataService, CourseData } from 'src/app/services/materiadata.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { AlumnosdataService, } from 'src/app/services/alumnosdata.service';
-import { InscripcionDataService, InscripcionData } from 'src/app/services/inscripciondata.service';
+import { StudentdataService } from 'src/app/services/alumnosdata.service';
+import { InscriptionDataService } from 'src/app/services/inscripciondata.service';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { DialogService } from 'src/app/services/dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component.js';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
-import { CookieService } from 'ngx-cookie-service';
+
+
 
 @Component({
   selector: 'app-curso-detalle',
@@ -19,10 +20,10 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class CursoDetalleComponent implements OnInit {
   isLoggedIn: boolean = false;
-  cursoId!: string;
-  AlumnoId!: string;
-  curso!: MateriaData;
-  alumnoData!: any;
+  course_id!: string;
+  student_Id!: string;
+  course!: CourseData;
+  student_data!: any;
   private readonly notifier: NotifierService;
   private dialogRef: MatDialogRef<SuccessDialogComponent> | undefined;
   private dialogRef1: MatDialogRef<ErrorAvisoComponent> | undefined;
@@ -30,80 +31,73 @@ export class CursoDetalleComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private route: ActivatedRoute,
-    private materiaService: MateriadataService,
-    private alumnosDataService: AlumnosdataService,
-    private inscripciondataService: InscripcionDataService,
+    private courseService: CoursedataService,
+    private studentDataService: StudentdataService,
+    private inscriptiondataService: InscriptionDataService,
     private router: Router,
     notifier: NotifierService,
-    private dialogService: DialogService,
-    private cookiesServices: CookieService) {
+    private dialogService: DialogService) {
     this.notifier = notifier;
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.cursoId = params['id'];
-      const storedAlumnoData = localStorage.getItem('alumnoData');
-      this.alumnoData = storedAlumnoData ? JSON.parse(storedAlumnoData) : null;
-      this.obtenerDetalleCurso();
+      this.course_id = params['id'];
+      const storedStudentData = localStorage.getItem('studentData');
+      this.student_data = storedStudentData ? JSON.parse(storedStudentData) : null;
+      this.fetchCourseDetails();
 
     });
   }
 
-  obtenerDetalleCurso(): void {
-    this.materiaService.getMateriaPorId(this.cursoId).subscribe(
-      curso => {
-        this.curso = curso.data;
+  fetchCourseDetails(): void {
+    this.courseService.getCourseById(this.course_id).subscribe({
+      next: course => {
+        this.course = course.data;
       },
-      error => {
-        /*console.error('Error al obtener el curso:', error);*/
+      error: error => {
         this.dialogRef1 = this.dialogService.openFailureDialog('Error al cargar los datos, intente nuevamente');
         this.dialogRef1.afterClosed().subscribe(() => {
           this.router.navigate(['/cursos']);
         });
-
-        return;
-      }
-    );
-  }
-  inscribirse(): void {
-    this.authService.isLoggedIn.subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
-
-      if (!this.isLoggedIn) {
-        this.dialogRef1 = this.dialogService.openFailureDialog('Inicie sesion para continuar');
-        this.router.navigate(['/login'])
-        return;
       }
     });
-
-    this.AlumnoId = this.alumnoData.data.id;
-    const fechaHoraInscripcion = new Date().toISOString();
-
-    this.inscripciondataService.getInscripcionesByAlumnoId(this.AlumnoId).subscribe((inscripciones) => {
-      for (const inscripcion of inscripciones.data) {
-        if (this.cursoId === inscripcion.materia) {
-          this.dialogRef1 = this.dialogService.openFailureDialog('Ya se encuentra inscripto');
+  }
+  inscribe(): void {
+    this.authService.isLoggedIn.subscribe({
+      next: (loggedIn) => {
+        this.isLoggedIn = loggedIn;
+        if (!this.isLoggedIn) {
+          this.dialogRef1 = this.dialogService.openFailureDialog('Inicie sesión para continuar');
+          this.router.navigate(['/login']);
           return;
         }
       }
-
-      this.inscripciondataService.addInscripcion(this.AlumnoId, this.cursoId, fechaHoraInscripcion)
-        .subscribe(
-          response => {
+    });
+  
+    this.student_Id = this.student_data.data.id;
+    const inscription_date = new Date().toISOString();
+  
+    this.inscriptiondataService.getInscriptionByStudentId(this.student_Id).subscribe({
+      next: (inscriptions) => {
+        for (const inscription of inscriptions.data) {
+          if (this.course_id === inscription.course) {
+            this.dialogRef1 = this.dialogService.openFailureDialog('Ya se encuentra inscripto');
+            return;
+          }
+        }
+  
+        this.inscriptiondataService.addInscription(this.student_Id, this.course_id, inscription_date).subscribe({
+          next: response => {
             this.dialogRef = this.dialogService.openSuccessDialog('Inscripción registrada');
             this.dialogRef.afterClosed().subscribe(() => {
               this.router.navigate(['/cursos']);
             });
           },
-          error => {
+          error: error => {
             this.dialogRef1 = this.dialogService.openFailureDialog('Error al realizar la inscripción, intente nuevamente');
-            console.error('Error al realizar la inscripción:', error);
           }
-        );
-    }, error => {
-      this.dialogRef1 = this.dialogService.openFailureDialog('Error al realizar la inscripcion, intente nuevamente');
-      console.error('Error al obtener las inscripciones:', error);
+        });
+      },
     });
-  }
-}
+  }}
