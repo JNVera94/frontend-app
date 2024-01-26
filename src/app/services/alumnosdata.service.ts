@@ -20,8 +20,8 @@ export class StudentdataService {
   }
 
   checkEmailExists(email: string): Observable<any> {
-    const params = new HttpParams().set('email', email);
-    return this.http.get(this.apiUrl, { params });
+    const url = `${this.apiUrl}/${email}`;
+    return this.http.get(url);
   }
 
   sendStudent(studentData: any){
@@ -43,4 +43,13 @@ export class StudentdataService {
     return this.http.patch(url, student);
   }
 
+  
+  getStudentData(email: string): Observable<any> {
+    const url=`${this.apiUrl}/email/${email}`;
+      return this.http.get(url);
+  }
+  getStudentDataId(Alumnoid: string): Observable<any> {
+    const url=`${this.apiUrl}/${Alumnoid}`;
+    return this.http.get(url);
+  }
 }

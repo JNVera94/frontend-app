@@ -35,17 +35,9 @@
           </div>
         </div>
 
-        <!-- Email -->
+
         <div class="contform1">
-          <div class="form-elemento">
-            <h3>Email</h3>
-            <input type="email" class="form-control" name="email" id="email" required [(ngModel)]="student.email"
-              #email="ngModel">
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
-              <div *ngIf="email.errors?.['required']">El email es requerido.</div>
-              <div *ngIf="email.errors?.['email']">El email no es válido.</div>
-            </div>
-          </div>
+
 
           <!-- Password -->
           <div class="form-elemento">

@@ -40,7 +40,7 @@ export class LoginComponent {
     this.userService.login(this.user).subscribe({
       next: (response) => {
         this.authService.login(response.token);
-        this.userService.getStudentData(this.user.email).subscribe({
+        this.studentDataService.getStudentData(this.user.email).subscribe({
           next: (studentData) => {
             this.loggedIn_student = studentData
             this.studentDataService.updateStudentData(studentData);

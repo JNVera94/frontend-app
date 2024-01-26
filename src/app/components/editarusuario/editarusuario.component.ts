@@ -47,31 +47,33 @@ export class EditUserComponent implements OnInit {
   }
 
   editStudent() {
-
     this.studentService.updateStudent(this.studentId, this.student).subscribe({
       next: (response) => {
         this.dialogRef = this.dialogService.openSuccessDialog('Perfil Editado');
         this.dialogRef.afterClosed().subscribe(() => {
-          this.userdata.getStudentDataId(this.studentId).subscribe({
+          console.log(this.studentId, 'studentId')
+          this.studentService.getStudentDataId(this.studentId).subscribe({
             next: (studentData) => {
-              this.student = studentData
+              this.student = studentData.data;
               this.studentService.sendStudent(studentData);
-              localStorage.setItem('studentData', JSON.stringify(this.student))
+              console.log(this.student, 'student');
+              console.log(studentData.data, 'studentData.data');
+              console.log(studentData, 'studentData');
+              console.log(studentData, 'studentData pelado');
+              localStorage.setItem('studentData', JSON.stringify(studentData));
               this.router.navigate(['/misdatos']);
             },
             error: (error) => {
               console.error('Error al obtener datos del alumno', error);
             }
           });
-        })
+        });
+      },
+      error: (error: any) => {
+        this.dialogRef1 = this.dialogService.openFailureDialog('Verifique sus credenciales');
+        this.dialogRef1.afterClosed().subscribe(() => {
+          location.reload();
+        });
       }
     });
-    (error: any) => {
-      this.dialogRef1 = this.dialogService.openFailureDialog('Verifique sus credenciales');
-      this.dialogRef1.afterClosed().subscribe(() => {
-        location.reload();
-      });
-    }
-  }
-}
-
+  }}

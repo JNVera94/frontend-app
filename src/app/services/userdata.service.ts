@@ -25,13 +25,5 @@ export class UserdataService {
   }
 
 
-  getStudentData(email: string): Observable<any> {
-    const url = environment.apiUrl +`/alumnos/email/${email}`;
-      return this.http.get(url);
-  }
-  getStudentDataId(Alumnoid: string): Observable<any> {
-    const url = environment.apiUrl +`/alumnos/${Alumnoid}`;
-    return this.http.get(url);
-  }
 
 }

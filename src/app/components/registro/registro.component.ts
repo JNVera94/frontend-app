@@ -6,7 +6,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component.js';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
-import { EMPTY, switchMap } from 'rxjs';
+import { EMPTY, switchMap, throwError } from 'rxjs';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -28,35 +28,30 @@ export class RegistroComponent {
   }
 
   createStudent() {
-    this.studentService.checkEmailExists(this.student.email).pipe(
-      switchMap((response) => {
-        if (response && response.exists) {
-          this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
-          return EMPTY;
-        } else {
-          return this.studentService.addStudent(this.student);
-        }
-      })
-    ).subscribe({
+    this.studentService.checkEmailExists(this.student.email).subscribe({
       next: (response) => {
-        if (response) {
-          this.student = {}; 
-          this.dialogRef = this.dialogService.openSuccessDialog('Registro exitoso');
-          this.dialogRef.afterClosed().subscribe(() => {
-            this.router.navigate(['/login']);
+        if (response.data) {
+          this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
+          this.dialogRef1.afterClosed().subscribe(() => {
+            location.reload();
+          });
+        } else {
+          this.studentService.addStudent(this.student).subscribe(() => {
+            this.student = {};
+            this.dialogRef = this.dialogService.openSuccessDialog('Registro exitoso');
+            this.dialogRef.afterClosed().subscribe(() => {
+              this.router.navigate(['/login']);
+            });
           });
         }
       },
       error: (error) => {
-        if (error && error.error && error.error.message === 'El email ya está registrado') {
-          this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
-        } else {
-          this.dialogRef1 = this.dialogService.openFailureDialog('Verifique sus credenciales');
-        }
+        this.dialogRef1 = this.dialogService.openFailureDialog('Error al registrarse, intente nuevamente');
         this.dialogRef1.afterClosed().subscribe(() => {
           location.reload();
         });
-        console.error('Error al crear el alumno', error);
       }
-  });
-  }}
+    });
+  }
+
+}
