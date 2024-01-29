@@ -7,6 +7,7 @@ import { SuccessDialogComponent } from '../success-dialog/success-dialog.compone
 import { MatDialogRef } from '@angular/material/dialog';
 import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
 import { EMPTY, switchMap, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -27,8 +28,8 @@ export class RegistroComponent {
     this.notifier = notifier;
   }
 
-  createStudent() {
-    this.studentService.checkEmailExists(this.student.email).subscribe({
+  /*createStudent() {
+    this.studentService.getStudentData(this.student.email).subscribe({
       next: (response) => {
         if (response.data) {
           this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
@@ -52,6 +53,34 @@ export class RegistroComponent {
         });
       }
     });
-  }
+  }*/
 
-}
+  createStudent() {
+    this.studentService.addStudent(this.student).subscribe({
+      next: (data: any) => {
+        if (data !== null) {
+          this.student = {};
+          this.dialogRef = this.dialogService.openSuccessDialog('Registro exitoso');
+          this.dialogRef.afterClosed().subscribe(() => {
+            this.router.navigate(['/login']);
+          });
+        }
+      },
+      error: (error: any) => {
+        if (error instanceof HttpErrorResponse) {
+          const status = error.status;
+  
+          if (status === 400) {
+            this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
+          } else {
+            this.dialogRef1 = this.dialogService.openFailureDialog('Error al registrarse, intente nuevamente');
+          }
+          this.dialogRef1.afterClosed().subscribe(() => {
+            location.reload();
+          });
+        } else {
+          console.log('Error no es una instancia de HttpErrorResponse');
+        }
+      }
+    });
+  }}

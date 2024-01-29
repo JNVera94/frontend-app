@@ -33,13 +33,18 @@ export class RequestInterceptor implements HttpInterceptor {
         }
       });
     }
+
     return next.handle(clonedRequest).pipe(
       catchError((error: any) => {
-
         if (error instanceof HttpErrorResponse) {
           console.error('Error de solicitud:', error);
+
+          const status = error.status;
+          const message = error.message;
+          const errorResponse = error.error; 
         }
-        return throwError(() => new Error(error));
+
+        return throwError(() => error);
       }),
       finalize(() => this.spinnerService.hide())
     );

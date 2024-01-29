@@ -99,5 +99,8 @@ export class CursoDetalleComponent implements OnInit {
           }
         });
       },
+      error: error => {
+        this.dialogRef1 = this.dialogService.openFailureDialog('Error al realizar la inscripción, intente nuevamente');
+      }
     });
   }}

@@ -20,7 +20,7 @@ export class StudentdataService {
   }
 
   checkEmailExists(email: string): Observable<any> {
-    const url = `${this.apiUrl}/${email}`;
+    const url = `${this.apiUrl}/email/${email}`;
     return this.http.get(url);
   }
 
@@ -45,7 +45,7 @@ export class StudentdataService {
 
   
   getStudentData(email: string): Observable<any> {
-    const url=`${this.apiUrl}/email/${email}`;
+    const url=`${this.apiUrl}/${email}`;
       return this.http.get(url);
   }
   getStudentDataId(Alumnoid: string): Observable<any> {

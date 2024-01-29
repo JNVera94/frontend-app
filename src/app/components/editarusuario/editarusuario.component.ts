@@ -51,15 +51,10 @@ export class EditUserComponent implements OnInit {
       next: (response) => {
         this.dialogRef = this.dialogService.openSuccessDialog('Perfil Editado');
         this.dialogRef.afterClosed().subscribe(() => {
-          console.log(this.studentId, 'studentId')
-          this.studentService.getStudentDataId(this.studentId).subscribe({
+          this.studentService.getStudentData(this.student.email).subscribe({
             next: (studentData) => {
               this.student = studentData.data;
               this.studentService.sendStudent(studentData);
-              console.log(this.student, 'student');
-              console.log(studentData.data, 'studentData.data');
-              console.log(studentData, 'studentData');
-              console.log(studentData, 'studentData pelado');
               localStorage.setItem('studentData', JSON.stringify(studentData));
               this.router.navigate(['/misdatos']);
             },
