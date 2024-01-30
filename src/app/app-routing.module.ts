@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MisdatosComponent } from './components/misdatos/misdatos.component';
 import { EditUserComponent } from './components/editarusuario/editarusuario.component';
 import { LoginGuard } from './components/shared/login.guard';
+import { AdminCursosComponent } from './components/admin-cursos/admin-cursos.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'cursos/:id', component:CursoDetalleComponent },
   {path: 'misdatos',component:MisdatosComponent,canActivate:[authGuard]},
   {path: 'misdatos/editar', component: EditUserComponent,canActivate:[authGuard]},
+  {path: 'admin-cursos', component: AdminCursosComponent},
   { path: '', component: InicioComponent },
 ];
 

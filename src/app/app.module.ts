@@ -43,6 +43,7 @@ import { RequestInterceptor } from './components/shared/request.interceptor';
 
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -61,6 +62,7 @@ import { RequestInterceptor } from './components/shared/request.interceptor';
         EliminarDialogComponent,
         ErrorAvisoComponent,
         EditUserComponent,
+
 
     ],
     providers: [importProvidersFrom(HttpClientModule),
