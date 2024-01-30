@@ -43,6 +43,7 @@ export class LoginComponent {
         this.studentDataService.getStudentData(this.user.email).subscribe({
           next: (studentData) => {
             this.loggedIn_student = studentData
+            this.loggedIn_student.role = response.userRole;
             this.studentDataService.updateStudentData(studentData);
           },
           error: (error) => {

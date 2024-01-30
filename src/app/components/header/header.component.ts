@@ -28,15 +28,16 @@ export class HeaderComponent implements OnInit {
           if (student && student.data) {
             this.studentData = student;
             console.log(this.studentData);
-            console.log(this.studentData.data.role,'thisstudendata.role');
-            if (this.studentData.data.role === 'user') {
+            console.log(this.studentData.role,'thisstudendata.role');
+            if (this.studentData.role === 'admin') {
               this.isAdmin = true; 
             }
+            console.log(this.isAdmin,'thisadmin')
           }
         });
       }
     });
-    console.log(this.isAdmin,'thisadmin')
+
   }
 
   logout() {
