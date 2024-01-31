@@ -25,6 +25,7 @@ import { Dialog } from '@angular/cdk/dialog/index';
 
 import { CookieService } from 'ngx-cookie-service';
 
+import { AdminCursosComponent } from './components/admin-cursos/admin-cursos.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -62,6 +63,7 @@ import { RequestInterceptor } from './components/shared/request.interceptor';
         EliminarDialogComponent,
         ErrorAvisoComponent,
         EditUserComponent,
+        AdminCursosComponent,
 
 
     ],

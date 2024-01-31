@@ -51,8 +51,8 @@
                   </button>
                   <ul class="dropdown-menu">
                       <li><a class="dropdown-item" routerLink="/misdatos"><i class="bi bi-person-gear"></i>Mis datos</a></li>
-                      <li *ngIf="isAdmin"><a class="dropdown-item" routerLink="/admin-cursos"><i class="bi bi-person-x"></i>Cursos</a></li>
-                      <li *ngIf="isAdmin"><a class="dropdown-item" routerLink="/misdatos"><i class="bi bi-person-x"></i>Consultas</a></li>
+                      <li *ngIf="userDataService.isAdmin$ | async"><a class="dropdown-item" routerLink="/admin-cursos"><i class="bi bi-person-x"></i>Cursos</a></li>
+                      <li *ngIf="userDataService.isAdmin$ | async"><a class="dropdown-item" routerLink="/misdatos"><i class="bi bi-person-x"></i>Consultas</a></li>
                       <li><a class="dropdown-item" (click)="logout()"><i class="bi bi-person-x"></i>Cerrar Sesión</a></li>
                   </ul>
                 </div>

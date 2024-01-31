@@ -8,7 +8,6 @@ import { DialogService } from 'src/app/services/dialog.service';
 import { Router } from '@angular/router';
 import { StudentdataService } from 'src/app/services/alumnosdata.service';
 import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
-import { FormsModule } from '@angular/forms';
 
 
 

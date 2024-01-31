@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StudentdataService } from 'src/app/services/alumnosdata.service';
+import { UserdataService } from 'src/app/services/userdata.service'; 
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private studentService: StudentdataService
+    private studentService: StudentdataService,
+    public userDataService: UserdataService 
   ) {}
 
   ngOnInit() {
@@ -28,19 +30,22 @@ export class HeaderComponent implements OnInit {
           if (student && student.data) {
             this.studentData = student;
             console.log(this.studentData);
-            console.log(this.studentData.role,'thisstudendata.role');
+            console.log(this.studentData.role, 'thisstudendata.role');
             if (this.studentData.role === 'admin') {
-              this.isAdmin = true; 
+              this.userDataService.setAdmin(true); 
             }
-            console.log(this.isAdmin,'thisadmin')
+            console.log(this.userDataService.isAdmin, 'this.isAdmin from service');
           }
         });
       }
     });
-
+    this.userDataService.isAdmin$.subscribe(isAdmin => {
+      this.isAdmin = isAdmin;
+    });
   }
 
   logout() {
+    this.userDataService.setAdmin(false); 
     this.authService.logout();
     this.router.navigate(['/']);
   }
