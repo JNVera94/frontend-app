@@ -35,14 +35,13 @@
           </ul>
           <!--Login / Sign up or User info-->
           <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
-            [style.marginRight]="isLoggedIn ? '7%' : '0'">
+            [style.marginRight]="isLoggedIn ? '8%' : '0'">
             <div *ngIf="!isLoggedIn">
               <a href="/login" class="text-black">Inicia Sesión</a>
               <a href="/registro" class="text-white text-decoration-none px-3 py-1 rounded-4"
                 style="background-color:#321da5">Registrate</a>
             </div>
-            <div *ngIf="isLoggedIn">
-              <div class="logdata">
+            <div *ngIf="isLoggedIn" class="logdata">
                 <p *ngIf="studentData" class="welcome-message">{{ 'Bienvenido, ' + studentData.data.name }}</p>
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -56,7 +55,6 @@
                       <li><a class="dropdown-item" (click)="logout()"><i class="bi bi-person-x"></i>Cerrar Sesión</a></li>
                   </ul>
                 </div>
-              </div>
             </div>
           </div>
         </div>
