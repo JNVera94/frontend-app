@@ -26,7 +26,6 @@ export class CoursedataService {
 
   getCourse(courseData: CourseData): Observable<any> {
 
-
     const params = new HttpParams()
       .set('name', courseData.name)
       .set('totalhours', courseData.totalhours.toString())
@@ -34,7 +33,6 @@ export class CoursedataService {
       .set('level', courseData.level.toString())
       .set('description', courseData.desc)
       .set('icon', courseData.icon);
-
 
     return this.http.get(this.apiUrl, { params });
   }
@@ -49,6 +47,7 @@ export class CoursedataService {
     );
   }
 
+
   getAllCourses(): Observable<any> {
     return this.http.get(this.apiUrl).pipe(
       catchError((error: any) => {
@@ -56,6 +55,15 @@ export class CoursedataService {
       })
 
     )
+  }
+
+  deleteCourseById(id:string):Observable<any>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url).pipe(
+      catchError((error: any) => {
+        return throwError(() => new Error(error));
+      })
+    );
   }
 
 }

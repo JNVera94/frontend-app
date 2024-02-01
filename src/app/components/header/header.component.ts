@@ -30,11 +30,9 @@ export class HeaderComponent implements OnInit {
           if (student && student.data) {
             this.studentData = student;
             console.log(this.studentData);
-            console.log(this.studentData.role, 'thisstudendata.role');
             if (this.studentData.role === 'admin') {
               this.userDataService.setAdmin(true); 
             }
-            console.log(this.userDataService.isAdmin, 'this.isAdmin from service');
           }
         });
       }
