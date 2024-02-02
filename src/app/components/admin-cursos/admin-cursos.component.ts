@@ -69,4 +69,9 @@ export class AdminCursosComponent {
   editCurso() {
     this.router.navigate(['/']);
   }
+
+
+  newCourse() {
+    this.router.navigate(['/alta-curso']);
+  }
 }

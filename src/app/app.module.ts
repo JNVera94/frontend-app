@@ -40,6 +40,7 @@ import { ErrorAvisoComponent } from './components/error-aviso/error-aviso.compon
 import { EditUserComponent } from './components/editarusuario/editarusuario.component';
 import { ProgressSpinner } from "./components/shared/spinner/spinner.component";
 import { RequestInterceptor } from './components/shared/request.interceptor';
+import { AltaCursoComponent } from './components/alta-curso/alta-curso.component';
 
 
 
@@ -64,6 +65,7 @@ import { RequestInterceptor } from './components/shared/request.interceptor';
         ErrorAvisoComponent,
         EditUserComponent,
         AdminCursosComponent,
+        AltaCursoComponent,
 
 
     ],

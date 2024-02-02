@@ -15,6 +15,7 @@ import { MisdatosComponent } from './components/misdatos/misdatos.component';
 import { EditUserComponent } from './components/editarusuario/editarusuario.component';
 import { LoginGuard } from './components/shared/login.guard';
 import { AdminCursosComponent } from './components/admin-cursos/admin-cursos.component';
+import { AltaCursoComponent } from './components/alta-curso/alta-curso.component';
 
 
 
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'misdatos',component:MisdatosComponent,canActivate:[authGuard]},
   {path: 'misdatos/editar', component: EditUserComponent,canActivate:[authGuard]},
   {path: 'admin-cursos', component: AdminCursosComponent},
-  { path: '', component: InicioComponent },
+  {path: 'alta-curso', component: AltaCursoComponent},
+  {path: '', component: InicioComponent },
 ];
 
 @NgModule({
