@@ -41,7 +41,7 @@ import { EditUserComponent } from './components/editarusuario/editarusuario.comp
 import { ProgressSpinner } from "./components/shared/spinner/spinner.component";
 import { RequestInterceptor } from './components/shared/request.interceptor';
 import { AltaCursoComponent } from './components/alta-curso/alta-curso.component';
-
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -87,7 +87,8 @@ import { AltaCursoComponent } from './components/alta-curso/alta-curso.component
         NotifierModule,
         ReactiveFormsModule,
         MatProgressSpinnerModule,
-        ProgressSpinner
+        ProgressSpinner,
+        MatSelectModule
     ]
 })
 export class AppModule { }

@@ -8,6 +8,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
 import { EMPTY, switchMap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CoursedataService } from 'src/app/services/materiadata.service';
+import { MatSelectModule } from '@angular/material/select/';
+import { MatFormField } from '@angular/material/form-field/index'
 
 @Component({
   selector: 'app-alta-curso',
@@ -15,13 +18,13 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./alta-curso.component.css']
 })
 export class AltaCursoComponent {
-  student: any = {};
+  course: any = {};
   private readonly notifier: NotifierService;
   private dialogRef: MatDialogRef<SuccessDialogComponent> | undefined;
   private dialogRef1: MatDialogRef<ErrorAvisoComponent> | undefined;
 
   constructor(
-    private studentService: StudentdataService,
+    private courseService: CoursedataService,
     private router: Router,
     notifier: NotifierService,
     private dialogService: DialogService,
@@ -30,15 +33,13 @@ export class AltaCursoComponent {
   }
 
   createCourse() {
-    this.studentService.addStudent(this.student).subscribe({
+    this.courseService.addCourse(this.course).subscribe({
       next: (data: any) => {
-        if (data !== null) {
-          this.student = {};
-          this.dialogRef = this.dialogService.openSuccessDialog('Registro exitoso');
+          this.course = {};
+          this.dialogRef = this.dialogService.openSuccessDialog('Curso registrado');
           this.dialogRef.afterClosed().subscribe(() => {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/admin-cursos']);
           });
-        }
       },
       error: (error: any) => {
         if (error instanceof HttpErrorResponse) {
@@ -52,18 +53,16 @@ export class AltaCursoComponent {
           this.dialogRef1.afterClosed().subscribe(() => {
             location.reload();
           });
-        } else {
+        } 
+        else {
           console.log('Error no es una instancia de HttpErrorResponse');
         }
       }
     });
   }
 
-
-
-
-
-
-
+  setDifficulty(difficulty: string): void {
+    this.course.level = difficulty;
+  }
 
 }

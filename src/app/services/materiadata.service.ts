@@ -57,6 +57,10 @@ export class CoursedataService {
     )
   }
 
+  addCourse(courseData: any): Observable<any> {
+    return this.http.post(this.apiUrl, courseData);
+  }
+
   deleteCourseById(id:string):Observable<any>{
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url).pipe(
