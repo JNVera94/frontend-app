@@ -12,12 +12,18 @@ import { CoursedataService } from 'src/app/services/materiadata.service';
 import { MatSelectModule } from '@angular/material/select/';
 import { MatFormField } from '@angular/material/form-field/index'
 
+
+interface Icon {
+  name: string;
+  path: string;
+}
 @Component({
   selector: 'app-alta-curso',
   templateUrl: './alta-curso.component.html',
   styleUrls: ['./alta-curso.component.css']
 })
 export class AltaCursoComponent {
+  icons: Icon[] = [];
   course: any = {};
   private readonly notifier: NotifierService;
   private dialogRef: MatDialogRef<SuccessDialogComponent> | undefined;
@@ -31,6 +37,21 @@ export class AltaCursoComponent {
   ) {
     this.notifier = notifier;
   }
+
+  ngOnInit() {
+    this.loadIcons();
+  }
+
+  loadIcons() {
+    console.log('loadIcons')
+    const iconNames = ['code-square', 'file-zip', 'google','cloud-upload','folder2-open','file-lock',
+    'display','device-ssd','credit-card-2','calculator','android2',
+    'bank','broadcast-pin','clipboard2-data','database-add','diagram-3',
+    'motherboard','person-bounding-box','robot']; 
+    this.icons = iconNames.map(name => ({ name, path: `assets/cursos/${name}.svg` }));
+    console.log(this.icons);
+  }
+
 
   createCourse() {
     this.courseService.addCourse(this.course).subscribe({
@@ -63,6 +84,10 @@ export class AltaCursoComponent {
 
   setDifficulty(difficulty: string): void {
     this.course.level = difficulty;
+  }
+
+  selectIcon(selectedIcon: Icon): void {
+    this.course.icon = selectedIcon.path;
   }
 
 }

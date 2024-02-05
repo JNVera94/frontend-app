@@ -24,35 +24,51 @@
 
 
         <!-- Email -->
-          <div class="form-elemento">
-            <h3>Email</h3>
-            <input type="email" class="form-control" name="email" id="email" required [(ngModel)]="course.email"
-              #email="ngModel">
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
-              <div *ngIf="email.errors?.['required']">El email es requerido.</div>
-              <div *ngIf="email.errors?.['email']">El email no es válido.</div>
-            </div>
+        <div class="form-elemento">
+          <h3>Email</h3>
+          <input type="email" class="form-control" name="email" id="email" required [(ngModel)]="course.email"
+            #email="ngModel">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+            <div *ngIf="email.errors?.['required']">El email es requerido.</div>
+            <div *ngIf="email.errors?.['email']">El email no es válido.</div>
           </div>
+        </div>
 
-      
 
-          <div class="form-elemento">
-            <h3>Descripcion</h3>
-            <textarea class="textarea" name="desc" id="desc" cols="50" rows="10" [(ngModel)]="course.desc"
-              #desc="ngModel"></textarea>
-          </div>
 
-          <!-- Dificultad -->
-          <div class="form-elemento">
-            <mat-form-field appearance="fill">
-              <mat-label>Dificultad del curso</mat-label>
-              <mat-select [(ngModel)]="course.level" name="level">
-                <mat-option value="principiante">Nivel Principiante</mat-option>
-                <mat-option value="intermedio">Nivel Intermedio</mat-option>
-                <mat-option value="avanzado">Nivel Avanzado</mat-option>
-              </mat-select>
-            </mat-form-field>            
-          </div>
+        <div class="form-elemento">
+          <h3>Descripcion</h3>
+          <textarea class="textarea" name="desc" id="desc" cols="50" rows="10" [(ngModel)]="course.desc"
+            #desc="ngModel"></textarea>
+        </div>
+
+        <!-- Dificultad -->
+        <div class="form-elemento">
+          <mat-form-field appearance="fill">
+            <mat-label>Dificultad del curso</mat-label>
+            <mat-select [(ngModel)]="course.level" name="level">
+              <mat-option value="principiante">Nivel Principiante</mat-option>
+              <mat-option value="intermedio">Nivel Intermedio</mat-option>
+              <mat-option value="avanzado">Nivel Avanzado</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+<!-- Icono -->
+<div class="form-elemento">
+  <mat-form-field appearance="fill">
+    <mat-label>Icono del curso</mat-label>
+    <mat-select [(value)]="course.icon" name="icon" placeholder="Seleccionar icono">
+      <mat-option *ngFor="let icon of icons" [value]="icon.path">
+        <img src="{{ icon.path }}" class="img" />
+      </mat-option>
+      <!-- Utiliza mat-select-trigger para personalizar la visualización de la opción seleccionada -->
+      <mat-select-trigger>
+        <img *ngIf="course.icon" [src]="course.icon" class="img" />
+      </mat-select-trigger>
+    </mat-select>
+  </mat-form-field>
+</div>
 
 
         <button type="submit" class="form-button" id="submit" [disabled]="cursoForm.invalid">ENVIAR</button>
@@ -63,4 +79,3 @@
     </form>
   </div>
 </main>
-  
