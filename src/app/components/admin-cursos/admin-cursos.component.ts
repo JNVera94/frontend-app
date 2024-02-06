@@ -1,23 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild,AfterViewInit } from '@angular/core';
+import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import { CoursedataService } from 'src/app/services/materiadata.service';
 import { DialogService } from 'src/app/services/dialog.service';
 import { MatDialogRef } from '@angular/material/dialog/index.js';
 import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component';
 import { EliminarDialogComponent } from '../eliminar-dialog/eliminar-dialog.component';
+import { MatPaginator, MatPaginatorModule  } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-admin-cursos',
   templateUrl: './admin-cursos.component.html',
-  styleUrls: ['./admin-cursos.component.css']
+  styleUrls: ['./admin-cursos.component.css'],
+  standalone: true,
+  imports: [MatTableModule, MatPaginatorModule,NgFor],
 })
-export class AdminCursosComponent {
-
-  total_courses: any;
+export class AdminCursosComponent implements AfterViewInit {
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  total_courses: any
   courses: any;
   private dialogRef: MatDialogRef<EliminarDialogComponent> | undefined;
   private dialogRef1: MatDialogRef<ErrorAvisoComponent> | undefined;
-  
+  displayedColumns: string[] = ['name', 'level', 'totalhours', 'actions'];
 
   constructor(
     private courseService: CoursedataService,
@@ -25,12 +32,17 @@ export class AdminCursosComponent {
     private router: Router,
     private coursedataservice: CoursedataService
   ) {}
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
+  
   ngOnInit() {
     this.courseService.getAllCourses().subscribe({
       next: courses => {
-        this.total_courses = courses.data
-        this.courses = this.total_courses
+        this.total_courses = new MatTableDataSource(courses.data);
+        this.total_courses.sort = this.sort
+        this.total_courses.paginator = this.paginator
         console.log('Cursos obtenidos:', this.total_courses);
       },
       error: error => {

@@ -42,6 +42,7 @@ import { ProgressSpinner } from "./components/shared/spinner/spinner.component";
 import { RequestInterceptor } from './components/shared/request.interceptor';
 import { AltaCursoComponent } from './components/alta-curso/alta-curso.component';
 import {MatSelectModule} from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -64,7 +65,6 @@ import {MatSelectModule} from '@angular/material/select';
         EliminarDialogComponent,
         ErrorAvisoComponent,
         EditUserComponent,
-        AdminCursosComponent,
         AltaCursoComponent,
 
 
@@ -88,7 +88,10 @@ import {MatSelectModule} from '@angular/material/select';
         ReactiveFormsModule,
         MatProgressSpinnerModule,
         ProgressSpinner,
-        MatSelectModule
+        MatSelectModule,
+        MatPaginatorModule,
+        
+
     ]
 })
 export class AppModule { }
