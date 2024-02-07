@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild,AfterViewInit } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CoursedataService } from 'src/app/services/materiadata.service';
 import { DialogService } from 'src/app/services/dialog.service';
 import { MatDialogRef } from '@angular/material/dialog/index.js';
@@ -15,7 +15,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
   templateUrl: './admin-cursos.component.html',
   styleUrls: ['./admin-cursos.component.css'],
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule,NgFor],
+  imports: [MatTableModule, MatPaginatorModule,NgFor, RouterModule],
 })
 export class AdminCursosComponent implements AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
@@ -78,8 +78,8 @@ export class AdminCursosComponent implements AfterViewInit {
     });
   }
 
-  editCurso() {
-    this.router.navigate(['/alta-curso']);
+  editCurso(id: string) {
+    this.router.navigate(['/alta-curso', id]); 
   }
 
 

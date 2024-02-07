@@ -58,9 +58,21 @@ export class CoursedataService {
   }
 
   addCourse(courseData: any): Observable<any> {
-    return this.http.post(this.apiUrl, courseData);
+    return this.http.post(this.apiUrl, courseData).pipe(
+      catchError((error: any) => {
+        return throwError(() => new Error(error));
+      })
+    );
   }
 
+  updateCourse(id: string, courseData: any): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put(url, courseData).pipe(
+      catchError((error: any) => {
+        return throwError(() => new Error(error));
+      })
+    );
+  }
   deleteCourseById(id:string):Observable<any>{
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url).pipe(

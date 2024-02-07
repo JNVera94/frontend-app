@@ -26,7 +26,8 @@ export class AuthService {
 
   logout() {
     this.tokenStorageService.removeToken();
-    localStorage.removeItem('alumnoData');
+    localStorage.removeItem('isAdmin');
+    localStorage.removeItem('studentData');
     this.loggedIn.next(false);
   }
 

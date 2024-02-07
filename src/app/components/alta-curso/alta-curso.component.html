@@ -1,6 +1,7 @@
 <main>
   <div class="formulario">
-    <form (ngSubmit)="createCourse()" #cursoForm="ngForm">
+    "
+    <form #cursoForm="ngForm">
       <div class="contform1">
         <div class="form-elemento">
           <h3>Nombre</h3>
@@ -54,24 +55,26 @@
           </mat-form-field>
         </div>
 
-<!-- Icono -->
-<div class="form-elemento">
-  <mat-form-field appearance="fill">
-    <mat-label>Icono del curso</mat-label>
-    <mat-select [(value)]="course.icon" name="icon" placeholder="Seleccionar icono">
-      <mat-option *ngFor="let icon of icons" [value]="icon.path">
-        <img src="{{ icon.path }}" class="img" />
-      </mat-option>
-      <!-- Utiliza mat-select-trigger para personalizar la visualización de la opción seleccionada -->
-      <mat-select-trigger>
-        <img *ngIf="course.icon" [src]="course.icon" class="img" />
-      </mat-select-trigger>
-    </mat-select>
-  </mat-form-field>
-</div>
+        <!-- Icono -->
+        <div class="form-elemento">
+          <mat-form-field appearance="fill">
+            <mat-label>Icono del curso</mat-label>
+            <mat-select [(value)]="course.icon" name="icon" placeholder="Seleccionar icono">
+              <mat-option *ngFor="let icon of icons" [value]="icon.path">
+                <img src="{{ icon.path }}" class="img" />
+              </mat-option>
+              <!-- Utiliza mat-select-trigger para personalizar la visualización de la opción seleccionada -->
+              <mat-select-trigger>
+                <img *ngIf="course.icon" [src]="course.icon" class="img" />
+              </mat-select-trigger>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
 
-        <button type="submit" class="form-button" id="submit" [disabled]="cursoForm.invalid">ENVIAR</button>
+        <button type="button" class="form-button" id="submit" *ngIf="isEdit"
+          (click)="updateCourse(course_id, cursoForm.value)">Actualizar</button>
+        <button type="submit" class="form-button" id="submit" *ngIf="!isEdit" (click)="createCourse()">Enviar</button>
         <div class="separator"></div>
         <div class="ud-text-sm">
         </div>

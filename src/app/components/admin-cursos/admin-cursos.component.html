@@ -27,9 +27,11 @@
           <button class="btnbasura" aria-label="Eliminar" (click)="deleteInsdialog(course.id)">
             <i class="bi bi-trash"></i>
           </button>
-          <button class="btneditar" aria-label="Editar" (click)="editCurso()">
-            <i class="bi bi-pencil"></i>
-          </button>
+            <a [routerLink]="'/alta-curso/' + course.id">
+            <button class="btneditar" aria-label="Editar">
+              <i class="bi bi-pencil"></i>
+            </button>
+          </a>
         </td>
       </ng-container>
 

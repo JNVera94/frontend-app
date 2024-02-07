@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { StudentdataService } from 'src/app/services/alumnosdata.service';
 import { NotifierService } from 'angular-notifier';
 import { DialogService } from 'src/app/services/dialog.service';
@@ -25,21 +25,30 @@ interface Icon {
 export class AltaCursoComponent {
   icons: Icon[] = [];
   course: any = {};
+  course_id!: string;
+  isEdit: boolean = false;
   private readonly notifier: NotifierService;
   private dialogRef: MatDialogRef<SuccessDialogComponent> | undefined;
   private dialogRef1: MatDialogRef<ErrorAvisoComponent> | undefined;
+
 
   constructor(
     private courseService: CoursedataService,
     private router: Router,
     notifier: NotifierService,
     private dialogService: DialogService,
+    private route: ActivatedRoute,
   ) {
     this.notifier = notifier;
   }
 
   ngOnInit() {
     this.loadIcons();
+    this.route.params.subscribe(params => {
+      this.course_id = params['id'];
+      if (this.course_id) {
+        this.searchCourse(this.course_id);
+      }})
   }
 
   loadIcons() {
@@ -53,6 +62,38 @@ export class AltaCursoComponent {
   }
 
 
+  searchCourse(course_id: string) {
+    this.courseService.getCourseById(course_id).subscribe({
+      next: (courseData) => {
+        this.course = courseData.data;
+        this.isEdit = true;
+        console.log(this.course, 'course');
+      },
+      error: (error) => {
+        this.dialogRef1 = this.dialogService.openFailureDialog('Error al cargar el curso');
+        this.dialogRef1.afterClosed().subscribe(() => {
+          this.router.navigate(['/admin-cursos']);
+        });
+      }
+    });
+  }
+
+  updateCourse(course_id: string, course: any) {
+    this.courseService.updateCourse(this.course_id, this.course).subscribe({
+    next: (response) => {
+      this.dialogRef = this.dialogService.openSuccessDialog('Curso actualizado');
+      this.dialogRef.afterClosed().subscribe(() => {
+        this.router.navigate(['/admin-cursos']);
+      });
+    },
+    error: (error) => {
+      this.dialogRef1 = this.dialogService.openFailureDialog('Error al actualizar el curso');
+      this.dialogRef1.afterClosed().subscribe(() => {
+        this.router.navigate(['/admin-cursos']);
+      });
+    }
+  });  
+  }
   createCourse() {
     this.courseService.addCourse(this.course).subscribe({
       next: (data: any) => {

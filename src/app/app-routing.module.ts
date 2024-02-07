@@ -31,6 +31,7 @@ const routes: Routes = [
   {path: 'misdatos/editar', component: EditUserComponent,canActivate:[authGuard]},
   {path: 'admin-cursos', component: AdminCursosComponent},
   {path: 'alta-curso', component: AltaCursoComponent},
+  {path: 'alta-curso/:id', component: AltaCursoComponent},
   {path: '', component: InicioComponent },
 ];
 
