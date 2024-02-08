@@ -16,6 +16,7 @@ import { EditUserComponent } from './components/editarusuario/editarusuario.comp
 import { LoginGuard } from './components/shared/login.guard';
 import { AdminCursosComponent } from './components/admin-cursos/admin-cursos.component';
 import { AltaCursoComponent } from './components/alta-curso/alta-curso.component';
+import { isAdminGuard } from './components/shared/is-admin.guard';
 
 
 
@@ -25,13 +26,13 @@ const routes: Routes = [
   { path: 'ensenia', component: EnseniaComponent },
   {path: 'funcionamiento', component: FuncionamientoComponent},
   {path: 'login',component: LoginComponent,canActivate:[LoginGuard]},
-  {path: 'registro', component:RegistroComponent},
+  {path: 'registro', component:RegistroComponent,canActivate:[LoginGuard]},
   {path: 'cursos/:id', component:CursoDetalleComponent },
   {path: 'misdatos',component:MisdatosComponent,canActivate:[authGuard]},
   {path: 'misdatos/editar', component: EditUserComponent,canActivate:[authGuard]},
-  {path: 'admin-cursos', component: AdminCursosComponent},
-  {path: 'alta-curso', component: AltaCursoComponent},
-  {path: 'alta-curso/:id', component: AltaCursoComponent},
+  {path: 'admin-cursos', component: AdminCursosComponent, canActivate:[isAdminGuard]}, 
+  {path: 'alta-curso', component: AltaCursoComponent, canActivate:[isAdminGuard]},
+  {path: 'alta-curso/:id', component: AltaCursoComponent, canActivate:[isAdminGuard]},
   {path: '', component: InicioComponent },
 ];
 

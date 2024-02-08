@@ -17,7 +17,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
   standalone: true,
   imports: [MatTableModule, MatPaginatorModule,NgFor, RouterModule],
 })
-export class AdminCursosComponent implements AfterViewInit {
+export class AdminCursosComponent {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   total_courses: any
@@ -32,9 +32,7 @@ export class AdminCursosComponent implements AfterViewInit {
     private router: Router,
     private coursedataservice: CoursedataService
   ) {}
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
 
   
   ngOnInit() {

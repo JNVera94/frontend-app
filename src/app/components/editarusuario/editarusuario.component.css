@@ -35,6 +35,10 @@ main {
   margin-bottom: 10px;
   }
 
+  .buttons{
+    display: flex;
+    justify-content: space-between;}
+
   .separator{
     border-top: 1px solid #d1d7dc;
     margin: 1.6rem 0;
