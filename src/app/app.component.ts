@@ -9,6 +9,7 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
   isLoggedIn: boolean = false;
+  title = 'trabajo-dds';
 
   constructor(private authService: AuthService) {
   }

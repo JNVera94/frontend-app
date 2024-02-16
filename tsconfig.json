@@ -19,11 +19,14 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
+    "types": ["jest", "node"],
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
   },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-additional.d.ts"],
+  "exclude": ["node_modules",  "__mocks__", "/email-server", "cypress.config.ts","cypress"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

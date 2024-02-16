@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CoursedataService, CourseData } from 'src/app/services/materiadata.service';
+import { CoursedataService, CourseData } from '../../services/materiadata.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { StudentdataService } from 'src/app/services/alumnosdata.service';
 import { InscriptionDataService } from 'src/app/services/inscripciondata.service';

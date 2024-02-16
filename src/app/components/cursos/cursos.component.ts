@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CoursedataService } from 'src/app/services/materiadata.service';
-import { DialogService } from 'src/app/services/dialog.service';
+import { CoursedataService } from '../../services/materiadata.service';
+import { DialogService } from '../../services/dialog.service';
 import { ErrorAvisoComponent } from '../error-aviso/error-aviso.component.js';
 import { MatDialogRef } from '@angular/material/dialog/index.js';
 
