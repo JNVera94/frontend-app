@@ -45,7 +45,7 @@ export class StudentdataService {
 
   
   getStudentData(email: string): Observable<any> {
-    const url=`${this.apiUrl}/${email}`;
+    const url=`${this.apiUrl}/email/${email}`;
       return this.http.get(url);
   }
   getStudentDataId(Alumnoid: string): Observable<any> {

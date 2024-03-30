@@ -90,6 +90,7 @@ export class CursoDetalleComponent implements OnInit {
         this.inscriptiondataService.addInscription(this.student_Id, this.course_id, inscription_date).subscribe({
           next: response => {
             this.dialogRef = this.dialogService.openSuccessDialog('Inscripción registrada');
+            console.log(response);
             this.dialogRef.afterClosed().subscribe(() => {
               this.router.navigate(['/cursos']);
             });
