@@ -130,6 +130,9 @@ main {
     justify-content: center;
     margin-left:0%;
   }
+  .personales{
+    display: block;
+  }
 }
 @media only screen and (min-width: 768px) {
   .fila h4 {

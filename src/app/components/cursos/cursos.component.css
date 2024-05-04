@@ -45,6 +45,24 @@
 
     @media only screen and (max-width: 500px) {
       .contenedor .logo1 h2{
-        font-size: medium;
+        font-size: small;
       }
+
+      .contenedor .logo1 p{
+        font-size: x-large;
+      }
+
+      .contenedor {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+      }
+    
+      .contenedor .logo1 {
+        width: 100%;
+        margin-bottom: 20px; /* Espacio entre los elementos */
+      }
+
     }
