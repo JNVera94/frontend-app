@@ -125,6 +125,12 @@ main {
   justify-content: space-around;
 }
 
+@media only screen and (max-width: 650px) {
+  .datos .btn{
+    justify-content: center;
+    margin-left:0%;
+  }
+}
 @media only screen and (min-width: 768px) {
   .fila h4 {
     margin-right: 8%;

@@ -42,3 +42,9 @@
       -webkit-transition: .5s;
       transition: .5s;
     }
+
+    @media only screen and (max-width: 500px) {
+      .contenedor .logo1 h2{
+        font-size: medium;
+      }
+    }

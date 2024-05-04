@@ -113,6 +113,10 @@ main {
   .clientes{
     justify-content: center;
    }
+
+   .clientes .imagenes{
+    width:15%;
+   }
     .clientes .imagenes .imagen {
      display: none;
      width: 0%;
