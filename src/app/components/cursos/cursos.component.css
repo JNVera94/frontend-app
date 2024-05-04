@@ -45,11 +45,11 @@
 
     @media only screen and (max-width: 500px) {
       .contenedor .logo1 h2{
-        font-size: small;
+        font-size: x-large;
       }
 
       .contenedor .logo1 p{
-        font-size: x-large;
+        font-size: medium;
       }
 
       .contenedor {

@@ -126,7 +126,7 @@ main {
 }
 
 @media only screen and (max-width: 650px) {
-  .datos .btn{
+  .datos .personales .btn{
     justify-content: center;
     margin-left:0%;
   }
