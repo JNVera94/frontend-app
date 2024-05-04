@@ -186,3 +186,42 @@ main {
  .destacados .contenedor .logo1 p {
   font-size: 18px;
 }
+
+@media only screen and (max-width: 400px) {
+.conteiner{
+  width: 100%;
+}
+
+  .conteiner1 h1 {
+    font-size: 40px; 
+  }
+
+  .conteiner1 h2 {
+    font-size: 35px; 
+  }
+
+  .conteiner2 .razones .foto .imagen{
+    display: none;
+  }
+  .conteiner2 .razones {
+    display: grid;
+    justify-items: center;
+  }
+
+  .conteiner2 .razones .porque .contenedor-razon .logo2 .icono{
+    display: none;
+  }
+
+  .destacados .contenedor {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .destacados .contenedor .logo1 {
+    width: 100%;
+    margin-bottom: 20px; /* Espacio entre los elementos */
+  }
+}

@@ -21,25 +21,25 @@
         <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
           <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
             <li class="nav-item mx-2">
-              <a class="nav-link" routerLink="/">Inicio</a>
+              <a class="nav-link" routerLink="/" (click)="closeMenu()">Inicio</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" routerLink="/cursos">Cursos</a>
+              <a class="nav-link" routerLink="/cursos" (click)="closeMenu()">Cursos</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" routerLink="/ensenia">Enseña en SkillHub</a>
+              <a class="nav-link" routerLink="/ensenia" (click)="closeMenu()">Enseña en SkillHub</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" routerLink="/funcionamiento">Como funciona</a>
+              <a class="nav-link" routerLink="/funcionamiento" (click)="closeMenu()">Como funciona</a>
             </li>
           </ul>
           <!--Login / Sign up or User info-->
           <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
             [style.marginRight]="isLoggedIn ? '8%' : '0'">
             <div *ngIf="!isLoggedIn">
-              <a href="/login" class="text-black">Inicia Sesión</a>
+              <a href="/login" class="text-black" (click)="closeMenu()">Inicia Sesión</a>
               <a href="/registro" class="text-white text-decoration-none px-3 py-1 rounded-4"
-                style="background-color:#321da5">Registrate</a>
+                style="background-color:#321da5" (click)="closeMenu()">Registrate</a>
             </div>
             <div *ngIf="isLoggedIn" class="logdata">
                 <p *ngIf="studentData" class="welcome-message">{{ 'Bienvenido, ' + studentData.data.name }}</p>
@@ -49,9 +49,8 @@
                     <i class="bi bi-person"></i>
                   </button>
                   <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" routerLink="/misdatos"><i class="bi bi-person-gear"></i>Mis datos</a></li>
-                      <li *ngIf="userDataService.isAdmin$ | async"><a class="dropdown-item" routerLink="/admin-cursos"><i class="bi bi-textarea-t"></i>Cursos</a></li>
-                      <!--<li *ngIf="userDataService.isAdmin$ | async"><a class="dropdown-item" routerLink="/misdatos"><i class="bi bi-inbox"></i>Consultas</a></li>-->
+                      <li><a class="dropdown-item" routerLink="/misdatos" (click)="closeMenu()"><i class="bi bi-person-gear"></i>Mis datos</a></li>
+                      <li *ngIf="userDataService.isAdmin$ | async"><a class="dropdown-item" routerLink="/admin-cursos" (click)="closeMenu()"><i class="bi bi-textarea-t"></i>Cursos</a></li>
                       <li><a class="dropdown-item" (click)="logout()"><i class="bi bi-person-x"></i>Cerrar Sesión</a></li>
                   </ul>
                 </div>

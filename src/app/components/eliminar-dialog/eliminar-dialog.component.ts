@@ -14,7 +14,6 @@ export class EliminarDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<EliminarDialogComponent>,private dialogService: DialogService,
-
   ) {}
 
   closeDialog() {
@@ -27,5 +26,3 @@ export class EliminarDialogComponent {
   }
   
   }
-  
-

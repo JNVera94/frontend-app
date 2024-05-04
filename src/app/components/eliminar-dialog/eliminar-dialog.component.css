@@ -1,13 +1,10 @@
-
-
 .dialogo h1{
     justify-content: center;
     display: flex;
     margin-top: 3%;
 }
 
-.dialogo .btn-cancelar, .btn-confirmar{
-    
+.dialogo .btn-cancelar, .btn-confirmar{  
     margin-left: 3%;
     margin-right: 3%;
 }

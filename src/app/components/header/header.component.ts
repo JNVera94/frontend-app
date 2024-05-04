@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StudentdataService } from 'src/app/services/alumnosdata.service';
 import { UserdataService } from 'src/app/services/userdata.service'; 
@@ -47,5 +47,12 @@ export class HeaderComponent implements OnInit {
     this.userDataService.setAdmin(false); 
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  closeMenu() {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    if (navbarToggler && window.innerWidth < 992) {
+      (navbarToggler as HTMLElement).click();
+    }
   }
 }

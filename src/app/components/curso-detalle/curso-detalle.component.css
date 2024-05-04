@@ -16,7 +16,6 @@
   }
   
   .logo1 img {
-    
     width: 100%;
   }
 
@@ -45,8 +44,8 @@
     width: 60%;
    }
 
+   
   @media only screen and (min-width: 1024px) {
-
     .descripcion{
       font-size: 22px;
     }

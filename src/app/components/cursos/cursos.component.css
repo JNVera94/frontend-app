@@ -1,7 +1,4 @@
-
-
-  
-  main {
+ main {
       padding: 0;
       margin: 2%;
     }
@@ -24,7 +21,6 @@
     margin-top: 2%;
   }
 
-  
     .logo1{
       width: 30%; /*cambio tamaño del cuadrado*/
     text-align: center; /*justifico imagen y titulo del curso*/

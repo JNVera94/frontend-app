@@ -2,7 +2,6 @@ main {
     font-family: 'Helvetica', sans-serif;
     background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 60%);
     margin: 0;
-    
   }
 
   .formulario{
@@ -13,25 +12,21 @@ main {
     background-color: #ffffff;
     padding: 3%;
     border-radius: 4%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      
-        display: flex; /* Utiliza flexbox */
-        flex-direction: column; /* Alinea los elementos en columna */
-        justify-content: center; /* Centra verticalmente */
-        align-items: center; /* Centra horizontalmente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+        display: flex; 
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center; 
   }
   
-
   .titulo{
   font-size: 2.5rem;
   display: flex;
   justify-content: center;
   margin-bottom: 35px;
-  
   }
   
   .form-control{
-  
   margin-bottom: 10px;
   }
 

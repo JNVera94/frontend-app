@@ -10,7 +10,6 @@ main {
   background: #bc49ec;
   background: -webkit-linear-gradient(to right, #f8075756, #bc4e9d63), url(src\assets\portada.jpg);
   background: linear-gradient(to right, #f8075756, #bc4e9d63), url(src\assets\portada.jpg);
-  
   background-size: cover;
   background-attachment: fixed;
   position: relative;
@@ -25,11 +24,12 @@ main {
 .textos-inicio h1{
 font-size: 50px;
 color: #fff;
+font-family: system-ui;
 }
 
 .textos-inicio h2{
-  font-size: 45px;
-  font-weight: 100;
+  font-size: 40px;
+  font-family: serif;
   color: #fff;
   }
 
@@ -42,7 +42,6 @@ color: #fff;
 .container-fluid{
 display: flex;
 justify-content: space-between;
-
 }
 
 
@@ -56,10 +55,7 @@ justify-content: space-between;
   width: 100%;
 }
 
-.formulario{
-
-  
-  
+.formulario{ 
   margin: 30px 0;
   min-height: 25rem;
   width: 100%;
@@ -83,17 +79,13 @@ margin-bottom: 35px;
 }
 
 .form-control{
-
 margin-bottom: 10px;
 }
 
 .contenedor-lista{
-
 width: 100%;
-  margin: 10px;
-  
-  min-height: 25rem;
-
+margin: 10px; 
+min-height: 25rem;
 }  
 
 
@@ -177,4 +169,11 @@ font-size: 17px;
 .numeros p{
 font-size: 20px;
 color: #fff;
+}
+
+@media only screen and (max-width: 500px) {
+  .container-fluid{
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
