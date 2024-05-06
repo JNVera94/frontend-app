@@ -37,7 +37,7 @@
   .descripcion {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    text-align: justify;
     font-family: sans-serif;
     font-size: 120%;
     margin: 5%;
@@ -45,6 +45,16 @@
    }
 
    
+   @media only screen and (max-width: 650px) {
+    .container-fluid{
+      display: grid;
+    }
+    
+    .logo1, .descripcion{
+      width:-webkit-fill-available ;
+    }
+   }
+
   @media only screen and (min-width: 1024px) {
     .descripcion{
       font-size: 22px;
