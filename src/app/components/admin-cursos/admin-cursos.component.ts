@@ -41,7 +41,6 @@ export class AdminCursosComponent {
         this.total_courses = new MatTableDataSource(courses.data);
         this.total_courses.sort = this.sort
         this.total_courses.paginator = this.paginator
-        console.log('Cursos obtenidos:', this.total_courses);
       },
       error: error => {
         this.dialogRef1 = this.dialogService.openFailureDialog('Error al cargar los datos, intente nuevamente');

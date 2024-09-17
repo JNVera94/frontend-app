@@ -136,17 +136,6 @@ export class MisdatosComponent implements OnInit {
     });
   }
 
-  DeleteIns(inscription_Id: string) {
-    const inscID = inscription_Id;
-    this.inscriptionDataService.deleteInscriptionById(inscID).subscribe({
-     next: (response) => {
-        this.updateStudentInfo();
-      },
-     error: (error) => {
-        console.error('Error al eliminar la inscripción:', error);
-      }
-  });
-  }
 
   onDeleteStudent() {
     const storedStudentData = localStorage.getItem('studentData');

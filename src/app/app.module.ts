@@ -21,18 +21,17 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { RegistroComponent } from './components/registro/registro.component';
-import { Dialog } from '@angular/cdk/dialog/index';
+
 
 import { CookieService } from 'ngx-cookie-service';
 
-import { AdminCursosComponent } from './components/admin-cursos/admin-cursos.component';
+
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CursoDetalleComponent } from './components/curso-detalle/curso-detalle.component';
 import { LoginComponent } from './components/login/login.component';
-import { HeaderLoginComponent } from './components/header-login/header-login.component';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 import { MisdatosComponent } from './components/misdatos/misdatos.component';
 import { EliminarDialogComponent } from './components/eliminar-dialog/eliminar-dialog.component';
@@ -60,7 +59,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         CursoDetalleComponent,
         LoginComponent,
         SuccessDialogComponent,
-        HeaderLoginComponent,
         MisdatosComponent,
         EliminarDialogComponent,
         ErrorAvisoComponent,

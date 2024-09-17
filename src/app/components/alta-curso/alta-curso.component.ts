@@ -52,13 +52,13 @@ export class AltaCursoComponent {
   }
 
   loadIcons() {
-    console.log('loadIcons')
+  
     const iconNames = ['code-square', 'file-zip', 'google','cloud-upload','folder2-open','file-lock',
     'display','device-ssd','credit-card-2','calculator','android2',
     'bank','broadcast-pin','clipboard2-data','database-add','diagram-3',
     'motherboard','person-bounding-box','robot']; 
     this.icons = iconNames.map(name => ({ name, path: `assets/cursos/${name}.svg` }));
-    console.log(this.icons);
+
   }
 
 
@@ -67,7 +67,6 @@ export class AltaCursoComponent {
       next: (courseData) => {
         this.course = courseData.data;
         this.isEdit = true;
-        console.log(this.course, 'course');
       },
       error: (error) => {
         this.dialogRef1 = this.dialogService.openFailureDialog('Error al cargar el curso');

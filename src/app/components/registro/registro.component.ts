@@ -28,33 +28,6 @@ export class RegistroComponent {
     this.notifier = notifier;
   }
 
-  /*createStudent() {
-    this.studentService.getStudentData(this.student.email).subscribe({
-      next: (response) => {
-        if (response.data) {
-          this.dialogRef1 = this.dialogService.openFailureDialog('El email ya está registrado');
-          this.dialogRef1.afterClosed().subscribe(() => {
-            location.reload();
-          });
-        } else {
-          this.studentService.addStudent(this.student).subscribe(() => {
-            this.student = {};
-            this.dialogRef = this.dialogService.openSuccessDialog('Registro exitoso');
-            this.dialogRef.afterClosed().subscribe(() => {
-              this.router.navigate(['/login']);
-            });
-          });
-        }
-      },
-      error: (error) => {
-        this.dialogRef1 = this.dialogService.openFailureDialog('Error al registrarse, intente nuevamente');
-        this.dialogRef1.afterClosed().subscribe(() => {
-          location.reload();
-        });
-      }
-    });
-  }*/
-
   createStudent() {
     this.studentService.addStudent(this.student).subscribe({
       next: (data: any) => {

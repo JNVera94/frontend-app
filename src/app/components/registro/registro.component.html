@@ -6,7 +6,7 @@
       <div class="contform1">
         <div class="form-elemento">
           <h3>Nombre</h3>
-          <input type="text" class="form-control" name="name" id="name" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" required
+          <input type="text" class="form-control" name="name" id="name" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" maxlength="30" required
             [(ngModel)]="student.name" #name="ngModel">
           <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
             <div *ngIf="name.errors?.['required']">El nombre es requerido.</div>
@@ -17,8 +17,7 @@
         <!-- Apellido -->
         <div class="form-elemento">
           <h3>Apellido</h3>
-          <input type="text" class="form-control" name="lastname" id="lastname" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+"
-            required [(ngModel)]="student.lastname" #lastname="ngModel">
+          <input type="text" class="form-control" name="lastname" id="lastname" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" maxlength="30" required [(ngModel)]="student.lastname" #lastname="ngModel">
           <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="text-danger">
             <div *ngIf="lastname.errors?.['required']">El apellido es requerido.</div>
             <div *ngIf="lastname.errors?.['pattern']">Ingresa solo caracteres alfabéticos.</div>

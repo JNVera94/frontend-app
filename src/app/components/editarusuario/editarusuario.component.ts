@@ -15,7 +15,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
   styleUrls: ['./editarusuario.component.css']
 })
 export class EditUserComponent implements OnInit {
-  alumnoForm!: FormGroup; // Define el FormGroup para el formulario
+  alumnoForm!: FormGroup;
 
   studentData: any;
   student: any = {};
@@ -30,7 +30,7 @@ export class EditUserComponent implements OnInit {
     notifier: NotifierService,
     private dialogService: DialogService,
     private userdata: UserdataService,
-    private fb: FormBuilder // Inyecta el FormBuilder en el constructor
+    private fb: FormBuilder
   ) {
     this.notifier = notifier;
   }
@@ -47,7 +47,6 @@ export class EditUserComponent implements OnInit {
       this.studentId = this.studentData.data.id;
     }
 
-    // Inicializa el FormGroup con los controles del formulario y las validaciones necesarias
     this.alumnoForm = this.fb.group({
       name: [this.student.name, Validators.required],
       lastname: [this.student.lastname, Validators.required],
@@ -57,7 +56,6 @@ export class EditUserComponent implements OnInit {
   }
 
   editStudent() {
-    // Verifica si el formulario es válido antes de realizar la acción
     if (this.alumnoForm.valid) {
       this.studentService.updateStudent(this.studentId, this.alumnoForm.value).subscribe({
         next: (response) => {

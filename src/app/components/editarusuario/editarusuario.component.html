@@ -5,7 +5,7 @@
       <div class="contform1">
         <div class="form-elemento">
           <h3>Nombre</h3>
-          <input type="text" class="form-control" formControlName="name" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" required>
+          <input type="text" class="form-control" formControlName="name" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" maxlength="30" required>
           <div *ngIf="alumnoForm.get('name')?.invalid && (alumnoForm.get('name')?.dirty || alumnoForm.get('name')?.touched)" class="text-danger">
             <div *ngIf="alumnoForm.get('name')?.errors?.['required']">El nombre es requerido.</div>
             <div *ngIf="alumnoForm.get('name')?.errors?.['pattern']">El nombre debe contener solo caracteres alfabéticos.</div>
@@ -15,7 +15,7 @@
         <!-- Apellido -->
         <div class="form-elemento">
           <h3>Apellido</h3>
-          <input type="text" class="form-control" formControlName="lastname" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" required>
+          <input type="text" class="form-control" formControlName="lastname" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" maxlength="30" required>
           <div *ngIf="alumnoForm.get('lastname')?.invalid && (alumnoForm.get('lastname')?.dirty || alumnoForm.get('lastname')?.touched)" class="text-danger">
             <div *ngIf="alumnoForm.get('lastname')?.errors?.['required']">El apellido es requerido.</div>
             <div *ngIf="alumnoForm.get('lastname')?.errors?.['pattern']">El apellido debe contener solo caracteres alfabéticos.</div>

@@ -5,7 +5,7 @@
       <div class="contform1">
         <div class="form-elemento">
           <h3>Nombre</h3>
-          <input type="text" class="form-control" name="name" id="name" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" required
+          <input type="text" class="form-control" name="name" id="name" pattern="[a-zA-ZáéíóúüÁÉÍÓÚÜ\s]+" maxlength="50" required
             [(ngModel)]="course.name" #name="ngModel">
           <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
             <div *ngIf="name.errors?.['required']">El nombre es requerido.</div>
