@@ -20,7 +20,7 @@ describe('InscriptionDataService', () => {
   });
 
   afterEach(() => {
-    httpMock.verify(); // Ensure that there are no outstanding requests.
+    httpMock.verify(); 
   });
 
   it('should add a new inscription when valid student_id, course_id, and inscription_date are provided', () => {
@@ -42,13 +42,13 @@ describe('InscriptionDataService', () => {
     const req = httpMock.expectOne(() => true);
     expect(req.request.method).toBe('POST');
     expect(req.request.body.data).not.toBeNull();
-    req.flush(expectedResponse); // Simulate a response from the server.
+    req.flush(expectedResponse); 
   });
   it('should throw an error when student_id parameter is missing', () => {
     // Arrange
     const course_id = '2';
     const inscription_date = '2021-01-01';
-    const expectedResponse = {}; // Replace with your expected response.
+    const expectedResponse = {}; 
 
     // Act
     const result$ = service.addInscription( '',course_id, inscription_date);
@@ -69,7 +69,7 @@ describe('InscriptionDataService', () => {
     // Arrange
     const student_id = '2';
     const inscription_date = '2021-01-01';
-    const expectedResponse = {}; // Replace with your expected response.
+    const expectedResponse = {}; 
 
     // Act
     const result$ = service.addInscription(student_id, '', inscription_date);
@@ -90,7 +90,7 @@ describe('InscriptionDataService', () => {
     // Arrange
     const student_id = '2';
     const course_id = '4';
-    const expectedResponse = {}; // Replace with your expected response.
+    const expectedResponse = {}; 
 
     // Act
     const result$ = service.addInscription(student_id, course_id, '');
@@ -110,7 +110,7 @@ describe('InscriptionDataService', () => {
     it('should return an Observable with the expected inscription data when a valid student_id is provided', () => {
     // Arrange
     const student_id = 'valid_student_id';
-    const expectedResponse = { /* your expected response here */ };
+    const expectedResponse = {};
   
     // Act
     const result$ = service.getInscriptionByStudentId(student_id);
@@ -122,7 +122,7 @@ describe('InscriptionDataService', () => {
   
     const req = httpMock.expectOne(() => true);
     expect(req.request.method).toBe('GET');
-    req.flush(expectedResponse); // Provide a mocked response for the request.
+    req.flush(expectedResponse); 
   });
 
   it('should throw an error if the API call fails', () => {
@@ -143,7 +143,7 @@ describe('InscriptionDataService', () => {
   
     const req = httpMock.expectOne(() => true);
     expect(req.request.method).toBe('GET');
-    req.flush(data, mockErrorResponse); // Simulate a server error response.
+    req.flush(data, mockErrorResponse); 
   });
   it('should send a DELETE request to the correct API endpoint with the given inscription ID', () => {
     // Arrange
@@ -160,7 +160,7 @@ describe('InscriptionDataService', () => {
   
     const req = httpMock.expectOne(() => true);
     expect(req.request.method).toBe('DELETE');
-    req.flush(expectedResponse); // Provide a mocked response for the request.
+    req.flush(expectedResponse); 
   });
 
   it('should handle and return an observable with an error message when inscID parameter is null or undefined', () => {
@@ -182,6 +182,6 @@ describe('InscriptionDataService', () => {
   
     const req = httpMock.expectOne(() => true);
     expect(req.request.method).toBe('DELETE');
-    req.flush(data, mockErrorResponse); // Simulate a server error response.
+    req.flush(data, mockErrorResponse); 
   });
 });
